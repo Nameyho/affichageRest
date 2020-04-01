@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(value = "/Cours")
+@RequestMapping(value = "/cours")
 public class CoursController {
 
     @Resource

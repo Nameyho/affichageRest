@@ -24,13 +24,16 @@ public class Person implements Serializable {
     @Column private Date  dateAnniversaire;
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "Role_id")
-    private Role role;
+    private Roles roles;
 
     @OneToMany(mappedBy="person")
-    private Set<Message> message;
+    private Set<Messages> messages;
 
     @OneToMany(mappedBy = "person")
     private Set<CoursEnseigne> courEnseignes;
+
+    @OneToMany(mappedBy = "person")
+    private Set<PersonIndisponibilite> indisponibilites;
 
     public Person() {
     }
@@ -54,8 +57,8 @@ public class Person implements Serializable {
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
                 ", dateAnniversaire=" + dateAnniversaire +
-                ", role=" + role +
-                ", message=" + message +
+                ", role=" + roles +
+                ", message=" + messages +
                 ", courEnseignes=" + courEnseignes +
                 '}';
     }
@@ -71,14 +74,18 @@ public class Person implements Serializable {
                 nom.equals(person.nom) &&
                 email.equals(person.email) &&
                 dateAnniversaire.equals(person.dateAnniversaire) &&
-                role.equals(person.role) &&
-                message.equals(person.message) &&
+                roles.equals(person.roles) &&
+                messages.equals(person.messages) &&
                 courEnseignes.equals(person.courEnseignes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, prenom, nom, email, dateAnniversaire, role, message, courEnseignes);
+        return Objects.hash(id, prenom, nom, email, dateAnniversaire, roles, messages, courEnseignes);
+    }
+
+    public Roles getRoles() {
+        return roles;
     }
 
     public Long getId() {
