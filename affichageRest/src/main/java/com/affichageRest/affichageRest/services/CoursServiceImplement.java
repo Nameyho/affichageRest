@@ -29,7 +29,7 @@ public class CoursServiceImplement implements CoursService {
     }
 
     @Override
-    public Cours updatePerson(Long id, Cours person) {
+    public Cours updateCours(Long id, Cours person) {
         //mettre à jour plus tard
         return this.coursRepository.save(person);
     }
