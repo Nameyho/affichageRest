@@ -10,22 +10,26 @@ public class Roles implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Long idRole;
 
     private String name;
     private String description;
 
 
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "PERSON_ID")
-    private Person personnes;
-
+    @OneToMany(mappedBy = "roles")
+    private Set<Person> personnes;
 
     public Roles() {
     }
 
+    public Roles(String name, String description) {
+        this.name = name;
+        this.description = description;
+
+    }
+
     public Long getId() {
-        return id;
+        return idRole;
     }
 
     public String getName() {
