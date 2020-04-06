@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
-
+@IdClass(CoursEnseigne.class)
 public class CoursEnseigne implements Serializable {
 
     @Id

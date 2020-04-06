@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
-
+import java.util.UUID;
 
 
 @Entity
@@ -17,13 +17,22 @@ public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column (name="PERSON_ID") private Long id;
+    @Column (name="PERSON_ID") private UUID idPerson;
     @Column private String prenom;
     @Column private String nom;
     @Column private String email;
     @Column private Date  dateAnniversaire;
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
+
+
+
+
+
     @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "Role_id")
+    @JoinColumn(name = "idRole")
     private Roles roles;
 
     @OneToMany(mappedBy="person")
@@ -37,6 +46,28 @@ public class Person implements Serializable {
 
     public Person() {
     }
+
+    public UUID getIdPerson() {
+        return idPerson;
+    }
+
+    public void setIdPerson(UUID idPerson) {
+        this.idPerson = idPerson;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setDateAnniversaire(Date dateAnniversaire) {
+        this.dateAnniversaire = dateAnniversaire;
+    }
+
+
 
     public void setEmail(String email) {
         this.email = email;
@@ -52,7 +83,7 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
+                "id=" + idPerson +
                 ", prenom='" + prenom + '\'' +
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
@@ -69,27 +100,28 @@ public class Person implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id.equals(person.id) &&
+        return idPerson.equals(person.idPerson) &&
                 prenom.equals(person.prenom) &&
                 nom.equals(person.nom) &&
                 email.equals(person.email) &&
                 dateAnniversaire.equals(person.dateAnniversaire) &&
-                roles.equals(person.roles) &&
                 messages.equals(person.messages) &&
                 courEnseignes.equals(person.courEnseignes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, prenom, nom, email, dateAnniversaire, roles, messages, courEnseignes);
+        return Objects.hash(idPerson, prenom, nom, email, dateAnniversaire, roles, messages, courEnseignes);
     }
 
     public Roles getRoles() {
         return roles;
     }
 
-    public Long getId() {
-        return id;
+
+
+    public UUID getId() {
+        return idPerson;
     }
 
     public String getPrenom() {
@@ -107,4 +139,7 @@ public class Person implements Serializable {
     public Date getDateAnniversaire() {
         return dateAnniversaire;
     }
+
+
+
 }

@@ -1,11 +1,12 @@
 package com.affichageRest.affichageRest.model;
 
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
-public class PersonResultat {
+@Entity
+@IdClass(PersonResultat.class)
+public class PersonResultat implements Serializable {
 
     @Id
     @ManyToOne
