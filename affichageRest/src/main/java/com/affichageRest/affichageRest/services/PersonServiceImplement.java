@@ -1,14 +1,18 @@
 package com.affichageRest.affichageRest.services;
 
 import com.affichageRest.affichageRest.DAO.PersonRepository;
+import com.affichageRest.affichageRest.DAO.RoleRepository;
 import com.affichageRest.affichageRest.DTO.PersonCreateDTO;
 import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
 import com.affichageRest.affichageRest.model.Person;
+import com.affichageRest.affichageRest.model.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Service(value="PersonService")
@@ -16,6 +20,10 @@ public class PersonServiceImplement implements PersonService {
 
     @Autowired
     private PersonRepository personRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
     @Override
     public Collection<Person> getAllPerson() {
         return (Collection<Person>) personRepository.findAll();
@@ -36,7 +44,12 @@ public class PersonServiceImplement implements PersonService {
         nouvPersonne.setEmail(person.getEmail());
         nouvPersonne.setNom(person.getNom());
         nouvPersonne.setPrenom(person.getPrenom());
-       //nouvPersonne.setId_role(person.getRoles());
+
+       Roles role= roleRepository.findById(person.getIdRole()).get();
+
+
+            nouvPersonne.setRole(role);
+
 
         return personRepository.save(nouvPersonne).getId();
     }
@@ -51,8 +64,8 @@ public class PersonServiceImplement implements PersonService {
             personneExistant.setEmail(person.getEmail());
             personneExistant.setNom(person.getNom());
             personneExistant.setPrenom(person.getPrenom());
-            //personneExistant.setRolesID(person.getIdRoles());
-
+            Roles role= roleRepository.findById(person.getIdRole()).get();
+            personneExistant.setRole(role);
             personRepository.save(personneExistant);
 
         }
