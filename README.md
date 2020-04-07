@@ -8,6 +8,10 @@
 
 3 avril : creation dao couche intermediaire
 
-7 avril : DTO_person
+7 avril : DTO_person 
+création de create et update dto
 
-note : mettre à jour l'insertion de la foreign key dans la table person de la clef idrole
+
+
+
+
