@@ -11,7 +11,7 @@ public class PersonUpdateDTO {
     private String email;
     private Date dateAnniversaire;
 
-    private int  idRoles;
+    private long idRole ;
 
     public String getPrenom() {
         return prenom;
@@ -45,11 +45,11 @@ public class PersonUpdateDTO {
         this.dateAnniversaire = dateAnniversaire;
     }
 
-    public int getIdRoles() {
-        return idRoles;
+    public Long getIdRole() {
+        return idRole;
     }
 
-    public void setIdRoles(int idRoles) {
-        this.idRoles = idRoles;
+    public void setIdRole(int idRoles) {
+        this.idRole = idRoles;
     }
 }

@@ -16,7 +16,7 @@ public class Roles implements Serializable {
     private String description;
 
 
-    @OneToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "role")
     private Set<Person> personnes;
 
     public Roles() {
@@ -26,6 +26,10 @@ public class Roles implements Serializable {
         this.name = name;
         this.description = description;
 
+    }
+
+    public void setIdRole(Long idRole) {
+        this.idRole = idRole;
     }
 
     public Long getId() {

@@ -23,17 +23,10 @@ public class Person implements Serializable {
     @Column private String email;
     @Column private Date  dateAnniversaire;
 
-    public void setRoles(Roles roles) {
-        this.roles = roles;
-    }
-
-
-
-
 
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "idRole")
-    private Roles roles;
+    private Roles role;
 
     @OneToMany(mappedBy="person")
     private Set<Messages> messages;
@@ -45,6 +38,10 @@ public class Person implements Serializable {
     private Set<PersonIndisponibilite> indisponibilites;
 
     public Person() {
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
     }
 
     public UUID getIdPerson() {
@@ -88,7 +85,7 @@ public class Person implements Serializable {
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
                 ", dateAnniversaire=" + dateAnniversaire +
-                ", role=" + roles +
+                ", role=" + role+
                 ", message=" + messages +
                 ", courEnseignes=" + courEnseignes +
                 '}';
@@ -111,11 +108,11 @@ public class Person implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPerson, prenom, nom, email, dateAnniversaire, roles, messages, courEnseignes);
+        return Objects.hash(idPerson, prenom, nom, email, dateAnniversaire, role, messages, courEnseignes);
     }
 
-    public Roles getRoles() {
-        return roles;
+    public Roles getRole() {
+        return role;
     }
 
 

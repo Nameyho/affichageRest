@@ -11,7 +11,7 @@ public class PersonCreateDTO {
     private String email;
     private Date dateAnniversaire;
 
-    private int roles;
+    private Long idRole;
 
 
 
@@ -47,11 +47,12 @@ public class PersonCreateDTO {
         this.dateAnniversaire = dateAnniversaire;
     }
 
-    public int getRoles() {
-        return roles;
+    public Long getIdRole() {
+        return idRole;
     }
 
-    public void setRoles(int roles) {
-        this.roles = roles;
+    public void setIdRole(Long idRole) {
+        this.idRole = idRole;
+
     }
 }

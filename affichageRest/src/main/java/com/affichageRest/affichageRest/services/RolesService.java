@@ -8,9 +8,9 @@ import java.util.Collection;
 public interface RolesService {
 
     Collection<Roles> getAllRoles();
-    Roles getRoles(Long id);
+    Roles getRole(Long id);
     Roles save(Roles role);
-    Roles updateRoles(Long id, Roles role);
+    Roles updateRole(Long id, Roles role);
     void delete(Long id);
 
 }

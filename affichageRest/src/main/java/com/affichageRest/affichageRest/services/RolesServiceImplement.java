@@ -21,7 +21,7 @@ public class RolesServiceImplement implements RolesService {
     }
 
     @Override
-    public Roles getRoles(Long id) {
+    public Roles getRole(Long id) {
         return this.roleRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class RolesServiceImplement implements RolesService {
     }
 
     @Override
-    public Roles updateRoles(Long id, Roles role) {
+    public Roles updateRole(Long id, Roles role) {
         //mettre à jour plus tard
         return this.roleRepository.save(role);
     }
