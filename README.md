@@ -11,6 +11,9 @@
 7 avril : DTO_person 
 création de create et update dto
 
+8 avril , personGetDto
+
+création de la commande get{id} ; get et delete
 
 
 
