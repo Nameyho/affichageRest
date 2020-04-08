@@ -1,17 +1,19 @@
 package com.affichageRest.affichageRest.services;
 
 import com.affichageRest.affichageRest.DTO.PersonCreateDTO;
+import com.affichageRest.affichageRest.DTO.PersonGetDTO;
 import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
 import com.affichageRest.affichageRest.model.Person;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 public interface PersonService {
 
-    Collection<Person> getAllPerson();
+    List<PersonGetDTO> getAllPerson();
     public UUID createPerson(PersonCreateDTO personCreateDTO);
-    Person getPerson(UUID id);
+    PersonGetDTO getPerson(UUID id);
 
     void updatePerson(UUID id, PersonUpdateDTO personUpdateDTO);
     void delete(UUID id);

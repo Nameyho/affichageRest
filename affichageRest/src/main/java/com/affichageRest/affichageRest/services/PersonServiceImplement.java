@@ -3,6 +3,7 @@ package com.affichageRest.affichageRest.services;
 import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DAO.RoleRepository;
 import com.affichageRest.affichageRest.DTO.PersonCreateDTO;
+import com.affichageRest.affichageRest.DTO.PersonGetDTO;
 import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
 import com.affichageRest.affichageRest.model.Person;
 import com.affichageRest.affichageRest.model.Roles;
@@ -10,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Service(value="PersonService")
 public class PersonServiceImplement implements PersonService {
@@ -25,14 +23,28 @@ public class PersonServiceImplement implements PersonService {
     private RoleRepository roleRepository;
 
     @Override
-    public Collection<Person> getAllPerson() {
-        return (Collection<Person>) personRepository.findAll();
+    public List<PersonGetDTO> getAllPerson() {
+
+        List<PersonGetDTO> plist = new ArrayList<>();
+        personRepository.findAll().forEach(person -> {
+            plist.add(new PersonGetDTO(person.getId(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire(),person.getRole()));
+        });
+        return plist;
     }
 
     @Override
-    public Person getPerson(UUID id) {
-        return this.personRepository.findById(id).get();
-    }
+    public PersonGetDTO getPerson(UUID id) {
+
+        if(personRepository.findById(id).isPresent()){
+            Person persontemp = personRepository.findById(id).get();
+
+
+            return new PersonGetDTO(persontemp.getId(),persontemp.getPrenom(),
+                    persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire(),persontemp.getRole());
+        }
+    else{
+        return null;
+    }}
 
     @Override
     public UUID createPerson(PersonCreateDTO person) {
