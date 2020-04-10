@@ -3,6 +3,7 @@ package com.affichageRest.affichageRest.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Role",schema = "public",catalog = "AffichageRest")
@@ -10,7 +11,7 @@ public class Roles implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long idRole;
+    private UUID idRole;
 
     private String name;
     private String description;
@@ -28,11 +29,11 @@ public class Roles implements Serializable {
 
     }
 
-    public void setIdRole(Long idRole) {
+    public void setIdRole(UUID idRole) {
         this.idRole = idRole;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return idRole;
     }
 
@@ -44,5 +45,23 @@ public class Roles implements Serializable {
         return description;
     }
 
+    public UUID getIdRole() {
+        return idRole;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Person> getPersonnes() {
+        return personnes;
+    }
+
+    public void setPersonnes(Set<Person> personnes) {
+        this.personnes = personnes;
+    }
 }
