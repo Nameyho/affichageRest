@@ -1,8 +1,7 @@
 package com.affichageRest.affichageRest.DTO;
 
-import com.affichageRest.affichageRest.model.Roles;
-
 import java.util.Date;
+import java.util.UUID;
 
 public class PersonUpdateDTO {
 
@@ -11,7 +10,7 @@ public class PersonUpdateDTO {
     private String email;
     private Date dateAnniversaire;
 
-    private long idRole ;
+    private UUID idRole ;
 
     public String getPrenom() {
         return prenom;
@@ -45,11 +44,11 @@ public class PersonUpdateDTO {
         this.dateAnniversaire = dateAnniversaire;
     }
 
-    public Long getIdRole() {
+    public UUID getIdRole() {
         return idRole;
     }
 
-    public void setIdRole(int idRoles) {
+    public void setIdRole(UUID idRoles) {
         this.idRole = idRoles;
     }
 }

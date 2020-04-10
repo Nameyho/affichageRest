@@ -3,9 +3,6 @@ package com.affichageRest.affichageRest.services;
 import com.affichageRest.affichageRest.DTO.PersonCreateDTO;
 import com.affichageRest.affichageRest.DTO.PersonGetDTO;
 import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
-import com.affichageRest.affichageRest.model.Person;
-
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 

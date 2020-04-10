@@ -39,6 +39,8 @@ public class PersonController {
 
         return new ResponseEntity<>(personService.createPerson(person), HttpStatus.CREATED);
     }
+
+
     @PutMapping(value="/update/{id}")
     public void updatePerson(@PathVariable(value="id") UUID id,
                                        @RequestBody PersonUpdateDTO personUpdateDTO){

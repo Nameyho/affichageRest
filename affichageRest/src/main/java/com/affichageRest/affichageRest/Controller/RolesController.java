@@ -1,31 +1,55 @@
 package com.affichageRest.affichageRest.Controller;
 
-import com.affichageRest.affichageRest.model.Messages;
+import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
+import com.affichageRest.affichageRest.DTO.RoleCreateDTO;
+import com.affichageRest.affichageRest.DTO.RoleGetDTO;
+import com.affichageRest.affichageRest.DTO.RoleUpdateDTO;
 import com.affichageRest.affichageRest.model.Roles;
 import com.affichageRest.affichageRest.services.RolesService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/roles")
 public class RolesController {
 
-    @Resource
-    RolesService rolesService;
+    @Autowired
+    private  RolesService rolesService;
 
 
-    @GetMapping
-   public Collection getAllRoles(){
-        return this.rolesService.getAllRoles();
+    @GetMapping(value="/get")
+   public ResponseEntity<List<RoleGetDTO>> getAllRoles(){
+        return new ResponseEntity<>(rolesService.getAllRoles(), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/get/{id}")
+    public ResponseEntity<RoleGetDTO> getAllRoles(@PathVariable(value="id") UUID id){
+        return new ResponseEntity<>(rolesService.getRole(id), HttpStatus.OK);
     }
 
 
-
     @PostMapping(value="/create")
-         Roles Createrole(@RequestBody Roles roles){
+         public ResponseEntity<UUID> createRole(@RequestBody RoleCreateDTO role){
 
-        return this.rolesService.save(roles);
+        return new ResponseEntity<>(rolesService.createRole(role),HttpStatus.CREATED);
+    }
+
+    @PutMapping(value="/update/{id}")
+    public void updateRole(@PathVariable(value="id") UUID id,
+                             @RequestBody RoleUpdateDTO roleUpdateDTO){
+        rolesService.updateRole(id,roleUpdateDTO);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public void deleteRole(@PathVariable(value = "id") UUID id){
+        rolesService.delete(id);
+
     }
 }
