@@ -15,6 +15,8 @@ création de create et update dto
 
 création de la commande get{id} ; get et delete
 
+10 avril, DTO_role
 
+création de la commande get{id},get,delete,create,update
 
 
