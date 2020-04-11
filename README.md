@@ -19,4 +19,10 @@ création de la commande get{id} ; get et delete
 
 création de la commande get{id},get,delete,create,update
 
+12 avril : création DTO de la classe Message
 
+Get,Get{id},update;create,delete
+
++
+
+réparation bug de JSON qui boucle dans persondto
