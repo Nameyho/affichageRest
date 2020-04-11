@@ -12,7 +12,16 @@ public class PersonCreateDTO {
 
     private UUID idRole;
 
+    public PersonCreateDTO(String prenom, String nom, String email, Date dateAnniversaire, UUID idRole) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
+        this.dateAnniversaire = dateAnniversaire;
+        this.idRole = idRole;
+    }
 
+    public PersonCreateDTO() {
+    }
 
     public String getPrenom() {
         return prenom;

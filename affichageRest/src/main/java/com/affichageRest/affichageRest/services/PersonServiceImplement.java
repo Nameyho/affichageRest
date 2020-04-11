@@ -27,7 +27,7 @@ public class PersonServiceImplement implements PersonService {
 
         List<PersonGetDTO> plist = new ArrayList<>();
         personRepository.findAll().forEach(person -> {
-            plist.add(new PersonGetDTO(person.getId(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire(),person.getRole()));
+            plist.add(new PersonGetDTO(person.getId(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire(),person.getRole().getIdRole()));
         });
         return plist;
     }
@@ -40,7 +40,7 @@ public class PersonServiceImplement implements PersonService {
 
 
             return new PersonGetDTO(persontemp.getId(),persontemp.getPrenom(),
-                    persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire(),persontemp.getRole());
+                    persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire(),persontemp.getRole().getIdRole());
         }
     else{
         return null;
