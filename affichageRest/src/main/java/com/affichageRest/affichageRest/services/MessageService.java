@@ -1,16 +1,19 @@
 package com.affichageRest.affichageRest.services;
 
 
-import com.affichageRest.affichageRest.model.Messages;
+import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
+import com.affichageRest.affichageRest.DTO.MessageGetDTO;
+import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 public interface MessageService {
 
-    Collection<Messages> getAllCours();
-    Messages getMessage(Long id);
-    Messages save(Messages messages);
-    Messages updateMessages(Long id, Messages messages);
-    void delete(Long id);
+    List<MessageGetDTO> getAllMessages();
+    MessageGetDTO getMessage(UUID id);
+    public UUID createMessage(MessageCreateDTO messages);
+    void updateMessages(UUID id, MessageUpdateDTO messages);
+    void delete(UUID id);
 
 }

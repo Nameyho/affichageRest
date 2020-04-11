@@ -5,40 +5,94 @@ package com.affichageRest.affichageRest.services;
 
 
 import com.affichageRest.affichageRest.DAO.MessageRepository;
+import com.affichageRest.affichageRest.DAO.PersonRepository;
+import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
+import com.affichageRest.affichageRest.DTO.MessageGetDTO;
+import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
+import com.affichageRest.affichageRest.DTO.PersonGetDTO;
 import com.affichageRest.affichageRest.model.Messages;
+import com.affichageRest.affichageRest.model.Person;
+import com.affichageRest.affichageRest.model.PersonResultat;
+import org.aspectj.bridge.IMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 @Service(value="MessagesService")
 public class MessageServiceImplement implements MessageService {
 
-    @Resource
+    @Autowired
     private MessageRepository messageRepository;
+
+    @Autowired
+    private PersonRepository personRepository;
+
     @Override
-    public Collection<Messages> getAllCours() {
-        return (Collection<Messages>) messageRepository.findAll();
+    public List<MessageGetDTO> getAllMessages() {
+        List<MessageGetDTO> plist = new ArrayList<>();
+        messageRepository.findAll().forEach(message -> {
+            plist.add(new MessageGetDTO(
+                    message.getId(),
+                    message.getContenu(),
+                    message.getCreatedDate(),
+                    message.getPerson().getIdPerson()
+                   ));
+        });
+        return plist;
     }
 
     @Override
-    public Messages getMessage(Long id) {
-        return this.messageRepository.findById(id).get();
+    public MessageGetDTO getMessage(UUID id) {
+        if(messageRepository.findById(id).isPresent()){
+       Messages message = messageRepository.findById(id).get();
+
+       return  new MessageGetDTO(message.getId(),message.getContenu(),message.getCreatedDate(),message.getPerson().getIdPerson());
+    }
+    else{
+        return null;
+    }}
+
+    @Override
+    public UUID createMessage(MessageCreateDTO message) {
+
+        Messages nouvMessage = new Messages();
+
+        nouvMessage.setId(UUID.randomUUID());
+        nouvMessage.setContenu(message.getContenu());
+        nouvMessage.setCreatedDate(message.getCreatedDate());
+
+        Person person = personRepository.findById(message.getIdPerson()).get();
+
+        nouvMessage.setPerson(person);
+
+        return messageRepository.save(nouvMessage).getId();}
+
+    @Override
+    public void updateMessages(UUID id, MessageUpdateDTO message) {
+        if(messageRepository.findById(id).isPresent()) {
+
+            Messages messagesExistant = messageRepository.findById(id).get();
+
+            messagesExistant.setCreatedDate(message.createdDate);
+            messagesExistant.setContenu(message.contenu);
+
+            Person person = personRepository.findById(message.getIdPerson()).get();
+
+            messagesExistant.setPerson(person);
+
+            messageRepository.save(messagesExistant);
+        }
+
     }
 
     @Override
-    public Messages save(Messages message) {
-        return this.messageRepository.save(message);
-    }
-
-    @Override
-    public Messages updateMessages(Long id, Messages message) {
-        //mettre à jour plus tard
-        return this.messageRepository.save(message);
-    }
-
-    @Override
-    public void delete(Long id) {
+    public void delete(UUID id) {
         Messages messages = this.messageRepository.findById(id).get();
         this.messageRepository.delete(messages);
     }

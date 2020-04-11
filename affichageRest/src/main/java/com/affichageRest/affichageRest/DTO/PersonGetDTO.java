@@ -13,18 +13,18 @@ public class PersonGetDTO {
     private String email;
     private Date dateAnniversaire;
 
-    private Roles Role;
+    private UUID idRole;
 
     public PersonGetDTO() {
     }
 
-    public PersonGetDTO(UUID idperson, String prenom, String nom, String email, Date dateAnniversaire, Roles role) {
+    public PersonGetDTO(UUID idperson, String prenom, String nom, String email, Date dateAnniversaire, UUID role) {
         this.idPerson = idperson;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
-        Role = role;
+        this.idRole = role;
     }
 
     public String getPrenom() {
@@ -59,12 +59,12 @@ public class PersonGetDTO {
         this.dateAnniversaire = dateAnniversaire;
     }
 
-    public Roles getRole() {
-        return Role;
+    public UUID getidRole() {
+        return idRole;
     }
 
-    public void setRole(Roles role) {
-        Role = role;
+    public void setRole(UUID role) {
+        idRole = role;
     }
 
     public UUID getIdPerson() {
