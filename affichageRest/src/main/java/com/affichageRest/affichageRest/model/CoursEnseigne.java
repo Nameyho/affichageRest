@@ -20,11 +20,36 @@ public class CoursEnseigne implements Serializable {
 
     private Date annee;
 
+    public CoursEnseigne() {
+    }
 
+    public CoursEnseigne(Person person, Cours cours, Date annee) {
+        this.person = person;
+        this.cours = cours;
+        this.annee = annee;
+    }
 
+    public Person getPerson() {
+        return person;
+    }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
+    public Cours getCours() {
+        return cours;
+    }
 
+    public void setCours(Cours cours) {
+        this.cours = cours;
+    }
 
+    public Date getAnnee() {
+        return annee;
+    }
 
+    public void setAnnee(Date annee) {
+        this.annee = annee;
+    }
 }

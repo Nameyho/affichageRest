@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Collection;
+import java.util.UUID;
 
 @Service(value="CoursService")
 public class CoursServiceImplement implements CoursService {
@@ -19,7 +20,7 @@ public class CoursServiceImplement implements CoursService {
     }
 
     @Override
-    public Cours getCours(Long id) {
+    public Cours getCours(UUID id) {
         return this.coursRepository.findById(id).get();
     }
 
@@ -29,13 +30,13 @@ public class CoursServiceImplement implements CoursService {
     }
 
     @Override
-    public Cours updateCours(Long id, Cours person) {
+    public Cours updateCours(UUID id, Cours person) {
         //mettre à jour plus tard
         return this.coursRepository.save(person);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(UUID id) {
         Cours cours = this.coursRepository.findById(id).get();
         this.coursRepository.delete(cours);
     }
