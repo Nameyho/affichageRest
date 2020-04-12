@@ -26,3 +26,9 @@ Get,Get{id},update;create,delete
 +
 
 réparation bug de JSON qui boucle dans persondto
+
+12 avril
+
+création de la couche DTO de CoursEnseigneRepository
+
+ainsi qu'un controller GlobalController
