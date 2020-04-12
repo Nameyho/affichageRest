@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Cours",schema = "public",catalog = "AffichageRest")
@@ -11,14 +12,14 @@ public class Cours implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "COURS_ID") private Long id;
+    @Column(name = "COURS_ID") private UUID id;
 
     private String nom;
 
     @OneToMany(mappedBy = "cours")
     private Set<CoursEnseigne> courEnseignes;
 
-    public Cours(Long id, String nom) {
+    public Cours(UUID id, String nom) {
         this.id = id;
         this.nom = nom;
 
@@ -36,7 +37,7 @@ public class Cours implements Serializable {
                 '}';
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
