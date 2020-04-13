@@ -12,7 +12,7 @@ public interface MessageService {
 
     List<MessageGetDTO> getAllMessages();
     MessageGetDTO getMessage(UUID id);
-    public UUID createMessage(MessageCreateDTO messages);
+    UUID createMessage(MessageCreateDTO messages);
     void updateMessages(UUID id, MessageUpdateDTO messages);
     void delete(UUID id);
 

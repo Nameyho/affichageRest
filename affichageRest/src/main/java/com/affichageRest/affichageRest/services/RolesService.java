@@ -13,7 +13,7 @@ import java.util.UUID;
 public interface RolesService {
 
     List<RoleGetDTO> getAllRoles();
-    public UUID createRole(RoleCreateDTO roleCreateDTO);
+    UUID createRole(RoleCreateDTO roleCreateDTO);
     RoleGetDTO getRole(UUID id);
     void updateRole(UUID id, RoleUpdateDTO role);
     void delete(UUID id);

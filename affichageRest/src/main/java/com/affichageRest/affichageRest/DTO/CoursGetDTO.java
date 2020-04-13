@@ -2,17 +2,16 @@ package com.affichageRest.affichageRest.DTO;
 
 import java.util.UUID;
 
-public class CoursCreateDTO {
+public class CoursGetDTO {
 
     private UUID idRole;
     private String name;
 
 
-
-    public CoursCreateDTO() {
+    public CoursGetDTO() {
     }
 
-    public CoursCreateDTO(UUID idRole, String name) {
+    public CoursGetDTO(UUID idRole, String name) {
         this.idRole = idRole;
         this.name = name;
 

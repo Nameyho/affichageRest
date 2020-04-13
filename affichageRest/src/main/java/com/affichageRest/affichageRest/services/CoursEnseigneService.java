@@ -13,7 +13,7 @@ public interface CoursEnseigneService {
 
     List<CoursEnseigneGetDTO> getAllCoursEnseignes();
 
-    public void createCoursEnseigne(CoursEnseigneCreateDTO CoursEnseigneCreateDTO);
+    void createCoursEnseigne(CoursEnseigneCreateDTO CoursEnseigneCreateDTO);
 
     CoursEnseigneGetDTO getCoursEnseigne(UUID id);
 

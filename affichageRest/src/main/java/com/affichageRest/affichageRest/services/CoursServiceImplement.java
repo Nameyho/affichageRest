@@ -2,42 +2,77 @@ package com.affichageRest.affichageRest.services;
 
 
 import com.affichageRest.affichageRest.DAO.CoursRepository;
+
+
+
+import com.affichageRest.affichageRest.DTO.*;
 import com.affichageRest.affichageRest.model.Cours;
+
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Collection;
+import java.util.ArrayList;
+
+import java.util.List;
 import java.util.UUID;
 
-@Service(value="CoursService")
+@Service(value="coursService")
 public class CoursServiceImplement implements CoursService {
 
     @Resource
     private CoursRepository coursRepository;
+
+
     @Override
-    public Collection<Cours> getAllCours() {
-        return (Collection<Cours>) coursRepository.findAll();
+    public List<CoursGetDTO> getAllCours() {
+        List<CoursGetDTO> plist = new ArrayList<>();
+        coursRepository.findAll().forEach(cours -> {
+            plist.add(new CoursGetDTO(cours.getId(),cours.getNom()));
+        });
+        return plist;
     }
 
     @Override
-    public Cours getCours(UUID id) {
-        return this.coursRepository.findById(id).get();
+    public CoursGetDTO getCours(UUID id) {
+        if(coursRepository.findById(id).isPresent()){
+            Cours  temp = coursRepository.findById(id).get();
+
+
+            return new CoursGetDTO(temp.getId(),temp.getNom());
+        }
+        else{
+            return null;
+        }
     }
 
     @Override
-    public Cours save(Cours person) {
-        return this.coursRepository.save(person);
+    public UUID createCours(CoursCreateDTO cours) {
+
+        Cours newcours = new Cours();
+
+        newcours.setId(UUID.randomUUID());
+        newcours.setNom(cours.getName());
+
+
+        return coursRepository.save(newcours).getId();
     }
 
     @Override
-    public Cours updateCours(UUID id, Cours person) {
-        //mettre à jour plus tard
-        return this.coursRepository.save(person);
+    public void updateCours(UUID id, CoursUpdateDTO cours) {
+        if (coursRepository.findById(id).isPresent()) {
+            Cours coursexistant = coursRepository.findById(id).get();
+
+
+            coursexistant.setNom(cours.getName());
+
+
+        }
+
     }
 
     @Override
     public void delete(UUID id) {
-        Cours cours = this.coursRepository.findById(id).get();
-        this.coursRepository.delete(cours);
+        Cours role = this.coursRepository.findById(id).get();
+        this.coursRepository.delete(role);
     }
 }

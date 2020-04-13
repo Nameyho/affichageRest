@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface PersonService {
 
     List<PersonGetDTO> getAllPerson();
-    public UUID createPerson(PersonCreateDTO personCreateDTO);
+    UUID createPerson(PersonCreateDTO personCreateDTO);
     PersonGetDTO getPerson(UUID id);
     void updatePerson(UUID id, PersonUpdateDTO personUpdateDTO);
     void delete(UUID id);
