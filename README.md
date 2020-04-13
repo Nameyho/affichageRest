@@ -32,3 +32,7 @@ réparation bug de JSON qui boucle dans persondto
 création de la couche DTO de CoursEnseigneRepository
 
 ainsi qu'un controller GlobalController
+
+13 avril
+
+création de la couche DTO de CoursRepository
