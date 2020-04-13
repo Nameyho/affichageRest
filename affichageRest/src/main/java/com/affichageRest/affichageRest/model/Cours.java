@@ -45,6 +45,14 @@ public class Cours implements Serializable {
         return nom;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
