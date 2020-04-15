@@ -3,46 +3,34 @@ package com.affichageRest.affichageRest.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
+import java.util.UUID;
 
 @Entity
-@IdClass(CoursEnseigne.class)
 public class CoursEnseigne implements Serializable {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "PERSON")
-    private Person person;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "Cours")
-    private Cours cours;
+
+
+    @EmbeddedId
+    private CoursEnseigneID enseigneID;
 
     private Date annee;
 
     public CoursEnseigne() {
     }
 
-    public CoursEnseigne(Person person, Cours cours, Date annee) {
-        this.person = person;
-        this.cours = cours;
+    public CoursEnseigne(CoursEnseigneID enseigneID, Date annee) {
+        this.enseigneID = enseigneID;
         this.annee = annee;
     }
 
-    public Person getPerson() {
-        return person;
+    public CoursEnseigneID getEnseigneID() {
+        return enseigneID;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public Cours getCours() {
-        return cours;
-    }
-
-    public void setCours(Cours cours) {
-        this.cours = cours;
+    public void setEnseigneID(CoursEnseigneID enseigneID) {
+        this.enseigneID = enseigneID;
     }
 
     public Date getAnnee() {
@@ -53,3 +41,4 @@ public class CoursEnseigne implements Serializable {
         this.annee = annee;
     }
 }
+

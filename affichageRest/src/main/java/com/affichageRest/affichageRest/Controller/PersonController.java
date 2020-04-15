@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.awt.desktop.SystemSleepEvent;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +23,10 @@ public class PersonController {
 
     @GetMapping(value ="/get")
     public ResponseEntity<List<PersonGetDTO>> getAllPersons(){
+
+
+        System.out.println(personService);
+
         return new ResponseEntity<>(personService.getAllPerson(),HttpStatus.OK);
 
     }

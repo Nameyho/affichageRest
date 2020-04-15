@@ -16,8 +16,8 @@ public class Cours implements Serializable {
 
     private String nom;
 
-    @OneToMany(mappedBy = "cours")
-    private Set<CoursEnseigne> courEnseignes;
+//    @OneToMany(mappedBy = "cours")
+//    private Set<CoursEnseigne> courEnseignes;
 
     public Cours(UUID id, String nom) {
         this.id = id;
@@ -33,7 +33,7 @@ public class Cours implements Serializable {
         return "Cours{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", courEnseignes=" + courEnseignes +
+                ", courEnseignes="  +
                 '}';
     }
 
@@ -59,12 +59,12 @@ public class Cours implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Cours cours = (Cours) o;
         return Objects.equals(id, cours.id) &&
-                Objects.equals(nom, cours.nom) &&
-                Objects.equals(courEnseignes, cours.courEnseignes);
+                Objects.equals(nom, cours.nom)
+              ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, courEnseignes);
+        return Objects.hash(id, nom);
     }
 }
