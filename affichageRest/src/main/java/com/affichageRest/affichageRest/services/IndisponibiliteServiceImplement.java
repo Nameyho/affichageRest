@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Collection;
+import java.util.UUID;
 
 @Service(value="IndisponibiliteService")
 public class IndisponibiliteServiceImplement implements IndisponibiliteService {
@@ -20,7 +21,7 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
     }
 
     @Override
-    public Indisponibilite getIndisponibilite(Long id) {
+    public Indisponibilite getIndisponibilite(UUID id) {
         return this.indisponibiliteRepository.findById(id).get();
     }
 
@@ -30,13 +31,13 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
     }
 
     @Override
-    public Indisponibilite updateIndisponibilite(Long id, Indisponibilite indisponibilite) {
+    public Indisponibilite updateIndisponibilite(UUID id, Indisponibilite indisponibilite) {
         //mettre à jour plus tard
         return this.indisponibiliteRepository.save(indisponibilite);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(UUID id) {
         Indisponibilite cours = this.indisponibiliteRepository.findById(id).get();
         this.indisponibiliteRepository.delete(cours);
     }
