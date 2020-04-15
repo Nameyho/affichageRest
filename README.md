@@ -36,3 +36,9 @@ ainsi qu'un controller GlobalController
 13 avril
 
 création de la couche DTO de CoursRepository
+
+14 avril
+
+mise à jour des fichiers au niveau des id
+
+création de la clé composite de coursenseigne pour la couche dto
