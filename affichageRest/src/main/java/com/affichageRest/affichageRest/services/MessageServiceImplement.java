@@ -9,18 +9,12 @@ import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
 import com.affichageRest.affichageRest.DTO.MessageGetDTO;
 import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
-import com.affichageRest.affichageRest.DTO.PersonGetDTO;
 import com.affichageRest.affichageRest.model.Messages;
 import com.affichageRest.affichageRest.model.Person;
-import com.affichageRest.affichageRest.model.PersonResultat;
-import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 

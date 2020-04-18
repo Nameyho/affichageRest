@@ -11,32 +11,42 @@ public class Indisponibilite implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "COURS_ID") private UUID idCours;
+    @Column(name = "INDISPO_ID") private UUID idinsponibilite;
 
+
+    private String type;
 
 //    @OneToMany(mappedBy = "person")
 //    private Set<CoursEnseigne> courEnseignes;
 
-    @OneToMany(mappedBy = "person")
-    private Set<PersonIndisponibilite> personIndisponibilites;
+/*    @OneToMany(mappedBy = "person")
+    private Set<PersonIndisponibilite> personIndisponibilites;*/
 
     public Indisponibilite(UUID id, Set<CoursEnseigne> courEnseignes, Set<PersonIndisponibilite> personIndisponibilites, String type) {
-        this.idCours = id;
+        this.idinsponibilite = id;
 
-        this.personIndisponibilites = personIndisponibilites;
+        //this.personIndisponibilites = personIndisponibilites;
         this.type = type;
+    }
+
+    public UUID getIdinsponibilite() {
+        return idinsponibilite;
+    }
+
+    public void setIdinsponibilite(UUID idinsponibilite) {
+        this.idinsponibilite = idinsponibilite;
     }
 
     public Indisponibilite() {
     }
 
-    public UUID getId() {
-        return idCours;
+/*    public UUID getId() {
+        return idinsponibilite;
     }
 
     public void setId(UUID id) {
-        this.idCours = id;
-    }
+        this.idinsponibilite = id;
+    }*/
 
     public String getType() {
         return type;
@@ -46,6 +56,5 @@ public class Indisponibilite implements Serializable {
         this.type = type;
     }
 
-    private String type;
 
 }
