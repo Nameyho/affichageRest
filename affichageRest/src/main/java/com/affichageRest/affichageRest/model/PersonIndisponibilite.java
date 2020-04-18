@@ -1,25 +1,51 @@
 package com.affichageRest.affichageRest.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.sql.Date;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import java.util.Date;
 
 @Entity
-@IdClass(PersonIndisponibilite.class)
-public class PersonIndisponibilite implements Serializable {
+public class PersonIndisponibilite {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "PERSON_ID")
-    private Person person;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "Indisponibilité")
-    private Indisponibilite indispo;
+    @EmbeddedId
+    private PersonIndisponibilitePK personIndisponibilitePK;
 
-    private Date annee;
-    private int resultat;
-    private boolean reussite;
+    private Date dateDebut;
+    private Date dateFin;
+
+    public PersonIndisponibilite() {
+    }
+
+    public PersonIndisponibilite(PersonIndisponibilitePK personIndisponibilitePK, Date dateDebut, Date dateFin) {
+        this.personIndisponibilitePK = personIndisponibilitePK;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+    }
+
+    public PersonIndisponibilitePK getPersonIndisponibilitePK() {
+        return personIndisponibilitePK;
+    }
+
+    public void setPersonIndisponibilitePK(PersonIndisponibilitePK personIndisponibilitePK) {
+        this.personIndisponibilitePK = personIndisponibilitePK;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
 
 }

@@ -3,37 +3,68 @@ package com.affichageRest.affichageRest.services;
 
 
 import com.affichageRest.affichageRest.DAO.IndisponibiliteRepository;
+import com.affichageRest.affichageRest.DTO.IndisponibiliteCreateDTO;
+import com.affichageRest.affichageRest.DTO.IndisponibiliteGetDTO;
+import com.affichageRest.affichageRest.DTO.IndisponibiliteUpdateDTO;
 import com.affichageRest.affichageRest.model.Indisponibilite;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service(value="IndisponibiliteService")
 public class IndisponibiliteServiceImplement implements IndisponibiliteService {
 
-    @Resource
+    @Autowired
     private IndisponibiliteRepository indisponibiliteRepository;
+
+
     @Override
-    public Collection<Indisponibilite> getAllCours() {
-        return (Collection<Indisponibilite>) indisponibiliteRepository.findAll();
+    public List<IndisponibiliteGetDTO> getAllCours() {
+        List<IndisponibiliteGetDTO> plist = new ArrayList<>();
+        indisponibiliteRepository.findAll().forEach(indisponibilite -> {
+            plist.add(new IndisponibiliteGetDTO(indisponibilite.getIdinsponibilite(),indisponibilite.getType()));
+        });
+        return plist;
     }
 
     @Override
-    public Indisponibilite getIndisponibilite(UUID id) {
-        return this.indisponibiliteRepository.findById(id).get();
+    public IndisponibiliteGetDTO getIndisponibilite(UUID id) {
+        if(indisponibiliteRepository.findById(id).isPresent()){
+            Indisponibilite temp = indisponibiliteRepository.findById(id).get();
+
+
+            return new IndisponibiliteGetDTO(temp.getIdinsponibilite(),temp.getType());
+        }
+        else{
+            return null;
+        }
+    }
+
+
+    @Override
+    public UUID createIndisponibilite(IndisponibiliteCreateDTO indispo) {
+
+       Indisponibilite newIndispo = new Indisponibilite();
+
+       newIndispo.setIdinsponibilite(indispo.getIdindisponibilite());
+       newIndispo.setType(indispo.getType());
+
+        return indisponibiliteRepository.save(newIndispo).getIdinsponibilite();
     }
 
     @Override
-    public Indisponibilite save(Indisponibilite person) {
-        return this.indisponibiliteRepository.save(person);
-    }
+    public void updateIndisponibilite(UUID id, IndisponibiliteUpdateDTO indisponibilite) {
+        if (indisponibiliteRepository.findById(id).isPresent()) {
+            Indisponibilite coursexistant = indisponibiliteRepository.findById(id).get();
 
-    @Override
-    public Indisponibilite updateIndisponibilite(UUID id, Indisponibilite indisponibilite) {
-        //mettre à jour plus tard
-        return this.indisponibiliteRepository.save(indisponibilite);
+
+            coursexistant.setType(indisponibilite.getType());
+
+
+        }
     }
 
     @Override

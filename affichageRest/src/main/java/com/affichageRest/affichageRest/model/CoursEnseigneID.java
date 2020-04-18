@@ -10,11 +10,7 @@ import java.util.UUID;
 @Embeddable
 public class CoursEnseigneID implements Serializable {
 
-
-
     private UUID idPerson;
-
-
 
     private UUID idCours;
 

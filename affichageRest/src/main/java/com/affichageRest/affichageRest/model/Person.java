@@ -33,8 +33,8 @@ public class Person implements Serializable {
 //    @OneToMany(mappedBy = "person")
 //    private Set<CoursEnseigne> courEnseignes;
 
-    @OneToMany(mappedBy = "person")
-    private Set<PersonIndisponibilite> indisponibilites;
+//    @OneToMany(mappedBy = "person")
+//    private Set<PersonResultat> indisponibilites;
 
     public Person() {
     }
