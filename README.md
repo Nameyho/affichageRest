@@ -42,3 +42,7 @@ création de la couche DTO de CoursRepository
 mise à jour des fichiers au niveau des id
 
 création de la clé composite de coursenseigne pour la couche dto
+
+17 avril
+
+fin de la couche DTO
