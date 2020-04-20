@@ -22,30 +22,30 @@ public class MessageController {
     MessageService messageService;
 
 
-    @GetMapping(value = "/get")
+    @GetMapping
    public ResponseEntity<List<MessageGetDTO>> getAllMessages(){
         return new ResponseEntity<>(messageService.getAllMessages(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/get/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<MessageGetDTO> getPerson(@PathVariable(value="id") UUID id){
         return new ResponseEntity<>(messageService.getMessage(id),HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping
     public ResponseEntity<UUID>createMessage(@RequestBody MessageCreateDTO person){
 
         return new ResponseEntity<>(messageService.createMessage(person), HttpStatus.CREATED);
     }
 
 
-    @PutMapping(value="/update/{id}")
+    @PutMapping(value="/{id}")
     public void updateMessage(@PathVariable(value="id") UUID id,
                              @RequestBody MessageUpdateDTO messageUpdateDTO){
         messageService.updateMessages(id,messageUpdateDTO);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteMessage(@PathVariable(value = "id") UUID id){
         messageService.delete(id);
 

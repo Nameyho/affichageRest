@@ -24,30 +24,30 @@ public class RolesController {
     private  RolesService rolesService;
 
 
-    @GetMapping(value="/get")
+    @GetMapping
    public ResponseEntity<List<RoleGetDTO>> getAllRoles(){
         return new ResponseEntity<>(rolesService.getAllRoles(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/get/{id}")
+    @GetMapping(value="/{id}")
     public ResponseEntity<RoleGetDTO> getAllRoles(@PathVariable(value="id") UUID id){
         return new ResponseEntity<>(rolesService.getRole(id), HttpStatus.OK);
     }
 
 
-    @PostMapping(value="/create")
+    @PostMapping
          public ResponseEntity<UUID> createRole(@RequestBody RoleCreateDTO role){
 
         return new ResponseEntity<>(rolesService.createRole(role),HttpStatus.CREATED);
     }
 
-    @PutMapping(value="/update/{id}")
+    @PutMapping(value="/{id}")
     public void updateRole(@PathVariable(value="id") UUID id,
                              @RequestBody RoleUpdateDTO roleUpdateDTO){
         rolesService.updateRole(id,roleUpdateDTO);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteRole(@PathVariable(value = "id") UUID id){
         rolesService.delete(id);
 

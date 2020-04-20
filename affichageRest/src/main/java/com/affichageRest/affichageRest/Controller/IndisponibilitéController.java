@@ -23,30 +23,30 @@ public class IndisponibilitéController {
     IndisponibiliteService indisponibiliteService;
 
 
-    @GetMapping(value="/get")
+    @GetMapping
     public ResponseEntity<List<IndisponibiliteGetDTO>> getAllPersonIndisponibilite(){
         return new ResponseEntity<>(indisponibiliteService.getAllCours(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/get/{id}")
+    @GetMapping(value="/{id}")
     public ResponseEntity<IndisponibiliteGetDTO> getAllCours(@PathVariable(value="id") UUID id){
         return new ResponseEntity<>(indisponibiliteService.getIndisponibilite(id), HttpStatus.OK);
     }
 
 
-    @PostMapping(value="/create")
+    @PostMapping
     public ResponseEntity<UUID> createRole(@RequestBody IndisponibiliteCreateDTO ind){
 
         return new ResponseEntity<>(indisponibiliteService.createIndisponibilite(ind),HttpStatus.CREATED);
     }
 
-    @PutMapping(value="/update/{id}")
+    @PutMapping(value="/{id}")
     public void updateRole(@PathVariable(value="id") UUID id,
                            @RequestBody IndisponibiliteUpdateDTO indisponibiliteUpdateDTO){
         indisponibiliteService.updateIndisponibilite(id,indisponibiliteUpdateDTO);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteRole(@PathVariable(value = "id") UUID id){
         indisponibiliteService.delete(id);
 
