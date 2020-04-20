@@ -21,7 +21,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping(value ="/get")
+    @GetMapping
     public ResponseEntity<List<PersonGetDTO>> getAllPersons(){
 
 
@@ -31,7 +31,7 @@ public class PersonController {
 
     }
 
-    @GetMapping(value ="/get/{id}")
+    @GetMapping(value ="/{id}")
     public ResponseEntity<PersonGetDTO> getPerson(@PathVariable(value="id") UUID id){
         return new ResponseEntity<>(personService.getPerson(id),HttpStatus.OK);
 
@@ -39,20 +39,20 @@ public class PersonController {
 
 
 
-    @PostMapping(value = "/create")
+    @PostMapping
     public ResponseEntity<UUID>createPerson(@RequestBody PersonCreateDTO person){
 
         return new ResponseEntity<>(personService.createPerson(person), HttpStatus.CREATED);
     }
 
 
-    @PutMapping(value="/update/{id}")
+    @PutMapping(value="/{id}")
     public void updatePerson(@PathVariable(value="id") UUID id,
                                        @RequestBody PersonUpdateDTO personUpdateDTO){
         personService.updatePerson(id,personUpdateDTO);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deletePerson(@PathVariable(value = "id") UUID id){
        personService.delete(id);
 

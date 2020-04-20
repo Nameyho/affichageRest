@@ -25,30 +25,30 @@ import java.util.UUID;
         private CoursService coursService;
 
 
-        @GetMapping(value="/get")
+        @GetMapping
         public ResponseEntity<List<CoursGetDTO>> getAllCours(){
             return new ResponseEntity<>(coursService.getAllCours(), HttpStatus.OK);
         }
 
-        @GetMapping(value="/get/{id}")
+        @GetMapping(value="/{id}")
         public ResponseEntity<CoursGetDTO> getAllCours(@PathVariable(value="id") UUID id){
             return new ResponseEntity<>(coursService.getCours(id), HttpStatus.OK);
         }
 
 
-        @PostMapping(value="/create")
+        @PostMapping(value="/")
         public ResponseEntity<UUID> createRole(@RequestBody CoursCreateDTO role){
 
             return new ResponseEntity<>(coursService.createCours(role),HttpStatus.CREATED);
         }
 
-        @PutMapping(value="/update/{id}")
+        @PutMapping(value="/{id}")
         public void updateRole(@PathVariable(value="id") UUID id,
                                @RequestBody CoursUpdateDTO coursUpdateDTO){
             coursService.updateCours(id,coursUpdateDTO);
         }
 
-        @DeleteMapping(value = "/delete/{id}")
+        @DeleteMapping(value = "/{id}")
         public void deleteRole(@PathVariable(value = "id") UUID id){
             coursService.delete(id);
 

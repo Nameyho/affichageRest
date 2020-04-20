@@ -21,7 +21,7 @@ public class GlobalController {
     private CoursEnseigneService coursEnseigneService;
 
 
-    @PostMapping(value = "/coursens/create")
+    @PostMapping(value = "/coursens/")
     public HttpStatus create(@RequestBody CoursEnseigneCreateDTO coursEnseigneCreateDTO){
 
 
@@ -32,7 +32,7 @@ public class GlobalController {
 
     }
 
-    @GetMapping(value = "/coursens/get")
+    @GetMapping(value = "/coursens/")
     public ResponseEntity<List<CoursEnseigneGetDTO>> getAllCours(){
         System.out.println("1" + coursEnseigneService);
         return new ResponseEntity<>(coursEnseigneService.getAllCoursEnseignes(), HttpStatus.OK);
