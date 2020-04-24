@@ -7,7 +7,7 @@ import com.affichageRest.affichageRest.DAO.RoleRepository;
 import com.affichageRest.affichageRest.DTO.RoleCreateDTO;
 import com.affichageRest.affichageRest.DTO.RoleGetDTO;
 import com.affichageRest.affichageRest.DTO.RoleUpdateDTO;
-import com.affichageRest.affichageRest.model.Roles;
+import com.affichageRest.affichageRest.model.Role;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,7 +33,7 @@ public class RolesServiceImplement implements RolesService {
     @Override
     public RoleGetDTO getRole(UUID id) {
         if(roleRepository.findById(id).isPresent()){
-            Roles  temp = roleRepository.findById(id).get();
+            Role temp = roleRepository.findById(id).get();
 
 
             return new RoleGetDTO(temp.getId(),temp.getName(),temp.getDescription());
@@ -46,7 +46,7 @@ public class RolesServiceImplement implements RolesService {
     @Override
     public UUID createRole(RoleCreateDTO role) {
 
-        Roles newRoles = new Roles();
+        Role newRoles = new Role();
 
         newRoles.setIdRole(UUID.randomUUID());
         newRoles.setName(role.getName());
@@ -58,7 +58,7 @@ public class RolesServiceImplement implements RolesService {
     @Override
     public void updateRole(UUID id, RoleUpdateDTO role) {
         if (roleRepository.findById(id).isPresent()) {
-            Roles roleexistant = roleRepository.findById(id).get();
+            Role roleexistant = roleRepository.findById(id).get();
 
             roleexistant.setDescription(role.getDescription());
             roleexistant.setName(role.getName());
@@ -70,7 +70,7 @@ public class RolesServiceImplement implements RolesService {
 
     @Override
     public void delete(UUID id) {
-        Roles role = this.roleRepository.findById(id).get();
+        Role role = this.roleRepository.findById(id).get();
         this.roleRepository.delete(role);
     }
 }
