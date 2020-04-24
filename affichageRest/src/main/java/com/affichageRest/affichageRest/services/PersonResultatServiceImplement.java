@@ -3,14 +3,16 @@ package com.affichageRest.affichageRest.services;
 import com.affichageRest.affichageRest.DAO.CoursRepository;
 import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DAO.PersonResultatRepository;
-import com.affichageRest.affichageRest.DTO.*;
-import com.affichageRest.affichageRest.model.*;
+import com.affichageRest.affichageRest.DTO.PersonResultatCreateDTO;
+import com.affichageRest.affichageRest.DTO.PersonResultatGetDTO;
+import com.affichageRest.affichageRest.DTO.PersonResultatUpdateDTO;
+import com.affichageRest.affichageRest.model.PersonResultat;
+import com.affichageRest.affichageRest.model.PersonResultatPK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service(value="PersonResultat")
 public class PersonResultatServiceImplement implements PersonResultatService {

@@ -7,12 +7,11 @@ import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DTO.CoursEnseigneCreateDTO;
 import com.affichageRest.affichageRest.DTO.CoursEnseigneGetDTO;
 import com.affichageRest.affichageRest.DTO.CoursEnseigneUpdateDTO;
-import com.affichageRest.affichageRest.model.*;
+import com.affichageRest.affichageRest.model.CoursEnseigne;
+import com.affichageRest.affichageRest.model.CoursEnseigneID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import java.awt.desktop.SystemSleepEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

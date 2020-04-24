@@ -1,16 +1,14 @@
 package com.affichageRest.affichageRest.Controller;
 
-import com.affichageRest.affichageRest.DTO.*;
-import com.affichageRest.affichageRest.model.Cours;
-import com.affichageRest.affichageRest.model.Messages;
+import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
+import com.affichageRest.affichageRest.DTO.MessageGetDTO;
+import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
 import com.affichageRest.affichageRest.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 

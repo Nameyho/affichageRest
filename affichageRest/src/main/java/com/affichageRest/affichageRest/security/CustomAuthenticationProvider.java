@@ -1,7 +1,6 @@
 package com.affichageRest.affichageRest.security;
 
 import com.affichageRest.affichageRest.model.User;
-import com.affichageRest.affichageRest.services.UserService;
 import com.affichageRest.affichageRest.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -9,19 +8,17 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
+@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -30,27 +27,27 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
 
+
         String name = authentication.getName();
-        String password = authentication.getCredentials().toString();
+        String password = authentication.getCredentials().toString()+"";
 
-        User user= new User();
-
-
-            user= userService.findByUsername(name);
+        System.out.println(name);
+        System.out.println(password);
 
 
-        System.out.println(name + "auth"  +password);
-        System.out.println(user.getUsername() + "user" +user.getPassword());
-        System.out.println("bad password");
+        User user= userService.findByUsername(name);
+
+
+
         if(user==null){
-            System.out.println("user null");
             throw new BadCredentialsException("1000");
         }
 
         if (!(password.equals(user.getPassword()))) {
-            System.out.println(name + "auth"  +password);
-            System.out.println(user.getUsername() + "user" +user.getPassword());
-            System.out.println("bad password");
+
+
+
+            System.out.println("mauvais mot de passe");
             throw new BadCredentialsException("1000");
         }
 
@@ -59,8 +56,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
             throw new BadCredentialsException("1000");
         }*/
-            return new UsernamePasswordAuthenticationToken(
-                    name, password);
+            return new UsernamePasswordAuthenticationToken(name, password,new ArrayList<>());
 
     }
 
@@ -69,4 +65,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public boolean supports(Class<?> authentication) {
          return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
 }
+
+    public void setUserService(UserServiceImpl userService) {
+        this.userService = userService;
+    }
 }

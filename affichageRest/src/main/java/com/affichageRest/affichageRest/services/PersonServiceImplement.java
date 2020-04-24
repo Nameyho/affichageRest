@@ -8,12 +8,12 @@ import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
 import com.affichageRest.affichageRest.model.Person;
 import com.affichageRest.affichageRest.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Service(value="PersonService")
 public class PersonServiceImplement implements PersonService {

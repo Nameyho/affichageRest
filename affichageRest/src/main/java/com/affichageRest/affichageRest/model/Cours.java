@@ -3,7 +3,6 @@ package com.affichageRest.affichageRest.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity

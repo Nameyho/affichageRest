@@ -6,7 +6,6 @@ import com.affichageRest.affichageRest.DTO.CoursEnseigneGetDTO;
 import com.affichageRest.affichageRest.DTO.CoursEnseigneUpdateDTO;
 import com.affichageRest.affichageRest.model.CoursEnseigneID;
 
-
 import java.util.List;
 import java.util.UUID;
 

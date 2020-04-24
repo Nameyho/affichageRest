@@ -5,7 +5,6 @@ import com.affichageRest.affichageRest.DTO.RoleCreateDTO;
 import com.affichageRest.affichageRest.DTO.RoleGetDTO;
 import com.affichageRest.affichageRest.DTO.RoleUpdateDTO;
 
-
 import java.util.List;
 import java.util.UUID;
 
