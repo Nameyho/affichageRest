@@ -1,10 +1,9 @@
 package com.affichageRest.affichageRest.model;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 public class CoursEnseigne implements Serializable {

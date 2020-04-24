@@ -1,7 +1,6 @@
 package com.affichageRest.affichageRest.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import java.io.Serializable;
 import java.util.UUID;
 

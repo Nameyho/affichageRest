@@ -2,8 +2,6 @@ package com.affichageRest.affichageRest.services;
 
 
 import com.affichageRest.affichageRest.DAO.RoleRepository;
-
-
 import com.affichageRest.affichageRest.DTO.RoleCreateDTO;
 import com.affichageRest.affichageRest.DTO.RoleGetDTO;
 import com.affichageRest.affichageRest.DTO.RoleUpdateDTO;
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.UUID;
 

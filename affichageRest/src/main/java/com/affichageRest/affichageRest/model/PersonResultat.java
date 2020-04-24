@@ -1,6 +1,7 @@
 package com.affichageRest.affichageRest.model;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.sql.Date;
 

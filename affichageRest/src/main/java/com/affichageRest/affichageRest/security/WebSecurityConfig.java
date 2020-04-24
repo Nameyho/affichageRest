@@ -1,26 +1,14 @@
 package com.affichageRest.affichageRest.security;
 
-import com.affichageRest.affichageRest.model.Person;
+import com.affichageRest.affichageRest.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
 @Configuration
@@ -29,15 +17,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-    //Missed autowired annotation
-    private CustomAuthenticationProvider customAuthenticationProvider;
+    @Autowired
+    private CustomAuthenticationProvider customAuthenticationProvider ;
+
+
+    private UserServiceImpl userService;
+
+
+
+    @Override
+    public void configure(AuthenticationManagerBuilder builder)
+            throws Exception {
+
+        builder.authenticationProvider(customAuthenticationProvider);
+    }
 
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        System.out.println("+444" + http);
+        http.cors().and().csrf().disable();
         http.authorizeRequests().anyRequest().authenticated()
                 .and().httpBasic();
     }
