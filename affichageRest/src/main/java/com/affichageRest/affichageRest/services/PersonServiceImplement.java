@@ -6,8 +6,10 @@ import com.affichageRest.affichageRest.DTO.PersonCreateDTO;
 import com.affichageRest.affichageRest.DTO.PersonGetDTO;
 import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
 import com.affichageRest.affichageRest.model.Person;
-import com.affichageRest.affichageRest.model.Roles;
+import com.affichageRest.affichageRest.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -21,6 +23,8 @@ public class PersonServiceImplement implements PersonService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public List<PersonGetDTO> getAllPerson() {
@@ -56,8 +60,9 @@ public class PersonServiceImplement implements PersonService {
         nouvPersonne.setEmail(person.getEmail());
         nouvPersonne.setNom(person.getNom());
         nouvPersonne.setPrenom(person.getPrenom());
+        nouvPersonne.setMotDePasse(bCryptPasswordEncoder.encode( person.getMdp()));
 
-       Roles role= roleRepository.findById(person.getIdRole()).get();
+       Role role= roleRepository.findById(person.getIdRole()).get();
 
 
             nouvPersonne.setRole(role);
@@ -76,7 +81,8 @@ public class PersonServiceImplement implements PersonService {
             personneExistant.setEmail(person.getEmail());
             personneExistant.setNom(person.getNom());
             personneExistant.setPrenom(person.getPrenom());
-            Roles role= roleRepository.findById(person.getIdRole()).get();
+            personneExistant.setMotDePasse(person.getMdp());
+            Role role= roleRepository.findById(person.getIdRole()).get();
             personneExistant.setRole(role);
             personRepository.save(personneExistant);
 
@@ -89,4 +95,6 @@ public class PersonServiceImplement implements PersonService {
         Person personne = this.personRepository.findById(id).get();
         this.personRepository.delete(personne);
     }
+
+
 }

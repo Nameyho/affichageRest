@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Role",schema = "public",catalog = "AffichageRest")
-public class Roles implements Serializable {
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -17,13 +17,13 @@ public class Roles implements Serializable {
     private String description;
 
 
-    @OneToMany(mappedBy = "role")
-    private Set<Person> personnes;
+    @OneToMany(mappedBy = "roles")
+    private Set<User> users;
 
-    public Roles() {
+    public Role() {
     }
 
-    public Roles(String name, String description) {
+    public Role(String name, String description) {
         this.name = name;
         this.description = description;
 
@@ -57,11 +57,11 @@ public class Roles implements Serializable {
         this.description = description;
     }
 
-    public Set<Person> getPersonnes() {
-        return personnes;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setPersonnes(Set<Person> personnes) {
-        this.personnes = personnes;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

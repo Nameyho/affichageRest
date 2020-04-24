@@ -25,7 +25,7 @@ public class PersonController {
     public ResponseEntity<List<PersonGetDTO>> getAllPersons(){
 
 
-        System.out.println(personService);
+
 
         return new ResponseEntity<>(personService.getAllPerson(),HttpStatus.OK);
 

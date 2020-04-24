@@ -1,19 +1,19 @@
 package com.affichageRest.affichageRest.model;
 
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 
 @Entity
 @Table(name = "Person",schema = "public",catalog = "AffichageRest")
 
 
-public class Person implements Serializable {
+public class Person implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -23,12 +23,32 @@ public class Person implements Serializable {
     @Column private String email;
     @Column private Date  dateAnniversaire;
 
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    public Set<Messages> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Messages> messages) {
+        this.messages = messages;
+    }
+
+    @Column private String motDePasse;
+
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "idRole")
-    private Roles role;
+    private Role role;
 
     @OneToMany(mappedBy="person")
     private Set<Messages> messages;
+
+    private String username;
 
 //    @OneToMany(mappedBy = "person")
 //    private Set<CoursEnseigne> courEnseignes;
@@ -41,7 +61,7 @@ public class Person implements Serializable {
 
 
 
-    public void setRole(Roles role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -111,7 +131,7 @@ public class Person implements Serializable {
         return Objects.hash(idPerson, prenom, nom, email, dateAnniversaire, role, messages);
     }
 
-    public Roles getRole() {
+    public Role getRole() {
         return role;
     }
 
@@ -137,6 +157,41 @@ public class Person implements Serializable {
         return dateAnniversaire;
     }
 
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 
 
 }

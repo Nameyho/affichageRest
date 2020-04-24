@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "")
+@RequestMapping(value = "/")
 public class GlobalController {
 
     @Autowired

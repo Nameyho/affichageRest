@@ -1,7 +1,5 @@
 package com.affichageRest.affichageRest.DTO;
 
-import com.affichageRest.affichageRest.model.Roles;
-
 import java.util.Date;
 import java.util.UUID;
 

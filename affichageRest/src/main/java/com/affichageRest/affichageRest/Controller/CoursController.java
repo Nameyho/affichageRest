@@ -36,7 +36,7 @@ import java.util.UUID;
         }
 
 
-        @PostMapping(value="/")
+        @PostMapping
         public ResponseEntity<UUID> createRole(@RequestBody CoursCreateDTO role){
 
             return new ResponseEntity<>(coursService.createCours(role),HttpStatus.CREATED);

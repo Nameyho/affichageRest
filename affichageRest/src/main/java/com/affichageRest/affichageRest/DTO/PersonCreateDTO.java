@@ -9,15 +9,25 @@ public class PersonCreateDTO {
     private String nom;
     private String email;
     private Date dateAnniversaire;
+    private String mdp;
 
     private UUID idRole;
 
-    public PersonCreateDTO(String prenom, String nom, String email, Date dateAnniversaire, UUID idRole) {
+    public PersonCreateDTO(String prenom, String nom, String email, Date dateAnniversaire, String mdp, UUID idRole) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
+        this.mdp = mdp;
         this.idRole = idRole;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     public PersonCreateDTO() {
