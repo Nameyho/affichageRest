@@ -1,17 +1,12 @@
 package com.affichageRest.affichageRest.services;
 
 
-
-
-
 import com.affichageRest.affichageRest.DAO.MessageRepository;
-import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DAO.UserRepository;
 import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
 import com.affichageRest.affichageRest.DTO.MessageGetDTO;
 import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
 import com.affichageRest.affichageRest.model.Messages;
-import com.affichageRest.affichageRest.model.Person;
 import com.affichageRest.affichageRest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +32,7 @@ public class MessageServiceImplement implements MessageService {
                     message.getId(),
                     message.getContenu(),
                     message.getCreatedDate(),
-                    message.getUser().getId()
+                    message.getUser().getIdUser()
 
                    ));
         });
@@ -49,7 +44,7 @@ public class MessageServiceImplement implements MessageService {
         if(messageRepository.findById(id).isPresent()){
        Messages message = messageRepository.findById(id).get();
 
-       return  new MessageGetDTO(message.getId(),message.getContenu(),message.getCreatedDate(),message.getUser().getId());
+       return  new MessageGetDTO(message.getId(),message.getContenu(),message.getCreatedDate(),message.getUser().getIdUser());
     }
     else{
         return null;

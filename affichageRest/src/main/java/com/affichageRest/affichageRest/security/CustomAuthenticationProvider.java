@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,8 +21,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private UserServiceImpl userService;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     @Override
     public Authentication authenticate(Authentication authentication)
@@ -29,7 +29,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 
         String name = authentication.getName();
-        String password = authentication.getCredentials().toString()+"";
+
+        String password = authentication.getCredentials().toString();
 
         System.out.println(name);
         System.out.println(password);
@@ -38,27 +39,29 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         User user= userService.findByUsername(name);
 
 
+BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
 
         if(user==null){
             throw new BadCredentialsException("1000");
         }
 
-        if (!(password.equals(user.getPassword()))) {
+ String test = bCryptPasswordEncoder.encode("test");
 
+        System.out.println(user.getPassword());
+        System.out.println(password);
+        System.out.println(bCryptPasswordEncoder.matches("test",test));
 
+       if (!(bCryptPasswordEncoder.matches(password,user.getPassword()))) {
 
-            System.out.println("mauvais mot de passe");
+           System.out.println("mauvais mdp");
+
             throw new BadCredentialsException("1000");
         }
-
-      /*  if (!(bCryptPasswordEncoder.encode(password)
-                == user.getPassword())) {
-
-            throw new BadCredentialsException("1000");
-        }*/
             return new UsernamePasswordAuthenticationToken(name, password,new ArrayList<>());
 
     }
+
 
 
     @Override

@@ -10,43 +10,42 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="USER_ID")
-    private UUID id;
+    private UUID idUser;
 
     private String username;
 
     private String password;
 
-    @Transient
-    private String passwordConfirm;
 
-    @ManyToOne
-    @JoinColumn(name = "idRole")
+    @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "id_role")
     private Role roles;
+
 
     @OneToMany(mappedBy="user")
     private Set<Messages> messages;
 
     public User(UUID id) {
-        this.id = id;
+        this.idUser = id;
     }
 
     public User() {
     }
 
     public User(UUID id, String username, String password, String passwordConfirm, Role roles) {
-        this.id = id;
+        this.idUser = id;
         this.username = username;
         this.password = password;
-        this.passwordConfirm = passwordConfirm;
+
         this.roles = roles;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getIdUser() {
+        return idUser;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setIdUser(UUID idUser) {
+        this.idUser = idUser;
     }
 
     public Set<Messages> getMessages() {
@@ -73,13 +72,6 @@ public class User {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
 
     public Role getRoles() {
         return roles;
