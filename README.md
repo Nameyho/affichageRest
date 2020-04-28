@@ -50,6 +50,10 @@ fin de la couche DTO
 
 21->25 avril
 
-début de spring security
+spring security
 
-a réparer
+basic auth
+
+27 avril
+
+petite mise a jour de la bdd
