@@ -12,13 +12,13 @@ public class PersonUpdateDTO {
     private String mdp;
     private UUID idRole ;
 
-    public PersonUpdateDTO(String prenom, String nom, String email, Date dateAnniversaire, String mdp, UUID idRole) {
+    public PersonUpdateDTO(String prenom, String nom, String email, Date dateAnniversaire, String mdp) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
         this.mdp = mdp;
-        this.idRole = idRole;
+
     }
 
 
@@ -61,12 +61,4 @@ public class PersonUpdateDTO {
     public void setDateAnniversaire(Date dateAnniversaire) {
         this.dateAnniversaire = dateAnniversaire;
     }
-
-    public UUID getIdRole() {
-        return idRole;
     }
-
-    public void setIdRole(UUID idRoles) {
-        this.idRole = idRoles;
-    }
-}

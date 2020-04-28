@@ -31,22 +31,13 @@ public class Person implements Serializable, UserDetails {
         this.motDePasse = motDePasse;
     }
 
-    public Set<Messages> getMessages() {
-        return messages;
-    }
 
-    public void setMessages(Set<Messages> messages) {
-        this.messages = messages;
-    }
 
     @Column private String motDePasse;
 
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "idRole")
-    private Role role;
 
-    @OneToMany(mappedBy="person")
-    private Set<Messages> messages;
+
+
 
     private String username;
 
@@ -61,9 +52,7 @@ public class Person implements Serializable, UserDetails {
 
 
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+
 
     public UUID getIdPerson() {
         return idPerson;
@@ -106,8 +95,8 @@ public class Person implements Serializable, UserDetails {
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
                 ", dateAnniversaire=" + dateAnniversaire +
-                ", role=" + role+
-                ", message=" + messages +
+
+
 
                 '}';
     }
@@ -122,18 +111,16 @@ public class Person implements Serializable, UserDetails {
                 prenom.equals(person.prenom) &&
                 nom.equals(person.nom) &&
                 email.equals(person.email) &&
-                dateAnniversaire.equals(person.dateAnniversaire) &&
-                messages.equals(person.messages) ;
+                dateAnniversaire.equals(person.dateAnniversaire)
+                ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPerson, prenom, nom, email, dateAnniversaire, role, messages);
+        return Objects.hash(idPerson, prenom, nom, email, dateAnniversaire);
     }
 
-    public Role getRole() {
-        return role;
-    }
+
 
 
 

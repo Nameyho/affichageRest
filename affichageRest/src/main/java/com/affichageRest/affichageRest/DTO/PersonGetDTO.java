@@ -11,18 +11,17 @@ public class PersonGetDTO {
     private String email;
     private Date dateAnniversaire;
 
-    private UUID idRole;
 
     public PersonGetDTO() {
     }
 
-    public PersonGetDTO(UUID idperson, String prenom, String nom, String email, Date dateAnniversaire, UUID role) {
+    public PersonGetDTO(UUID idperson, String prenom, String nom, String email, Date dateAnniversaire) {
         this.idPerson = idperson;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
-        this.idRole = role;
+
     }
 
     public String getPrenom() {
@@ -57,13 +56,7 @@ public class PersonGetDTO {
         this.dateAnniversaire = dateAnniversaire;
     }
 
-    public UUID getidRole() {
-        return idRole;
-    }
 
-    public void setRole(UUID role) {
-        idRole = role;
-    }
 
     public UUID getIdPerson() {
         return idPerson;

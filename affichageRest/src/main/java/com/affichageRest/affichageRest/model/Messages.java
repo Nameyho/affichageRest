@@ -20,9 +20,10 @@ public class Messages implements Serializable {
     private Date createdDate;
 
 
+
     @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "PERSON_ID")
-    private Person person;
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     public Messages() {
     }
@@ -30,7 +31,7 @@ public class Messages implements Serializable {
     public Messages(String contenu, Date createdDate, Person person) {
         Contenu = contenu;
         this.createdDate = createdDate;
-        this.person = person;
+
     }
 
     public UUID getId() {
@@ -49,9 +50,7 @@ public class Messages implements Serializable {
         return createdDate;
     }
 
-    public Person getPerson() {
-        return person;
-    }
+
 
     public void setIdMessage(UUID idMessage) {
         this.idMessage = idMessage;
@@ -65,7 +64,15 @@ public class Messages implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public UUID getIdMessage() {
+        return idMessage;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

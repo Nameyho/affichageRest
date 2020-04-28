@@ -1,7 +1,6 @@
 package com.affichageRest.affichageRest.DTO;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class PersonCreateDTO {
 
@@ -11,15 +10,15 @@ public class PersonCreateDTO {
     private Date dateAnniversaire;
     private String mdp;
 
-    private UUID idRole;
 
-    public PersonCreateDTO(String prenom, String nom, String email, Date dateAnniversaire, String mdp, UUID idRole) {
+
+    public PersonCreateDTO(String prenom, String nom, String email, Date dateAnniversaire, String mdp) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
         this.mdp = mdp;
-        this.idRole = idRole;
+
     }
 
     public String getMdp() {
@@ -65,12 +64,7 @@ public class PersonCreateDTO {
         this.dateAnniversaire = dateAnniversaire;
     }
 
-    public UUID getIdRole() {
-        return idRole;
-    }
 
-    public void setIdRole(UUID idRole) {
-        this.idRole = idRole;
 
-    }
+
 }

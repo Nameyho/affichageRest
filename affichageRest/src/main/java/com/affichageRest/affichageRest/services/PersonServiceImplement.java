@@ -31,7 +31,7 @@ public class PersonServiceImplement implements PersonService {
 
         List<PersonGetDTO> plist = new ArrayList<>();
         personRepository.findAll().forEach(person -> {
-            plist.add(new PersonGetDTO(person.getId(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire(),person.getRole().getIdRole()));
+            plist.add(new PersonGetDTO(person.getId(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire()));
         });
         return plist;
     }
@@ -44,7 +44,7 @@ public class PersonServiceImplement implements PersonService {
 
 
             return new PersonGetDTO(persontemp.getId(),persontemp.getPrenom(),
-                    persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire(),persontemp.getRole().getIdRole());
+                    persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire());
         }
     else{
         return null;
@@ -62,11 +62,6 @@ public class PersonServiceImplement implements PersonService {
         nouvPersonne.setPrenom(person.getPrenom());
         nouvPersonne.setMotDePasse(bCryptPasswordEncoder.encode( person.getMdp()));
 
-       Role role= roleRepository.findById(person.getIdRole()).get();
-
-
-            nouvPersonne.setRole(role);
-
 
         return personRepository.save(nouvPersonne).getId();
     }
@@ -82,8 +77,7 @@ public class PersonServiceImplement implements PersonService {
             personneExistant.setNom(person.getNom());
             personneExistant.setPrenom(person.getPrenom());
             personneExistant.setMotDePasse(person.getMdp());
-            Role role= roleRepository.findById(person.getIdRole()).get();
-            personneExistant.setRole(role);
+
             personRepository.save(personneExistant);
 
         }

@@ -6,11 +6,13 @@ package com.affichageRest.affichageRest.services;
 
 import com.affichageRest.affichageRest.DAO.MessageRepository;
 import com.affichageRest.affichageRest.DAO.PersonRepository;
+import com.affichageRest.affichageRest.DAO.UserRepository;
 import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
 import com.affichageRest.affichageRest.DTO.MessageGetDTO;
 import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
 import com.affichageRest.affichageRest.model.Messages;
 import com.affichageRest.affichageRest.model.Person;
+import com.affichageRest.affichageRest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +27,7 @@ public class MessageServiceImplement implements MessageService {
     private MessageRepository messageRepository;
 
     @Autowired
-    private PersonRepository personRepository;
+    private UserRepository userRepository;
 
     @Override
     public List<MessageGetDTO> getAllMessages() {
@@ -35,7 +37,8 @@ public class MessageServiceImplement implements MessageService {
                     message.getId(),
                     message.getContenu(),
                     message.getCreatedDate(),
-                    message.getPerson().getIdPerson()
+                    message.getUser().getId()
+
                    ));
         });
         return plist;
@@ -46,7 +49,7 @@ public class MessageServiceImplement implements MessageService {
         if(messageRepository.findById(id).isPresent()){
        Messages message = messageRepository.findById(id).get();
 
-       return  new MessageGetDTO(message.getId(),message.getContenu(),message.getCreatedDate(),message.getPerson().getIdPerson());
+       return  new MessageGetDTO(message.getId(),message.getContenu(),message.getCreatedDate(),message.getUser().getId());
     }
     else{
         return null;
@@ -61,9 +64,9 @@ public class MessageServiceImplement implements MessageService {
         nouvMessage.setContenu(message.getContenu());
         nouvMessage.setCreatedDate(message.getCreatedDate());
 
-        Person person = personRepository.findById(message.getIdPerson()).get();
+        User person = userRepository.findById(message.getIdPerson()).get();
 
-        nouvMessage.setPerson(person);
+        nouvMessage.setUser(person);
 
         return messageRepository.save(nouvMessage).getId();}
 
@@ -76,9 +79,9 @@ public class MessageServiceImplement implements MessageService {
             messagesExistant.setCreatedDate(message.createdDate);
             messagesExistant.setContenu(message.contenu);
 
-            Person person = personRepository.findById(message.getIdPerson()).get();
+            User person = userRepository.findById(message.getIdPerson()).get();
 
-            messagesExistant.setPerson(person);
+            messagesExistant.setUser(person);
 
             messageRepository.save(messagesExistant);
         }

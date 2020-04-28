@@ -34,7 +34,7 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
     public List<PersonIndisponibiliteGetDTO> getAllPersonIndisponibilite () {
         List<PersonIndisponibiliteGetDTO> plist = new ArrayList<>();
         personIndisponibiliteRepository.findAll().forEach(pIndisp -> {
-            plist.add(new PersonIndisponibiliteGetDTO(pIndisp.getPersonIndisponibilitePK().getIdPerson(),pIndisp.getPersonIndisponibilitePK().getIdCours(),pIndisp.getDateDebut(),pIndisp.getDateFin()));
+            plist.add(new PersonIndisponibiliteGetDTO(pIndisp.getPersonIndisponibilitePK().getIdPerson(),pIndisp.getPersonIndisponibilitePK().getIdCours(),pIndisp.getPersonIndisponibilitePK().getIndispo_id(),pIndisp.getDateDebut(),pIndisp.getDateFin()));
         });
         return plist;
     }
@@ -45,7 +45,7 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
             PersonIndisponibilite temp = personIndisponibiliteRepository.findById(id).get();
 
 
-            return new PersonIndisponibiliteGetDTO(temp.getPersonIndisponibilitePK().getIdPerson(),temp.getPersonIndisponibilitePK().getIdCours(),temp.getDateDebut(),temp.getDateFin());
+            return new PersonIndisponibiliteGetDTO(temp.getPersonIndisponibilitePK().getIdPerson(),temp.getPersonIndisponibilitePK().getIdCours(),temp.getPersonIndisponibilitePK().getIndispo_id(),temp.getDateDebut(),temp.getDateFin());
         }
         else{
             return null;
@@ -60,6 +60,7 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
 
       tempID.setIdCours(temp.getIdCours());
         tempID.setIdPerson(temp.getIdPerson());
+        tempID.setIndispo_id(temp.getIndispo_id());
 
         PersonIndisponibilite newPersonIndisponibilites = new PersonIndisponibilite();
         newPersonIndisponibilites.setDateDebut(temp.getDateDebut());
