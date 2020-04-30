@@ -57,3 +57,11 @@ basic auth
 28 avril
 
 petite mise a jour de la bdd
+
+30 avril
+
+Mise à jour des vérifications d'entrée dans le formulaire
+
++
+
+Data Loader pour données de test
