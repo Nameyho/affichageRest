@@ -32,25 +32,24 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         String password = authentication.getCredentials().toString();
 
-        System.out.println(name);
-        System.out.println(password);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
+        String test = bCryptPasswordEncoder.encode("test");
+
+
+        System.out.println(test);
 
         User user= userService.findByUsername(name);
 
 
-BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
 
 
         if(user==null){
             throw new BadCredentialsException("1000");
         }
 
- String test = bCryptPasswordEncoder.encode("test");
 
-        System.out.println(user.getPassword());
-        System.out.println(password);
-        System.out.println(bCryptPasswordEncoder.matches("test",test));
 
        if (!(bCryptPasswordEncoder.matches(password,user.getPassword()))) {
 

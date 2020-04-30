@@ -59,7 +59,7 @@ public class PersonServiceImplement implements PersonService {
         nouvPersonne.setEmail(person.getEmail());
         nouvPersonne.setNom(person.getNom());
         nouvPersonne.setPrenom(person.getPrenom());
-        nouvPersonne.setMotDePasse(bCryptPasswordEncoder.encode( person.getMdp()));
+
 
 
         return personRepository.save(nouvPersonne).getId();
@@ -75,7 +75,7 @@ public class PersonServiceImplement implements PersonService {
             personneExistant.setEmail(person.getEmail());
             personneExistant.setNom(person.getNom());
             personneExistant.setPrenom(person.getPrenom());
-            personneExistant.setMotDePasse(person.getMdp());
+
 
             personRepository.save(personneExistant);
 

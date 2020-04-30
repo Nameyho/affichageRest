@@ -4,12 +4,14 @@ package com.affichageRest.affichageRest.Controller;
 import com.affichageRest.affichageRest.DTO.CoursCreateDTO;
 import com.affichageRest.affichageRest.DTO.CoursGetDTO;
 import com.affichageRest.affichageRest.DTO.CoursUpdateDTO;
+import com.affichageRest.affichageRest.model.Cours;
 import com.affichageRest.affichageRest.services.CoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,8 +37,7 @@ import java.util.UUID;
 
 
         @PostMapping
-        public ResponseEntity<UUID> createCours(@RequestBody CoursCreateDTO role){
-
+        public ResponseEntity<UUID> createCours( @RequestBody  @Valid CoursCreateDTO role){
             return new ResponseEntity<>(coursService.createCours(role),HttpStatus.CREATED);
         }
 

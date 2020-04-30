@@ -1,6 +1,7 @@
 package com.affichageRest.affichageRest.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
@@ -13,7 +14,7 @@ public class Indisponibilite implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "INDISPO_ID") private UUID idinsponibilite;
 
-
+    @NotNull
     private String type;
 
 //    @OneToMany(mappedBy = "person")
@@ -40,7 +41,11 @@ public class Indisponibilite implements Serializable {
     public Indisponibilite() {
     }
 
-/*    public UUID getId() {
+    public Indisponibilite(UUID idinsponibilite, @NotNull String type) {
+        this.idinsponibilite = idinsponibilite;
+        this.type = type;
+    }
+    /*    public UUID getId() {
         return idinsponibilite;
     }
 

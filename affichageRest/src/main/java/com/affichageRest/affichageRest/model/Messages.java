@@ -4,8 +4,10 @@ package com.affichageRest.affichageRest.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -16,7 +18,10 @@ public class Messages implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column (name="MESSAGE_ID") private UUID idMessage;
 
+    @NotNull
     private String Contenu;
+
+
     private Date createdDate;
 
 

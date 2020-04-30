@@ -1,11 +1,18 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.sql.Date;
 import java.util.UUID;
 
 public class MessageUpdateDTO {
 
+    @NotNull
+    @NotEmpty
     public String contenu;
+
+    @Past
     public Date createdDate;
 
     private UUID idPerson;

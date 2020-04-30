@@ -1,15 +1,30 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.UUID;
 
 public class PersonUpdateDTO {
 
+    @NotNull
+    @NotEmpty
     private String prenom;
+
+    @NotNull
+    @NotEmpty
     private String nom;
+
+    @Email
+    @NotNull
     private String email;
+
+    @Past
     private Date dateAnniversaire;
-    private String mdp;
+
+
     private UUID idRole ;
 
     public PersonUpdateDTO(String prenom, String nom, String email, Date dateAnniversaire, String mdp) {
@@ -17,18 +32,12 @@ public class PersonUpdateDTO {
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
-        this.mdp = mdp;
+
 
     }
 
 
-    public String getMdp() {
-        return mdp;
-    }
 
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
 
     public String getPrenom() {
         return prenom;

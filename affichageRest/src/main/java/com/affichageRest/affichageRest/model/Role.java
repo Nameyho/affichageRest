@@ -1,6 +1,8 @@
 package com.affichageRest.affichageRest.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
@@ -13,7 +15,12 @@ public class Role implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID idRole;
 
+    @NotNull
+    @NotEmpty
     private String name;
+
+    @NotNull
+    @NotEmpty
     private String description;
 
 
@@ -23,6 +30,12 @@ public class Role implements Serializable {
     private Set<User> users;
 
     public Role() {
+    }
+
+    public Role(UUID idRole, String name, String description) {
+        this.idRole = idRole;
+        this.name = name;
+        this.description = description;
     }
 
     public Role(String name, String description) {

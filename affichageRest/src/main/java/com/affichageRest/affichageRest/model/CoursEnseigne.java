@@ -2,6 +2,7 @@ package com.affichageRest.affichageRest.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -13,6 +14,7 @@ public class CoursEnseigne implements Serializable {
 
     @EmbeddedId
     private CoursEnseigneID enseigneID;
+
 
     private Date annee;
 

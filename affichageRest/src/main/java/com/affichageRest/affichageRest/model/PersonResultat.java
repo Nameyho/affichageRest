@@ -2,27 +2,24 @@ package com.affichageRest.affichageRest.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 public class PersonResultat implements Serializable {
 
-//    @Id
-//    @ManyToOne
-//    @JoinColumn(name = "PERSON_ID")
-//    private Person person;
-//
-//    @Id
-//    @ManyToOne
-//    @JoinColumn(name = "Indisponibilité")
-//    private Indisponibilite indispo;
 
     @EmbeddedId
     private PersonResultatPK personResultatPK;
 
+
     private Date annee;
+
+    @Min(0)
     private int resultat;
+
+
     private boolean reussite;
 
     public PersonResultat() {

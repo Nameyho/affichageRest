@@ -4,7 +4,11 @@ import java.util.UUID;
 
 public class CoursGetDTO {
 
+
+
     private UUID idRole;
+
+
     private String name;
 
 

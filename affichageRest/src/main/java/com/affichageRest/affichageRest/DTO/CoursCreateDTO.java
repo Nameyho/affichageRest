@@ -1,10 +1,15 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.UUID;
 
 public class CoursCreateDTO {
 
     private UUID idRole;
+
+    @NotNull
     private String name;
 
 

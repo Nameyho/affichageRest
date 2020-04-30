@@ -1,6 +1,8 @@
 package com.affichageRest.affichageRest.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
@@ -13,6 +15,8 @@ public class Cours implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "COURS_ID") private UUID id;
 
+    @NotNull
+    @NotEmpty
     private String nom;
 
 //    @OneToMany(mappedBy = "cours")

@@ -36,21 +36,17 @@ public class UserServiceImpl implements UserService {
         User nouvUser = new User();
 
         nouvUser.setIdUser(UUID.randomUUID());
-
-        System.out.println(nouvUser.getIdUser());
         nouvUser.setUsername(user.getUsername());
-
-        System.out.println(user.getPassword());
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-       String mdpenc =  bCryptPasswordEncoder.encode(user.getPassword());
+        String mdpenc =  bCryptPasswordEncoder.encode(user.getPassword());
 
         nouvUser.setPassword(mdpenc);
 
         Role role = roleRepository.findById(user.getIdUser()).get();
 
-       nouvUser.setRoles(role);
+        nouvUser.setRoles(role);
         return userRepository.save(nouvUser).getIdUser();
     }
 

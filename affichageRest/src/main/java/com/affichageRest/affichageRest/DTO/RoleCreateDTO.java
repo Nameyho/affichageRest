@@ -1,11 +1,17 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class RoleCreateDTO {
 
     private UUID idRole;
+    @NotNull
+    @NotEmpty
     private String name;
+    @NotNull
+    @NotEmpty
     private String description;
 
 

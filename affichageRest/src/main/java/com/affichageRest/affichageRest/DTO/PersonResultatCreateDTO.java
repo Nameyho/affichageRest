@@ -1,5 +1,6 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.Min;
 import java.sql.Date;
 import java.util.UUID;
 
@@ -10,6 +11,7 @@ public class PersonResultatCreateDTO {
     private UUID idCours;
 
     private Date annee;
+    @Min(0)
     private int resultat;
     private boolean reussite;
 

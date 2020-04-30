@@ -11,6 +11,7 @@ public class PersonIndisponibilite {
     @EmbeddedId
     private PersonIndisponibilitePK personIndisponibilitePK;
 
+
     private Date dateDebut;
     private Date dateFin;
 

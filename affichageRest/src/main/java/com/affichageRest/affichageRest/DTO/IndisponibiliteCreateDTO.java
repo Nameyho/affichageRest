@@ -1,10 +1,14 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class IndisponibiliteCreateDTO {
 
     private UUID idindisponibilite;
+    @NotNull
+    @NotEmpty
     private String type;
 
     public IndisponibiliteCreateDTO(UUID idindisponibilite) {

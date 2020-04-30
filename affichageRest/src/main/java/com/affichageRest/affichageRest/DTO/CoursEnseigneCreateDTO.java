@@ -8,6 +8,7 @@ public class CoursEnseigneCreateDTO {
     private UUID idPerson;
     private UUID idCours;
 
+
     private Date annee;
 
     public CoursEnseigneCreateDTO() {

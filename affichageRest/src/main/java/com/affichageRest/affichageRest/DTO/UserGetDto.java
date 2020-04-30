@@ -1,11 +1,14 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.UUID;
 
 public class UserGetDto {
 
     private UUID id;
 
+
+    @NotEmpty(message = "Le nom ne dois pas être vide")
     private String username;
 
     private String password;

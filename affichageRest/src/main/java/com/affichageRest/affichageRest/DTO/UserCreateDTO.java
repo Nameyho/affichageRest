@@ -1,13 +1,18 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class UserCreateDTO {
 
     private UUID idUser;
 
+    @NotNull
+    @NotEmpty
     private String username;
-
+    @NotNull
+    @NotEmpty
     private String password;
 
     private UUID idRole;

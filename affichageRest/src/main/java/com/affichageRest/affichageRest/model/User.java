@@ -1,6 +1,8 @@
 package com.affichageRest.affichageRest.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.UUID;
 
@@ -12,8 +14,12 @@ public class User {
     @Column(name="USER_ID")
     private UUID idUser;
 
+    @NotNull
+    @NotEmpty
     private String username;
 
+    @NotNull
+    @NotEmpty
     private String password;
 
 
@@ -32,7 +38,7 @@ public class User {
     public User() {
     }
 
-    public User(UUID id, String username, String password, String passwordConfirm, Role roles) {
+    public User(UUID id, String username, String password, Role roles) {
         this.idUser = id;
         this.username = username;
         this.password = password;

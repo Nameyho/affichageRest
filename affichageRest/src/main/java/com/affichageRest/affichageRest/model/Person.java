@@ -5,6 +5,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -21,39 +25,28 @@ public class Person implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column (name="PERSON_ID") private UUID idPerson;
+
+    @NotNull
+    @NotEmpty
     @Column private String prenom;
+
+    @NotNull
+    @NotEmpty
     @Column private String nom;
+
+    @Email
+    @NotNull
     @Column private String email;
+
+    @Past
+    @NotNull
     @Column private Date  dateAnniversaire;
 
-    public String getMotDePasse() {
-        return motDePasse;
-    }
-
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
-    }
 
 
-
-    @Column private String motDePasse;
-
-
-
-
-
-    private String username;
-
-//    @OneToMany(mappedBy = "person")
-//    private Set<CoursEnseigne> courEnseignes;
-
-//    @OneToMany(mappedBy = "person")
-//    private Set<PersonResultat> indisponibilites;
 
     public Person() {
     }
-
-
 
 
 
@@ -90,6 +83,14 @@ public class Person implements Serializable, UserDetails {
         this.dateAnniversaire = dateAnniversaire;
     }
 
+    public Person(UUID idPerson, @NotNull @NotEmpty String prenom, @NotNull @NotEmpty String nom, @Email @NotNull String email, @Past @NotNull Date dateAnniversaire) {
+        this.idPerson = idPerson;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
+        this.dateAnniversaire = dateAnniversaire;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -98,10 +99,7 @@ public class Person implements Serializable, UserDetails {
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
                 ", dateAnniversaire=" + dateAnniversaire +
-
-
-
-                '}';
+                 '}';
     }
 
 
