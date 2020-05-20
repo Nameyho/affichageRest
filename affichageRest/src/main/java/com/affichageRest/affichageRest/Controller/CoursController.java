@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-
+@CrossOrigin
     @RestController
     @RequestMapping(value = "/cours")
     public class CoursController {
