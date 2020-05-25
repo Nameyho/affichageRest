@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/persons")
 public class PersonController {
@@ -22,10 +22,6 @@ public class PersonController {
     @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<PersonGetDTO>> getAllPersons(){
-
-
-
-
         return new ResponseEntity<>(personService.getAllPerson(),HttpStatus.OK);
 
     }
