@@ -48,14 +48,14 @@ public class PersonResultatController {
     }
 
 
-    @PutMapping(value ="/{idperson2}/{idcours2")
+    @PutMapping(value ="/{idperson}/{idcours")
     public void updatePerson(@PathVariable(value="idperson2")  UUID idperson,@PathVariable(value = "idcours2") UUID idcours ,
                              @RequestBody PersonResultatUpdateDTO personUpdateDTO){
         PersonResultatPK id = new PersonResultatPK(idperson,idcours);
         personresultat.updateResultat(id,personUpdateDTO);
     }
 
-    @DeleteMapping(value ="/{idperson3}/{idcours3")
+    @DeleteMapping(value ="/{idperson3}/{idcours")
     public void deletePerson(@PathVariable(value="idperson3")  UUID idperson,@PathVariable(value = "idcours3") UUID idcours ){
         PersonResultatPK id = new PersonResultatPK(idperson,idcours);
         personresultat.delete(id);

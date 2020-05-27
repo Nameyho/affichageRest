@@ -29,10 +29,12 @@ public class DataLoader implements ApplicationRunner {
 
     private PersonResultatRepository personResultatrep;
 
+    private PersonIndisponibiliteRepository personIndisponibiliteRepository;
+
     @Autowired
     public DataLoader(RoleRepository roleRepository, UserRepository userRepository,
                       CoursRepository coursRepository, IndisponibiliteRepository indisponibiliteRepository,
-                      MessageRepository messageRepository, PersonRepository personRepository,PersonResultatRepository personResultat) {
+                      MessageRepository messageRepository, PersonRepository personRepository,PersonResultatRepository personResultat,PersonIndisponibiliteRepository personIndisponibiliteRepository) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.coursRepository = coursRepository;
@@ -40,6 +42,7 @@ public class DataLoader implements ApplicationRunner {
         this.messageRepository = messageRepository;
         this.personRepository = personRepository;
         this.personResultatrep = personResultat;
+        this.personIndisponibiliteRepository=personIndisponibiliteRepository;
     }
 
     @Override
@@ -58,12 +61,20 @@ public class DataLoader implements ApplicationRunner {
 
         /** $2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK  = test **/
 
+
+        for (int i = 0; i < 50 ; i++) {
+
+
+
+
         Cours cours = new Cours(UUID.randomUUID(),
                 "Programmation Orientée Objet");
 
         coursRepository.save(cours);
 
-        indisponibiliteRepository.save(new Indisponibilite(UUID.randomUUID(),"Maladie"));
+        Indisponibilite indisponibilite = new Indisponibilite(UUID.randomUUID(),"Maladie");
+
+        indisponibiliteRepository.save(indisponibilite);
 
         Date date = null ;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -80,11 +91,27 @@ public class DataLoader implements ApplicationRunner {
         PersonResultatPK personResultatPK = new PersonResultatPK(person.getIdPerson(),cours.getId());
 
         Date date2 = null ;
-        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+
         date2 = simpleDateFormat.parse("01/10/2020");
 
         PersonResultat  personResultat = new PersonResultat(personResultatPK,date2,90,true);
 
         personResultatrep.save(personResultat);
+
+        PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getId(),indisponibilite.getIdinsponibilite(),cours.getId());
+
+            Date datedeb = simpleDateFormat.parse("01/10/2020");
+
+            Date datefin  = simpleDateFormat.parse("01/12/2020");
+
+            System.out.println(person.getId());
+            System.out.println(indisponibilite.getIdinsponibilite());
+            System.out.println(cours.getId());
+            System.out.println(datedeb);
+            System.out.println(datefin);
+
+
+        PersonIndisponibilite personIndisponibilite = new PersonIndisponibilite(personIndisponibilitePK,datedeb,datefin);
+        personIndisponibiliteRepository.save(personIndisponibilite);
     }
-}
+}}

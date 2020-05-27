@@ -7,7 +7,6 @@ import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DTO.PersonIndisponibiliteCreateDTO;
 import com.affichageRest.affichageRest.DTO.PersonIndisponibiliteGetDTO;
 import com.affichageRest.affichageRest.DTO.PersonIndisponibiliteUpdateDTO;
-import com.affichageRest.affichageRest.DTO.PersonResultatGetDTO;
 import com.affichageRest.affichageRest.model.PersonIndisponibilite;
 import com.affichageRest.affichageRest.model.PersonIndisponibilitePK;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,9 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
     public List<PersonIndisponibiliteGetDTO> getAllPersonIndisponibilite () {
         List<PersonIndisponibiliteGetDTO> plist = new ArrayList<>();
         personIndisponibiliteRepository.findAll().forEach(pIndisp -> {
-            plist.add(new PersonIndisponibiliteGetDTO(pIndisp.getPersonIndisponibilitePK().getIdPerson(),pIndisp.getPersonIndisponibilitePK().getIdCours(),pIndisp.getPersonIndisponibilitePK().getIndispo_id(),pIndisp.getDateDebut(),pIndisp.getDateFin()));
+
+            System.out.println(pIndisp.getPersonIndisponibilitePK().getIndispo_id());
+            plist.add(new PersonIndisponibiliteGetDTO(pIndisp.getPersonIndisponibilitePK().getIdPerson(),pIndisp.getPersonIndisponibilitePK().getIndispo_id(),pIndisp.getPersonIndisponibilitePK().getIdCours(),pIndisp.getDateDebut(),pIndisp.getDateFin()));
         });
         return plist;
     }
@@ -53,12 +54,12 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
     }
 
     @Override
-    public void createPersonIndisponibilite(PersonIndisponibiliteCreateDTO temp) {
+    public PersonIndisponibilite createPersonIndisponibilite(PersonIndisponibiliteCreateDTO temp) {
 
 
         PersonIndisponibilitePK tempID = new PersonIndisponibilitePK();
 
-      tempID.setIdCours(temp.getIdCours());
+        tempID.setIdCours(temp.getIdCours());
         tempID.setIdPerson(temp.getIdPerson());
         tempID.setIndispo_id(temp.getIndispo_id());
 
@@ -69,7 +70,7 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
 
         newPersonIndisponibilites.setPersonIndisponibilitePK(tempID);
 
-       personIndisponibiliteRepository.save(newPersonIndisponibilites);
+      return personIndisponibiliteRepository.save(newPersonIndisponibilites);
     }
 
     @Override
@@ -85,13 +86,14 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
         }
 
     @Override
-    public void delete(PersonResultatGetDTO personIndisponibiliteGetDTO) {
-
-        PersonIndisponibilite temp = new PersonIndisponibilite();
+    public void delete(PersonIndisponibilitePK id) {
 
 
 
+        PersonIndisponibilite personne = this.personIndisponibiliteRepository.findById(id).get();
+        this.personIndisponibiliteRepository.delete(personne);
 
-        this.personIndisponibiliteRepository.delete(temp);
+
+
     }
 }

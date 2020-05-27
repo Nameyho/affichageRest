@@ -5,6 +5,7 @@ import com.affichageRest.affichageRest.DTO.PersonIndisponibiliteCreateDTO;
 import com.affichageRest.affichageRest.DTO.PersonIndisponibiliteGetDTO;
 import com.affichageRest.affichageRest.DTO.PersonIndisponibiliteUpdateDTO;
 import com.affichageRest.affichageRest.DTO.PersonResultatGetDTO;
+import com.affichageRest.affichageRest.model.PersonIndisponibilite;
 import com.affichageRest.affichageRest.model.PersonIndisponibilitePK;
 
 import java.util.List;
@@ -13,12 +14,12 @@ public interface PersonIndisponibiliteService {
 
     List<PersonIndisponibiliteGetDTO> getAllPersonIndisponibilite();
 
-    void createPersonIndisponibilite(PersonIndisponibiliteCreateDTO CoursEnseigneCreateDTO);
+    PersonIndisponibilite createPersonIndisponibilite(PersonIndisponibiliteCreateDTO CoursEnseigneCreateDTO);
 
     PersonIndisponibiliteGetDTO getPersonIndisponibilite(PersonIndisponibilitePK id);
 
     void updatePersonIndisponibilite(PersonIndisponibilitePK id, PersonIndisponibiliteUpdateDTO personIndisponibiliteUpdateDTO);
 
-    void delete(PersonResultatGetDTO id);
+    void delete(PersonIndisponibilitePK id);
 
 }
