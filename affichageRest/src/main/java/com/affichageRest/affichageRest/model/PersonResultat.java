@@ -4,7 +4,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 public class PersonResultat implements Serializable {
@@ -25,12 +25,15 @@ public class PersonResultat implements Serializable {
     public PersonResultat() {
     }
 
-    public PersonResultat(Person person, Indisponibilite indispo, Date annee, int resultat, boolean reussite) {
+    public PersonResultat(PersonResultatPK personResultatPK, Date annee, int resultat, boolean reussite) {
 
+        this.personResultatPK= personResultatPK;
         this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
     }
+
+
 
     public PersonResultatPK getPersonResultatPK() {
         return personResultatPK;
@@ -58,6 +61,16 @@ public class PersonResultat implements Serializable {
 
     public boolean isReussite() {
         return reussite;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     public void setReussite(boolean reussite) {

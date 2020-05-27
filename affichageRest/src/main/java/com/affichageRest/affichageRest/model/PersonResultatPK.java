@@ -33,4 +33,14 @@ public class PersonResultatPK implements Serializable {
     public void setIdCours(UUID idCours) {
         this.idCours = idCours;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

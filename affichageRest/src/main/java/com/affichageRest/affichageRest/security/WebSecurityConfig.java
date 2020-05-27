@@ -51,6 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/**").fullyAuthenticated().and
                 ().httpBasic();
+
+
     }
 
 

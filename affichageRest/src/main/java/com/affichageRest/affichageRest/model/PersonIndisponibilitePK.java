@@ -40,6 +40,16 @@ public class PersonIndisponibilitePK implements Serializable {
         return idCours;
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     public void setIdCours(UUID idCours) {
         this.idCours = idCours;
     }

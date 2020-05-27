@@ -1,7 +1,7 @@
 package com.affichageRest.affichageRest.DTO;
 
 import javax.validation.constraints.Min;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 public class PersonResultatCreateDTO {

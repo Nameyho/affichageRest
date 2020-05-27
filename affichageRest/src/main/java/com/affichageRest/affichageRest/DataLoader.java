@@ -27,16 +27,19 @@ public class DataLoader implements ApplicationRunner {
 
     private PersonRepository personRepository;
 
+    private PersonResultatRepository personResultatrep;
+
     @Autowired
     public DataLoader(RoleRepository roleRepository, UserRepository userRepository,
                       CoursRepository coursRepository, IndisponibiliteRepository indisponibiliteRepository,
-                      MessageRepository messageRepository, PersonRepository personRepository) {
+                      MessageRepository messageRepository, PersonRepository personRepository,PersonResultatRepository personResultat) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.coursRepository = coursRepository;
         this.indisponibiliteRepository = indisponibiliteRepository;
         this.messageRepository = messageRepository;
         this.personRepository = personRepository;
+        this.personResultatrep = personResultat;
     }
 
     @Override
@@ -55,9 +58,10 @@ public class DataLoader implements ApplicationRunner {
 
         /** $2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK  = test **/
 
+        Cours cours = new Cours(UUID.randomUUID(),
+                "Programmation Orientée Objet");
 
-        coursRepository.save(new Cours(UUID.randomUUID(),
-                "Programmation Orientée Objet"));
+        coursRepository.save(cours);
 
         indisponibiliteRepository.save(new Indisponibilite(UUID.randomUUID(),"Maladie"));
 
@@ -72,5 +76,15 @@ public class DataLoader implements ApplicationRunner {
         date = simpleDateFormat.parse("01/10/2020");
 
         messageRepository.save(new Messages("Ceci est un message de test",date,person));
+
+        PersonResultatPK personResultatPK = new PersonResultatPK(person.getIdPerson(),cours.getId());
+
+        Date date2 = null ;
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+        date2 = simpleDateFormat.parse("01/10/2020");
+
+        PersonResultat  personResultat = new PersonResultat(personResultatPK,date2,90,true);
+
+        personResultatrep.save(personResultat);
     }
 }
