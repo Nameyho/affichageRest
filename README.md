@@ -1,5 +1,14 @@
 # affichageRest
  
+25 mai : petit mise a jour
+27 mai: création du controller PersonResultat aprés avoir oublié de le faire
+
++
+
+création du controller PersonIndisponibiliteController
+
+28 mai : création du controller CoursEnsController aprés avoir oublié de le faire 
+ 
 24 mars : creation de la couche dao,service et controller des personnes
 
 31 mars : creation de la couche dao,service et controller des Cours
