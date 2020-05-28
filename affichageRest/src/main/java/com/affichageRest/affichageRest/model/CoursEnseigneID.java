@@ -12,7 +12,13 @@ public class CoursEnseigneID implements Serializable {
 
     private UUID idCours;
 
+    public CoursEnseigneID(UUID idPerson, UUID idCours) {
+        this.idPerson = idPerson;
+        this.idCours = idCours;
+    }
 
+    public CoursEnseigneID() {
+    }
 
     public UUID getIdPerson() {
         return idPerson;

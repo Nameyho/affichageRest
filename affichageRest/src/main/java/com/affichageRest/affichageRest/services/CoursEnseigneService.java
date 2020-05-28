@@ -13,12 +13,12 @@ public interface CoursEnseigneService {
 
     List<CoursEnseigneGetDTO> getAllCoursEnseignes();
 
-    void createCoursEnseigne(CoursEnseigneCreateDTO CoursEnseigneCreateDTO);
+    CoursEnseigneCreateDTO createCoursEnseigne(CoursEnseigneCreateDTO CoursEnseigneCreateDTO);
 
     CoursEnseigneGetDTO getCoursEnseigne(CoursEnseigneID id);
 
-    void updateCoursEnseigne(UUID id, CoursEnseigneUpdateDTO CoursEnseigne);
+    void updateCoursEnseigne(CoursEnseigneID id, CoursEnseigneUpdateDTO CoursEnseigne);
 
-    void delete(CoursEnseigneGetDTO id);
+    void delete(CoursEnseigneID id);
 
 }

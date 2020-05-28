@@ -20,7 +20,7 @@ import java.util.UUID;
 public class CoursEnseigneServiceImplement implements CoursEnseigneService {
 
     @Autowired
-    private CoursEnseigneRepository CoursEnseigneRepository;
+    private CoursEnseigneRepository coursEnseigneRepository;
 
     @Autowired
     private PersonRepository personRepository;
@@ -33,7 +33,7 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
     @Override
     public List<CoursEnseigneGetDTO> getAllCoursEnseignes() {
         List<CoursEnseigneGetDTO> plist = new ArrayList<>();
-        CoursEnseigneRepository.findAll().forEach(CoursEnseigne -> {
+        coursEnseigneRepository.findAll().forEach(CoursEnseigne -> {
             plist.add(new CoursEnseigneGetDTO(CoursEnseigne.getEnseigneID().getIdPerson(),CoursEnseigne.getEnseigneID().getIdCours(),CoursEnseigne.getAnnee()));
         });
         return plist;
@@ -41,8 +41,8 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
 
     @Override
     public CoursEnseigneGetDTO getCoursEnseigne(CoursEnseigneID id) {
-        if(CoursEnseigneRepository.findById(id).isPresent()){
-            CoursEnseigne  temp = CoursEnseigneRepository.findById(id).get();
+        if(coursEnseigneRepository.findById(id).isPresent()){
+            CoursEnseigne  temp = coursEnseigneRepository.findById(id).get();
 
 
             return new CoursEnseigneGetDTO(temp.getEnseigneID().getIdPerson(),temp.getEnseigneID().getIdCours(),temp.getAnnee());
@@ -53,7 +53,7 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
     }
 
     @Override
-    public void createCoursEnseigne(CoursEnseigneCreateDTO coursEnseigne) {
+    public CoursEnseigneCreateDTO createCoursEnseigne(CoursEnseigneCreateDTO coursEnseigne) {
 
 
         CoursEnseigneID coursEnseigneID = new CoursEnseigneID();
@@ -66,36 +66,34 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
 
         newCoursEnseignes.setEnseigneID(coursEnseigneID);
 
-       CoursEnseigneRepository.save(newCoursEnseignes);
+       coursEnseigneRepository.save(newCoursEnseignes);
+        return coursEnseigne;
     }
 
     @Override
-    public void updateCoursEnseigne(UUID id, CoursEnseigneUpdateDTO coursEnseigne) {
+    public void updateCoursEnseigne(CoursEnseigneID id, CoursEnseigneUpdateDTO coursEnseigne) {
 
 
-        CoursEnseigneID coursEnseigneID = new CoursEnseigneID();
+
 
         CoursEnseigne newCoursEnseignes = new CoursEnseigne();
         newCoursEnseignes.setAnnee(coursEnseigne.getAnnee());
 
-        coursEnseigneID.setIdCours(coursEnseigne.getIdCours());
-        coursEnseigneID.setIdPerson(coursEnseigne.getIdPerson());
 
-        newCoursEnseignes.setEnseigneID(coursEnseigneID);
 
-        CoursEnseigneRepository.save(newCoursEnseignes);
+        newCoursEnseignes.setEnseigneID(id);
+
+        coursEnseigneRepository.save(newCoursEnseignes);
 
         }
 
 
     @Override
-    public void delete(CoursEnseigneGetDTO coursEnseigneGetDTO) {
+    public void delete(CoursEnseigneID coursEnseigneID) {
 
-        CoursEnseigne coursEnseigne = new CoursEnseigne();
-
-        coursEnseigne.setAnnee(coursEnseigneGetDTO.getAnnee());
+     CoursEnseigne coursEnseigne = coursEnseigneRepository.findById(coursEnseigneID).get();
 
 
-        this.CoursEnseigneRepository.delete(coursEnseigne);
+        this.coursEnseigneRepository.delete(coursEnseigne);
     }
 }

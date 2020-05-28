@@ -31,10 +31,15 @@ public class DataLoader implements ApplicationRunner {
 
     private PersonIndisponibiliteRepository personIndisponibiliteRepository;
 
+    private  CoursEnseigneRepository coursEnseigneRepository;
+
     @Autowired
     public DataLoader(RoleRepository roleRepository, UserRepository userRepository,
                       CoursRepository coursRepository, IndisponibiliteRepository indisponibiliteRepository,
-                      MessageRepository messageRepository, PersonRepository personRepository,PersonResultatRepository personResultat,PersonIndisponibiliteRepository personIndisponibiliteRepository) {
+                      MessageRepository messageRepository, PersonRepository personRepository,
+                      PersonResultatRepository personResultat,
+                      PersonIndisponibiliteRepository personIndisponibiliteRepository,
+                      CoursEnseigneRepository coursEnseigneRepository) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.coursRepository = coursRepository;
@@ -43,6 +48,7 @@ public class DataLoader implements ApplicationRunner {
         this.personRepository = personRepository;
         this.personResultatrep = personResultat;
         this.personIndisponibiliteRepository=personIndisponibiliteRepository;
+        this.coursEnseigneRepository=coursEnseigneRepository;
     }
 
     @Override
@@ -104,14 +110,16 @@ public class DataLoader implements ApplicationRunner {
 
             Date datefin  = simpleDateFormat.parse("01/12/2020");
 
-            System.out.println(person.getId());
-            System.out.println(indisponibilite.getIdinsponibilite());
-            System.out.println(cours.getId());
-            System.out.println(datedeb);
-            System.out.println(datefin);
-
 
         PersonIndisponibilite personIndisponibilite = new PersonIndisponibilite(personIndisponibilitePK,datedeb,datefin);
         personIndisponibiliteRepository.save(personIndisponibilite);
+
+        CoursEnseigneID coursEnseigneID = new CoursEnseigneID(person.getId(),cours.getId());
+
+        CoursEnseigne coursEnseigne = new CoursEnseigne(coursEnseigneID,date);
+
+        coursEnseigneRepository.save(coursEnseigne);
+
+
     }
 }}
