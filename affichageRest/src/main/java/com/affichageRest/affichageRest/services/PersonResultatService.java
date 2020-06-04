@@ -8,6 +8,7 @@ import com.affichageRest.affichageRest.model.PersonResultat;
 import com.affichageRest.affichageRest.model.PersonResultatPK;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface PersonResultatService {
 
@@ -20,5 +21,8 @@ public interface PersonResultatService {
     void updateResultat(PersonResultatPK id, PersonResultatUpdateDTO CoursEnseigne);
 
     void delete(PersonResultatPK id);
+
+    List<PersonResultatGetDTO> getResultatbyPerson(UUID id);
+
 
 }

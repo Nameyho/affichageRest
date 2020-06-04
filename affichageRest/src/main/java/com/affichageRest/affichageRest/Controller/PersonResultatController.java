@@ -3,6 +3,7 @@ package com.affichageRest.affichageRest.Controller;
 
 
 import com.affichageRest.affichageRest.DTO.*;
+import com.affichageRest.affichageRest.model.PersonResultat;
 import com.affichageRest.affichageRest.model.PersonResultatPK;
 import com.affichageRest.affichageRest.services.PersonResultatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class PersonResultatController {
 
     }
 
-    @GetMapping(value ="/{idperson}/{idcours")
+    @GetMapping(value ="/{idperson}/{idcours}")
     public ResponseEntity<PersonResultatGetDTO> getresultat(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours){
        PersonResultatPK id = new PersonResultatPK(idperson,idcours);
 
@@ -37,6 +38,11 @@ public class PersonResultatController {
 
         return new ResponseEntity<>(personresultat.getPersonResultat(id),HttpStatus.OK);
 
+    }
+
+    @GetMapping(value = "/{idperson}")
+    public ResponseEntity<PersonResultatGetDTO> getResultatPersonne(@PathVariable(value = "idperson")UUID idperson){
+        return new ResponseEntity(personresultat.getResultatbyPerson(idperson),HttpStatus.OK);
     }
 
 
@@ -55,7 +61,7 @@ public class PersonResultatController {
         personresultat.updateResultat(id,personUpdateDTO);
     }
 
-    @DeleteMapping(value ="/{idperson3}/{idcours")
+    @DeleteMapping(value ="/{idperson}/{idcours")
     public void deletePerson(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ){
         PersonResultatPK id = new PersonResultatPK(idperson,idcours);
         personresultat.delete(id);

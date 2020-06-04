@@ -1,10 +1,12 @@
 package com.affichageRest.affichageRest.DTO;
 
+import org.hibernate.annotations.Type;
+
 import java.util.Date;
 import java.util.UUID;
 
 public class PersonResultatGetDTO {
-
+    @Type(type="pg-uuid")
     private UUID idPerson;
 
     private UUID idCours;
@@ -22,6 +24,12 @@ public class PersonResultatGetDTO {
     }
 
     public PersonResultatGetDTO() {
+        this.annee = annee;
+        this.resultat = resultat;
+        this.reussite = reussite;
+    }
+
+    public PersonResultatGetDTO(Date annee, int resultat, boolean reussite) {
     }
 
     public UUID getIdPerson() {

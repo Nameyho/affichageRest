@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service(value="PersonResultat")
 public class PersonResultatServiceImplement implements PersonResultatService {
@@ -35,6 +36,17 @@ public class PersonResultatServiceImplement implements PersonResultatService {
         });
         return plist;
     }
+
+    @Override
+    public List<PersonResultatGetDTO> getResultatbyPerson(UUID id) {
+
+        List<PersonResultatGetDTO> plist = new ArrayList<>();
+        personResultatRepository.findByPerson(id).forEach(resultat -> {
+            plist.add(new PersonResultatGetDTO(resultat.getPersonResultatPK().idPerson,resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
+        });
+        return plist;
+    }
+
 
     @Override
     public PersonResultatGetDTO getPersonResultat(PersonResultatPK id) {

@@ -1,12 +1,14 @@
 package com.affichageRest.affichageRest.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
 
 @Embeddable
 public class PersonIndisponibilitePK implements Serializable {
-
+    @Type(type="pg-uuid")
     private UUID idPerson;
     private UUID indispo_id;
     private UUID idCours;
