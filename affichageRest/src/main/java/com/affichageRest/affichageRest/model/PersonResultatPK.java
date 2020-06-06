@@ -1,5 +1,6 @@
 package com.affichageRest.affichageRest.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
@@ -7,7 +8,10 @@ import java.util.UUID;
 @Embeddable
 public class PersonResultatPK implements Serializable {
 
+    @Column(name = "PERSON_ID")
     public UUID idPerson;
+
+    @Column(name = "COURS_ID")
     public UUID idCours;
 
     public PersonResultatPK() {

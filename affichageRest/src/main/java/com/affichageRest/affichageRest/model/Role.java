@@ -12,7 +12,6 @@ import java.util.UUID;
 public class Role implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID idRole;
 
     @NotNull
@@ -32,16 +31,14 @@ public class Role implements Serializable {
     public Role() {
     }
 
-    public Role(UUID idRole, String name, String description) {
-        this.idRole = idRole;
-        this.name = name;
-        this.description = description;
-    }
+
+
 
     public Role(String name, String description) {
         this.name = name;
         this.description = description;
-
+        this.idRole = UUID.nameUUIDFromBytes((name).getBytes())
+;
     }
 
     public void setIdRole(UUID idRole) {

@@ -6,7 +6,7 @@ import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+@Entity(name = "resultat")
 public class PersonResultat implements Serializable {
 
 
@@ -18,6 +18,7 @@ public class PersonResultat implements Serializable {
 
     @Min(0)
     private int resultat;
+
 
 
     private boolean reussite;
@@ -32,7 +33,6 @@ public class PersonResultat implements Serializable {
         this.resultat = resultat;
         this.reussite = reussite;
     }
-
 
 
     public PersonResultatPK getPersonResultatPK() {

@@ -10,7 +10,6 @@ import java.util.UUID;
 @Table(name = "User",schema = "public",catalog = "AffichageRest")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="USER_ID")
     private UUID idUser;
 
@@ -38,8 +37,8 @@ public class User {
     public User() {
     }
 
-    public User(UUID id, String username, String password, Role roles) {
-        this.idUser = id;
+    public User(String username, String password, Role roles) {
+        this.idUser = UUID.nameUUIDFromBytes((username+roles+password).getBytes());
         this.username = username;
         this.password = password;
 

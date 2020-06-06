@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Cours implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+
     @Column(name = "COURS_ID") private UUID id;
 
     @NotNull
@@ -22,8 +22,8 @@ public class Cours implements Serializable {
 //    @OneToMany(mappedBy = "cours")
 //    private Set<CoursEnseigne> courEnseignes;
 
-    public Cours(UUID id, String nom) {
-        this.id = id;
+    public Cours( String nom) {
+        this.id = UUID.nameUUIDFromBytes(nom.getBytes());
         this.nom = nom;
 
     }

@@ -30,7 +30,7 @@ public class PersonServiceImplement implements PersonService {
 
         List<PersonGetDTO> plist = new ArrayList<>();
         personRepository.findAll().forEach(person -> {
-            plist.add(new PersonGetDTO(person.getId(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire()));
+            plist.add(new PersonGetDTO(person.getIdPerson(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire()));
         });
         return plist;
     }
@@ -42,7 +42,7 @@ public class PersonServiceImplement implements PersonService {
             Person persontemp = personRepository.findById(id).get();
 
 
-            return new PersonGetDTO(persontemp.getId(),persontemp.getPrenom(),
+            return new PersonGetDTO(persontemp.getIdPerson(),persontemp.getPrenom(),
                     persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire());
         }
     else{
@@ -62,7 +62,7 @@ public class PersonServiceImplement implements PersonService {
 
 
 
-        return personRepository.save(nouvPersonne).getId();
+        return personRepository.save(nouvPersonne).getIdPerson();
     }
 
     @Override

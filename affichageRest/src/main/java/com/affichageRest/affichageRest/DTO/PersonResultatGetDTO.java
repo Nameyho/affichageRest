@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.UUID;
 
 public class PersonResultatGetDTO {
-    @Type(type="pg-uuid")
-    private UUID idPerson;
 
-    private UUID idCours;
+    private UUID idPerson;
+    private String nomCours;
+    private UUID cours_id;
 
     private Date annee;
     private int resultat;
@@ -17,10 +17,27 @@ public class PersonResultatGetDTO {
 
     public PersonResultatGetDTO(UUID idPerson, UUID idCours, Date annee, int resultat, boolean reussite) {
         this.idPerson = idPerson;
-        this.idCours = idCours;
+        this.cours_id = idCours;
         this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
+    }
+
+    public PersonResultatGetDTO(UUID idPerson, String nomCours, UUID cours_id, Date annee, int resultat, boolean reussite) {
+        this.idPerson = idPerson;
+        this.nomCours = nomCours;
+        this.cours_id = cours_id;
+        this.annee = annee;
+        this.resultat = resultat;
+        this.reussite = reussite;
+    }
+
+    public String getNomCours() {
+        return nomCours;
+    }
+
+    public void setNomCours(String nomCours) {
+        this.nomCours = nomCours;
     }
 
     public PersonResultatGetDTO() {
@@ -40,12 +57,12 @@ public class PersonResultatGetDTO {
         this.idPerson = idPerson;
     }
 
-    public UUID getIdCours() {
-        return idCours;
+    public UUID getCours_id() {
+        return cours_id;
     }
 
-    public void setIdCours(UUID idCours) {
-        this.idCours = idCours;
+    public void setCours_id(UUID cours_id) {
+        this.cours_id = cours_id;
     }
 
     public Date getAnnee() {

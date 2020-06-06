@@ -15,7 +15,9 @@ import java.util.UUID;
 public interface PersonResultatRepository extends JpaRepository<PersonResultat, PersonResultatPK> {
 
     @Type(type="pg-uuid")
-    @Query("select u from PersonResultat u  where u.personResultatPK.idPerson  = :uuid ")
+    @Query(value="select * " +
+            "from resultat \n" +
+            "where person_id = :uuid ", nativeQuery = true)
     List<PersonResultat> findByPerson(@Param("uuid") UUID person);
 }
 

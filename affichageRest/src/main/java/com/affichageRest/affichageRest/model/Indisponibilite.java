@@ -11,7 +11,7 @@ public class Indisponibilite implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+
     @Column(name = "INDISPO_ID") private UUID idinsponibilite;
 
     @NotNull
@@ -41,8 +41,8 @@ public class Indisponibilite implements Serializable {
     public Indisponibilite() {
     }
 
-    public Indisponibilite(UUID idinsponibilite, @NotNull String type) {
-        this.idinsponibilite = idinsponibilite;
+    public Indisponibilite( @NotNull String type) {
+        this.idinsponibilite = UUID.nameUUIDFromBytes(type.getBytes());
         this.type = type;
     }
     /*    public UUID getId() {

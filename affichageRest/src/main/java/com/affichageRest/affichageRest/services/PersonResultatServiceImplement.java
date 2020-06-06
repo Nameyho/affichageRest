@@ -6,6 +6,7 @@ import com.affichageRest.affichageRest.DAO.PersonResultatRepository;
 import com.affichageRest.affichageRest.DTO.PersonResultatCreateDTO;
 import com.affichageRest.affichageRest.DTO.PersonResultatGetDTO;
 import com.affichageRest.affichageRest.DTO.PersonResultatUpdateDTO;
+import com.affichageRest.affichageRest.model.Cours;
 import com.affichageRest.affichageRest.model.PersonResultat;
 import com.affichageRest.affichageRest.model.PersonResultatPK;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,11 @@ public class PersonResultatServiceImplement implements PersonResultatService {
     @Override
     public List<PersonResultatGetDTO> getResultatbyPerson(UUID id) {
 
+
         List<PersonResultatGetDTO> plist = new ArrayList<>();
         personResultatRepository.findByPerson(id).forEach(resultat -> {
-            plist.add(new PersonResultatGetDTO(resultat.getPersonResultatPK().idPerson,resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
+           Cours idcours = coursRepository.findById(resultat.getPersonResultatPK().getIdCours()).get();
+            plist.add(new PersonResultatGetDTO(resultat.getPersonResultatPK().idPerson,idcours.getNom(),resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
         });
         return plist;
     }

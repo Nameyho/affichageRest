@@ -20,10 +20,10 @@ import java.util.UUID;
 @Table(name = "Person",schema = "public",catalog = "AffichageRest")
 
 
-public class Person implements Serializable, UserDetails {
+public class Person implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+
     @Column (name="PERSON_ID") private UUID idPerson;
 
     @NotNull
@@ -48,48 +48,15 @@ public class Person implements Serializable, UserDetails {
     public Person() {
     }
 
-
-
-    public UUID getIdPerson() {
-        return idPerson;
-    }
-
-    public void setIdPerson(UUID idPerson) {
-        this.idPerson = idPerson;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setDateAnniversaire(Date dateAnniversaire) {
-        this.dateAnniversaire = dateAnniversaire;
-    }
-
-
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Person(String prenom, String nom, String email, Date dateAnniversaire) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
+        this.idPerson= UUID.nameUUIDFromBytes((prenom+nom+dateAnniversaire).getBytes());
     }
 
-    public Person(UUID idPerson, @NotNull @NotEmpty String prenom, @NotNull @NotEmpty String nom, @Email @NotNull String email, @Past @NotNull Date dateAnniversaire) {
-        this.idPerson = idPerson;
-        this.prenom = prenom;
-        this.nom = nom;
-        this.email = email;
-        this.dateAnniversaire = dateAnniversaire;
-    }
+
 
     @Override
     public String toString() {
@@ -121,65 +88,43 @@ public class Person implements Serializable, UserDetails {
         return Objects.hash(idPerson, prenom, nom, email, dateAnniversaire);
     }
 
-
-
-
-
-    public UUID getId() {
+    public UUID getIdPerson() {
         return idPerson;
+    }
+
+    public void setIdPerson(UUID idPerson) {
+        this.idPerson = idPerson;
     }
 
     public String getPrenom() {
         return prenom;
     }
 
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
     public String getNom() {
         return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Date getDateAnniversaire() {
         return dateAnniversaire;
     }
 
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    public void setDateAnniversaire(Date dateAnniversaire) {
+        this.dateAnniversaire = dateAnniversaire;
     }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
-
 }

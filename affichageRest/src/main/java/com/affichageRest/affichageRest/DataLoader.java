@@ -54,31 +54,32 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        UUID idRole = UUID.randomUUID();
-        UUID idUser = UUID.randomUUID();
 
-        Role role = new Role(idRole,"Administrateur","Accés total");
+
+        Role role = new Role("Administrateur","Accés total");
 
         roleRepository.save(role);
 
-        userRepository.save(new User(idUser,"Florence",
+        userRepository.save(new User("Florence",
                 "$2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK",role));
 
 
         /** $2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK  = test **/
 
 
-        for (int i = 0; i < 50 ; i++) {
+        for (int i = 0; i < 100 ; i++) {
 
 
 
 
-        Cours cours = new Cours(UUID.randomUUID(),
-                "Programmation Orientée Objet");
+
+        Cours cours = new Cours("Programmation Orientée Objet");
 
         coursRepository.save(cours);
 
-        Indisponibilite indisponibilite = new Indisponibilite(UUID.randomUUID(),"Maladie");
+
+
+        Indisponibilite indisponibilite = new Indisponibilite("Maladie");
 
         indisponibiliteRepository.save(indisponibilite);
 
@@ -86,7 +87,7 @@ public class DataLoader implements ApplicationRunner {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         date = simpleDateFormat.parse("01/10/1993");
 
-        Person person =new Person(UUID.randomUUID(),"Mathieu","Allard","allardmathieu@gmail.com",date);
+        Person person =new Person("Mathieu","Allard","allardmathieu@gmail.com",date);
 
         personRepository.save(person);
 
@@ -94,6 +95,8 @@ public class DataLoader implements ApplicationRunner {
 
         messageRepository.save(new Messages("Ceci est un message de test",date,person));
 
+
+        System.out.println(person.getIdPerson());
         PersonResultatPK personResultatPK = new PersonResultatPK(person.getIdPerson(),cours.getId());
 
         Date date2 = null ;
@@ -104,7 +107,8 @@ public class DataLoader implements ApplicationRunner {
 
         personResultatrep.save(personResultat);
 
-        PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getId(),indisponibilite.getIdinsponibilite(),cours.getId());
+
+        PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getIdPerson(),indisponibilite.getIdinsponibilite(),cours.getId());
 
             Date datedeb = simpleDateFormat.parse("01/10/2020");
 
@@ -114,12 +118,12 @@ public class DataLoader implements ApplicationRunner {
         PersonIndisponibilite personIndisponibilite = new PersonIndisponibilite(personIndisponibilitePK,datedeb,datefin);
         personIndisponibiliteRepository.save(personIndisponibilite);
 
-        CoursEnseigneID coursEnseigneID = new CoursEnseigneID(person.getId(),cours.getId());
+        CoursEnseigneID coursEnseigneID = new CoursEnseigneID(person.getIdPerson(),cours.getId());
 
         CoursEnseigne coursEnseigne = new CoursEnseigne(coursEnseigneID,date);
 
         coursEnseigneRepository.save(coursEnseigne);
 
 
-    }
-}}
+
+}}}
