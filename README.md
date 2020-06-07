@@ -1,5 +1,19 @@
 # affichageRest
- 
+
+6 juin
+
+création d'une méthode afin d'obtenir les résultat par person
+
+PersonResultatController.getResultatPersonne
+
+mise à jours des modeles afin d'obtenir un identifiant unique basé sur les bytes
+
+
+4 Juin
+
+création d'une méthode afin d'obtenir les résultat par person
+
+PersonResultatController.getResultatPersonne
 
 28 mai : création du controller CoursEnsController aprés avoir oublié de le faire 
 
