@@ -10,17 +10,29 @@ public class PersonResultatCreateDTO {
 
     private UUID idCours;
 
+    private String nomCours;
+
+
     private Date annee;
     @Min(0)
     private int resultat;
     private boolean reussite;
 
-    public PersonResultatCreateDTO(UUID idPerson, UUID idCours, Date annee, int resultat, boolean reussite) {
+    public PersonResultatCreateDTO(UUID idPerson, UUID idCours, Date annee, int resultat, boolean reussite, String nomCours) {
         this.idPerson = idPerson;
         this.idCours = idCours;
         this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
+        this.nomCours= nomCours;
+    }
+
+    public String getNomCours() {
+        return nomCours;
+    }
+
+    public void setNomCours(String nomCours) {
+        this.nomCours = nomCours;
     }
 
     public PersonResultatCreateDTO() {

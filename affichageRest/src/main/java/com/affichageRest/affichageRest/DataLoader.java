@@ -67,8 +67,6 @@ public class DataLoader implements ApplicationRunner {
         /** $2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK  = test **/
 
 
-        for (int i = 0; i < 100 ; i++) {
-
 
 
 
@@ -126,4 +124,4 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-}}}
+}}

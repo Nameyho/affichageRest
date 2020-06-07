@@ -2,6 +2,7 @@ package com.affichageRest.affichageRest.DTO;
 
 import org.hibernate.annotations.Type;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ public class PersonResultatGetDTO {
 
     private UUID idPerson;
     private String nomCours;
+    @NotNull
     private UUID cours_id;
 
     private Date annee;

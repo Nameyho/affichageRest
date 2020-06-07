@@ -14,12 +14,19 @@ public class PersonResultat implements Serializable {
     private PersonResultatPK personResultatPK;
 
 
+    private String nomCours;
     private Date annee;
 
     @Min(0)
     private int resultat;
 
+    public String getNomCours() {
+        return nomCours;
+    }
 
+    public void setNomCours(String nomCours) {
+        this.nomCours = nomCours;
+    }
 
     private boolean reussite;
 

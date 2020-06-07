@@ -78,7 +78,7 @@ public class PersonResultatServiceImplement implements PersonResultatService {
         nouvResultat.setAnnee(resultatCreateDTO.getAnnee());
         nouvResultat.setResultat(resultatCreateDTO.getResultat());
         nouvResultat.setReussite(resultatCreateDTO.isReussite());
-
+        nouvResultat.setNomCours(coursRepository.findById(resultatCreateDTO.getIdCours()).get().getNom());
         return personResultatRepository.save(nouvResultat);
     }
 
