@@ -3,9 +3,7 @@ package com.affichageRest.affichageRest.services;
 
 import com.affichageRest.affichageRest.DAO.MessageRepository;
 import com.affichageRest.affichageRest.DAO.UserRepository;
-import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
-import com.affichageRest.affichageRest.DTO.MessageGetDTO;
-import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
+import com.affichageRest.affichageRest.DTO.MessageQueryDTO;
 import com.affichageRest.affichageRest.model.Messages;
 import com.affichageRest.affichageRest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +23,18 @@ public class MessageServiceImplement implements MessageService {
     private UserRepository userRepository;
 
     @Override
-    public List<MessageGetDTO> getAllMessages() {
-        List<MessageGetDTO> plist = new ArrayList<>();
+    public List<MessageQueryDTO> getAllMessages() {
+        List<MessageQueryDTO> plist = new ArrayList<>();
         messageRepository.findAll().forEach(message -> {
-            plist.add(new MessageGetDTO(
+            String nomUser = userRepository.findById(message.getUser().getIdUser()).get().getUsername();
+            plist.add(new MessageQueryDTO(
                     message.getId(),
                     message.getContenu(),
                     message.getCreatedDate(),
-                    message.getUser().getIdUser()
+                    message.getUser().getIdUser(),
+                    nomUser,
+                    message.getTitreMessage()
+
 
                    ));
         });
@@ -40,33 +42,35 @@ public class MessageServiceImplement implements MessageService {
     }
 
     @Override
-    public MessageGetDTO getMessage(UUID id) {
+    public MessageQueryDTO getMessage(UUID id) {
         if(messageRepository.findById(id).isPresent()){
        Messages message = messageRepository.findById(id).get();
-
-       return  new MessageGetDTO(message.getId(),message.getContenu(),message.getCreatedDate(),message.getUser().getIdUser());
+            String nomUser = userRepository.findById(message.getUser().getIdUser()).get().getUsername();
+       return  new MessageQueryDTO(message.getId(),message.getContenu(),message.getCreatedDate(),  message.getUser().getIdUser(),nomUser,message.getTitreMessage());
     }
     else{
         return null;
     }}
 
     @Override
-    public UUID createMessage(MessageCreateDTO message) {
+    public UUID createMessage(MessageQueryDTO message) {
 
         Messages nouvMessage = new Messages();
 
-        nouvMessage.setId(UUID.randomUUID());
+        nouvMessage.setId(UUID.nameUUIDFromBytes((message.contenu + message.createdDate +
+                message.getNomPerson() + message.getTitreMessage()).getBytes()));
         nouvMessage.setContenu(message.getContenu());
         nouvMessage.setCreatedDate(message.getCreatedDate());
+        nouvMessage.setTitreMessage(message.getTitreMessage());
 
-        User person = userRepository.findById(message.getIdPerson()).get();
+        User person = userRepository.findByUsername(message.getNomPerson());
 
         nouvMessage.setUser(person);
 
         return messageRepository.save(nouvMessage).getId();}
 
     @Override
-    public void updateMessages(UUID id, MessageUpdateDTO message) {
+    public void updateMessages(UUID id, MessageQueryDTO message) {
         if(messageRepository.findById(id).isPresent()) {
 
             Messages messagesExistant = messageRepository.findById(id).get();

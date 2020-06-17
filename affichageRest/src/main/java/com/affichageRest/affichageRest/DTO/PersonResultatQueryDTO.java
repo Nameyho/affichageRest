@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
 
-public class PersonResultatGetDTO {
+public class PersonResultatQueryDTO {
 
     private UUID idPerson;
     private String nomCours;
@@ -17,7 +17,7 @@ public class PersonResultatGetDTO {
     private int resultat;
     private boolean reussite;
 
-    public PersonResultatGetDTO(UUID idPerson, UUID idCours, Date annee, int resultat, boolean reussite) {
+    public PersonResultatQueryDTO(UUID idPerson, UUID idCours, Date annee, int resultat, boolean reussite) {
         this.idPerson = idPerson;
         this.cours_id = idCours;
         this.annee = annee;
@@ -25,7 +25,7 @@ public class PersonResultatGetDTO {
         this.reussite = reussite;
     }
 
-    public PersonResultatGetDTO(UUID idPerson, String nomCours, UUID cours_id, Date annee, int resultat, boolean reussite) {
+    public PersonResultatQueryDTO(UUID idPerson, String nomCours, UUID cours_id, Date annee, int resultat, boolean reussite) {
         this.idPerson = idPerson;
         this.nomCours = nomCours;
         this.cours_id = cours_id;
@@ -42,13 +42,13 @@ public class PersonResultatGetDTO {
         this.nomCours = nomCours;
     }
 
-    public PersonResultatGetDTO() {
+    public PersonResultatQueryDTO() {
         this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
     }
 
-    public PersonResultatGetDTO(Date annee, int resultat, boolean reussite) {
+    public PersonResultatQueryDTO(Date annee, int resultat, boolean reussite) {
     }
 
     public UUID getIdPerson() {

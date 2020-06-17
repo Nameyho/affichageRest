@@ -2,9 +2,7 @@ package com.affichageRest.affichageRest.services;
 
 import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DAO.RoleRepository;
-import com.affichageRest.affichageRest.DTO.PersonCreateDTO;
-import com.affichageRest.affichageRest.DTO.PersonGetDTO;
-import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
+import com.affichageRest.affichageRest.DTO.PersonQueryDTO;
 import com.affichageRest.affichageRest.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,23 +24,23 @@ public class PersonServiceImplement implements PersonService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public List<PersonGetDTO> getAllPerson() {
+    public List<PersonQueryDTO> getAllPerson() {
 
-        List<PersonGetDTO> plist = new ArrayList<>();
+        List<PersonQueryDTO> plist = new ArrayList<>();
         personRepository.findAll().forEach(person -> {
-            plist.add(new PersonGetDTO(person.getIdPerson(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire()));
+            plist.add(new PersonQueryDTO(person.getIdPerson(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire()));
         });
         return plist;
     }
 
     @Override
-    public PersonGetDTO getPerson(UUID id) {
+    public PersonQueryDTO getPerson(UUID id) {
 
         if(personRepository.findById(id).isPresent()){
             Person persontemp = personRepository.findById(id).get();
 
 
-            return new PersonGetDTO(persontemp.getIdPerson(),persontemp.getPrenom(),
+            return new PersonQueryDTO(persontemp.getIdPerson(),persontemp.getPrenom(),
                     persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire());
         }
     else{
@@ -50,23 +48,25 @@ public class PersonServiceImplement implements PersonService {
     }}
 
     @Override
-    public UUID createPerson(PersonCreateDTO person) {
+    public UUID createPerson(PersonQueryDTO person) {
 
         Person nouvPersonne = new Person();
 
-        nouvPersonne.setIdPerson(UUID.randomUUID());
+
+        System.out.println(person.getDateAnniversaire());
         nouvPersonne.setDateAnniversaire(person.getDateAnniversaire());
         nouvPersonne.setEmail(person.getEmail());
         nouvPersonne.setNom(person.getNom());
         nouvPersonne.setPrenom(person.getPrenom());
 
-
+        nouvPersonne.setIdPerson(UUID.nameUUIDFromBytes((person.getPrenom()+person.getNom()
+                +person.getEmail()+person.getDateAnniversaire()).getBytes()));
 
         return personRepository.save(nouvPersonne).getIdPerson();
     }
 
     @Override
-    public void updatePerson(UUID id, PersonUpdateDTO person) {
+    public void updatePerson(UUID id, PersonQueryDTO person) {
 
         if(personRepository.findById(id).isPresent()) {
             Person personneExistant = personRepository.findById(id).get();

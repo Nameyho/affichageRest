@@ -3,7 +3,7 @@ package com.affichageRest.affichageRest.DTO;
 import java.util.Date;
 import java.util.UUID;
 
-public class PersonIndisponibiliteCreateDTO {
+public class PersonIndisponibiliteQueryDTO {
 
     private UUID idPerson;
     private UUID indispo_id;
@@ -13,10 +13,10 @@ public class PersonIndisponibiliteCreateDTO {
 
     private Date dateFin;
 
-    public PersonIndisponibiliteCreateDTO() {
+    public PersonIndisponibiliteQueryDTO() {
     }
 
-    public PersonIndisponibiliteCreateDTO(UUID idPerson, UUID indispo_id, UUID idCours, Date dateDebut, Date dateFin) {
+    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id, UUID idCours, Date dateDebut, Date dateFin) {
         this.idPerson = idPerson;
         this.indispo_id = indispo_id;
         this.idCours = idCours;

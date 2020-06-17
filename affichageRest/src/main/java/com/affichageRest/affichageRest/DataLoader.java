@@ -60,8 +60,9 @@ public class DataLoader implements ApplicationRunner {
 
         roleRepository.save(role);
 
-        userRepository.save(new User("Florence",
-                "$2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK",role));
+        User user = new User("Florence",
+                "$2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK",role);
+        userRepository.save(user);
 
 
         /** $2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK  = test **/
@@ -91,7 +92,7 @@ public class DataLoader implements ApplicationRunner {
 
         date = simpleDateFormat.parse("01/10/2020");
 
-        messageRepository.save(new Messages("Ceci est un message de test",date,person));
+        messageRepository.save(new Messages("Ceci est un message de test",date,user,"Message de Test"));
 
 
         System.out.println(person.getIdPerson());
@@ -108,7 +109,7 @@ public class DataLoader implements ApplicationRunner {
 
         PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getIdPerson(),indisponibilite.getIdinsponibilite(),cours.getId());
 
-            Date datedeb = simpleDateFormat.parse("01/10/2020");
+            Date datedeb = simpleDateFormat.parse("01/10/2018");
 
             Date datefin  = simpleDateFormat.parse("01/12/2020");
 
@@ -118,7 +119,7 @@ public class DataLoader implements ApplicationRunner {
 
         CoursEnseigneID coursEnseigneID = new CoursEnseigneID(person.getIdPerson(),cours.getId());
 
-        CoursEnseigne coursEnseigne = new CoursEnseigne(coursEnseigneID,date);
+        CoursEnseigne coursEnseigne = new CoursEnseigne(coursEnseigneID,datedeb,datefin);
 
         coursEnseigneRepository.save(coursEnseigne);
 

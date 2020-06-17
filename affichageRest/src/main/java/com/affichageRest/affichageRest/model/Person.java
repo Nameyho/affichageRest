@@ -24,7 +24,7 @@ public class Person implements Serializable {
 
     @Id
 
-    @Column (name="PERSON_ID") private UUID idPerson;
+    @Column (name="PERSON_ID",unique = true) private UUID idPerson;
 
     @NotNull
     @NotEmpty
@@ -48,13 +48,22 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(String prenom, String nom, String email, Date dateAnniversaire) {
+    public Person(UUID idPerson, String prenom, String nom, String email, Date dateAnniversaire) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
+        this.dateAnniversaire = dateAnniversaire;
+        this.idPerson= idPerson;
+    }
+
+    public Person( String prenom, String nom, String email, Date dateAnniversaire) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
         this.idPerson= UUID.nameUUIDFromBytes((prenom+nom+dateAnniversaire).getBytes());
     }
+
 
 
 

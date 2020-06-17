@@ -3,9 +3,7 @@ package com.affichageRest.affichageRest.services;
 import com.affichageRest.affichageRest.DAO.CoursRepository;
 import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DAO.PersonResultatRepository;
-import com.affichageRest.affichageRest.DTO.PersonResultatCreateDTO;
-import com.affichageRest.affichageRest.DTO.PersonResultatGetDTO;
-import com.affichageRest.affichageRest.DTO.PersonResultatUpdateDTO;
+import com.affichageRest.affichageRest.DTO.PersonResultatQueryDTO;
 import com.affichageRest.affichageRest.model.Cours;
 import com.affichageRest.affichageRest.model.PersonResultat;
 import com.affichageRest.affichageRest.model.PersonResultatPK;
@@ -29,61 +27,61 @@ public class PersonResultatServiceImplement implements PersonResultatService {
     private CoursRepository coursRepository;
 
     @Override
-    public List<PersonResultatGetDTO> getAllResultat() {
+    public List<PersonResultatQueryDTO> getAllResultat() {
 
-        List<PersonResultatGetDTO> plist = new ArrayList<>();
+        List<PersonResultatQueryDTO> plist = new ArrayList<>();
         personResultatRepository.findAll().forEach(resultat -> {
-            plist.add(new PersonResultatGetDTO(resultat.getPersonResultatPK().idPerson,resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
+            plist.add(new PersonResultatQueryDTO(resultat.getPersonResultatPK().idPerson,resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
         });
         return plist;
     }
 
     @Override
-    public List<PersonResultatGetDTO> getResultatbyPerson(UUID id) {
+    public List<PersonResultatQueryDTO> getResultatbyPerson(UUID id) {
 
 
-        List<PersonResultatGetDTO> plist = new ArrayList<>();
+        List<PersonResultatQueryDTO> plist = new ArrayList<>();
         personResultatRepository.findByPerson(id).forEach(resultat -> {
            Cours idcours = coursRepository.findById(resultat.getPersonResultatPK().getIdCours()).get();
-            plist.add(new PersonResultatGetDTO(resultat.getPersonResultatPK().idPerson,idcours.getNom(),resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
+            plist.add(new PersonResultatQueryDTO(resultat.getPersonResultatPK().idPerson,idcours.getNom(),resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
         });
         return plist;
     }
 
 
     @Override
-    public PersonResultatGetDTO getPersonResultat(PersonResultatPK id) {
+    public PersonResultatQueryDTO getPersonResultat(PersonResultatPK id) {
 
         if(personResultatRepository.findById(id).isPresent()){
             PersonResultat persontemp = personResultatRepository.findById(id).get();
 
 
-            return new PersonResultatGetDTO(persontemp.getPersonResultatPK().idPerson,persontemp.getPersonResultatPK().idCours,persontemp.getAnnee(),persontemp.getResultat(),persontemp.isReussite());
+            return new PersonResultatQueryDTO(persontemp.getPersonResultatPK().idPerson,persontemp.getPersonResultatPK().idCours,persontemp.getAnnee(),persontemp.getResultat(),persontemp.isReussite());
         }
     else{
         return null;
     }}
 
     @Override
-    public PersonResultat createResultat(PersonResultatCreateDTO resultatCreateDTO) {
+    public PersonResultat createResultat(PersonResultatQueryDTO resultatCreateDTO) {
 
         PersonResultat nouvResultat= new PersonResultat();
 
         PersonResultatPK personResultatPK = new PersonResultatPK();
 
-        personResultatPK.setIdCours(resultatCreateDTO.getIdCours());
+        personResultatPK.setIdCours(resultatCreateDTO.getCours_id());
         personResultatPK.setIdPerson(resultatCreateDTO.getIdPerson());
 
         nouvResultat.setPersonResultatPK(personResultatPK);
         nouvResultat.setAnnee(resultatCreateDTO.getAnnee());
         nouvResultat.setResultat(resultatCreateDTO.getResultat());
         nouvResultat.setReussite(resultatCreateDTO.isReussite());
-        nouvResultat.setNomCours(coursRepository.findById(resultatCreateDTO.getIdCours()).get().getNom());
+        nouvResultat.setNomCours(coursRepository.findById(resultatCreateDTO.getCours_id()).get().getNom());
         return personResultatRepository.save(nouvResultat);
     }
 
     @Override
-    public void updateResultat(PersonResultatPK id, PersonResultatUpdateDTO person) {
+    public void updateResultat(PersonResultatPK id, PersonResultatQueryDTO person) {
 
         if(personResultatRepository.findById(id).isPresent()) {
             PersonResultat resultatExistant = personResultatRepository.findById(id).get();
@@ -91,7 +89,7 @@ public class PersonResultatServiceImplement implements PersonResultatService {
             resultatExistant.setReussite(person.isReussite());
             resultatExistant.setResultat(person.getResultat());
             resultatExistant.setAnnee(person.getAnnee());
-//petit commentaire afin de commit
+
 
             personResultatRepository.save(resultatExistant);
 

@@ -1,15 +1,12 @@
 package com.affichageRest.affichageRest.Controller;
 
 
-
-import com.affichageRest.affichageRest.DTO.*;
-import com.affichageRest.affichageRest.model.PersonResultat;
+import com.affichageRest.affichageRest.DTO.PersonResultatQueryDTO;
 import com.affichageRest.affichageRest.model.PersonResultatPK;
 import com.affichageRest.affichageRest.services.PersonResultatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,13 +22,13 @@ public class PersonResultatController {
     private PersonResultatService personresultat;
 
     @GetMapping
-    public ResponseEntity<List<PersonResultatGetDTO>> getAllResultat(){
+    public ResponseEntity<List<PersonResultatQueryDTO>> getAllResultat(){
         return new ResponseEntity<>(personresultat.getAllResultat(), HttpStatus.OK);
 
     }
 
     @GetMapping(value ="/{idperson}/{idcours}")
-    public ResponseEntity<PersonResultatGetDTO> getresultat(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours){
+    public ResponseEntity<PersonResultatQueryDTO> getresultat(@PathVariable(value="idperson")  UUID idperson, @PathVariable(value = "idcours") UUID idcours){
        PersonResultatPK id = new PersonResultatPK(idperson,idcours);
 
 
@@ -41,14 +38,14 @@ public class PersonResultatController {
     }
 
     @GetMapping(value = "/{idperson}")
-    public ResponseEntity<PersonResultatGetDTO> getResultatPersonne(@PathVariable(value = "idperson")UUID idperson){
+    public ResponseEntity<PersonResultatQueryDTO> getResultatPersonne(@PathVariable(value = "idperson")UUID idperson){
         return new ResponseEntity(personresultat.getResultatbyPerson(idperson),HttpStatus.OK);
     }
 
 
 
     @PostMapping
-    public ResponseEntity<UUID>createPerson(@RequestBody PersonResultatCreateDTO res){
+    public ResponseEntity<UUID>createPerson(@RequestBody PersonResultatQueryDTO res){
 
         return new ResponseEntity(personresultat.createResultat(res), HttpStatus.CREATED);
     }
@@ -56,7 +53,7 @@ public class PersonResultatController {
 
     @PutMapping(value ="/{idperson}/{idcours")
     public void updatePerson(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ,
-                             @RequestBody PersonResultatUpdateDTO personUpdateDTO){
+                             @RequestBody PersonResultatQueryDTO personUpdateDTO){
         PersonResultatPK id = new PersonResultatPK(idperson,idcours);
         personresultat.updateResultat(id,personUpdateDTO);
     }

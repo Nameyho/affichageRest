@@ -1,18 +1,14 @@
 package com.affichageRest.affichageRest.Controller;
 
 
-import com.affichageRest.affichageRest.DTO.*;
-import com.affichageRest.affichageRest.model.PersonIndisponibilite;
+import com.affichageRest.affichageRest.DTO.PersonIndisponibiliteQueryDTO;
 import com.affichageRest.affichageRest.model.PersonIndisponibilitePK;
-import com.affichageRest.affichageRest.model.PersonResultatPK;
 import com.affichageRest.affichageRest.services.PersonIndisponibiliteService;
-import com.affichageRest.affichageRest.services.PersonResultatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PersistenceProperty;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,14 +22,14 @@ public class PersonIndisponibiliteController {
     private PersonIndisponibiliteService personIndisponibiliteService;
 
     @GetMapping
-    public ResponseEntity<List<PersonIndisponibiliteGetDTO>> getAllindispo(){
+    public ResponseEntity<List<PersonIndisponibiliteQueryDTO>> getAllindispo(){
         return new ResponseEntity<>(personIndisponibiliteService.getAllPersonIndisponibilite(), HttpStatus.OK);
 
     }
 
     @GetMapping(value ="/{idperson}/{idindispo}/{idcours}")
-    public ResponseEntity<PersonIndisponibiliteGetDTO> getindispo(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours")
-            UUID idcours,@PathVariable(value="idindispo")  UUID idindispo){
+    public ResponseEntity<PersonIndisponibiliteQueryDTO> getindispo(@PathVariable(value="idperson")  UUID idperson, @PathVariable(value = "idcours")
+            UUID idcours, @PathVariable(value="idindispo")  UUID idindispo){
        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idcours);
 
 
@@ -45,7 +41,7 @@ public class PersonIndisponibiliteController {
 
 
     @PostMapping
-    public ResponseEntity<UUID>createIndispo(@RequestBody PersonIndisponibiliteCreateDTO res){
+    public ResponseEntity<UUID>createIndispo(@RequestBody PersonIndisponibiliteQueryDTO res){
 
         return new ResponseEntity(personIndisponibiliteService.createPersonIndisponibilite(res), HttpStatus.CREATED);
     }
@@ -54,9 +50,9 @@ public class PersonIndisponibiliteController {
     @PutMapping(value ="/{idperson}/{idindispo}/{idcours}")
     public void updateindispo(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ,
                              @PathVariable(value = "idinspo") UUID idindispo,
-                             @RequestBody PersonIndisponibiliteUpdateDTO personIndisponibiliteUpdateDTO){
+                             @RequestBody PersonIndisponibiliteQueryDTO PersonIndisponibiliteQueryDTO){
         PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idcours);
-        personIndisponibiliteService.updatePersonIndisponibilite(id,personIndisponibiliteUpdateDTO);
+        personIndisponibiliteService.updatePersonIndisponibilite(id,PersonIndisponibiliteQueryDTO);
     }
 
     @DeleteMapping(value ="/{idperson}/{idindispo}/{idcours}")

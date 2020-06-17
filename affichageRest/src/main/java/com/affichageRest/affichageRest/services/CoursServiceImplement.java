@@ -2,9 +2,7 @@ package com.affichageRest.affichageRest.services;
 
 
 import com.affichageRest.affichageRest.DAO.CoursRepository;
-import com.affichageRest.affichageRest.DTO.CoursCreateDTO;
-import com.affichageRest.affichageRest.DTO.CoursGetDTO;
-import com.affichageRest.affichageRest.DTO.CoursUpdateDTO;
+import com.affichageRest.affichageRest.DTO.CoursQueryDTO;
 import com.affichageRest.affichageRest.model.Cours;
 import org.springframework.stereotype.Service;
 
@@ -21,21 +19,21 @@ public class CoursServiceImplement implements CoursService {
 
 
     @Override
-    public List<CoursGetDTO> getAllCours() {
-        List<CoursGetDTO> plist = new ArrayList<>();
+    public List<CoursQueryDTO> getAllCours() {
+        List<CoursQueryDTO> plist = new ArrayList<>();
         coursRepository.findAll().forEach(cours -> {
-            plist.add(new CoursGetDTO(cours.getId(),cours.getNom()));
+            plist.add(new CoursQueryDTO(cours.getId(),cours.getNom()));
         });
         return plist;
     }
 
     @Override
-    public CoursGetDTO getCours(UUID id) {
+    public CoursQueryDTO getCours(UUID id) {
         if(coursRepository.findById(id).isPresent()){
             Cours  temp = coursRepository.findById(id).get();
 
 
-            return new CoursGetDTO(temp.getId(),temp.getNom());
+            return new CoursQueryDTO(temp.getId(),temp.getNom());
         }
         else{
             return null;
@@ -43,11 +41,11 @@ public class CoursServiceImplement implements CoursService {
     }
 
     @Override
-    public UUID createCours(CoursCreateDTO cours) {
+    public UUID createCours(CoursQueryDTO cours) {
 
         Cours newcours = new Cours();
 
-        newcours.setId(UUID.randomUUID());
+        newcours.setId(UUID.nameUUIDFromBytes(cours.getName().getBytes()));
         newcours.setNom(cours.getName());
 
 
@@ -55,12 +53,11 @@ public class CoursServiceImplement implements CoursService {
     }
 
     @Override
-    public void updateCours(UUID id, CoursUpdateDTO cours) {
+    public void updateCours(UUID id, CoursQueryDTO cours) {
         if (coursRepository.findById(id).isPresent()) {
             Cours coursexistant = coursRepository.findById(id).get();
-
-
             coursexistant.setNom(cours.getName());
+            System.out.println("test");
 
 
         }

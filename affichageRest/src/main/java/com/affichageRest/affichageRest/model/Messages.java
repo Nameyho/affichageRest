@@ -15,16 +15,14 @@ import java.util.UUID;
 public class Messages implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column (name="MESSAGE_ID") private UUID idMessage;
 
     @NotNull
     private String Contenu;
 
-
     private Date createdDate;
 
-
+    private String titreMessage;
 
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
@@ -33,11 +31,17 @@ public class Messages implements Serializable {
     public Messages() {
     }
 
-    public Messages(String contenu, Date createdDate, Person person) {
+    public Messages(String contenu, Date createdDate,User user,String titreMessage) {
         Contenu = contenu;
         this.createdDate = createdDate;
+        this.user=user;
+        this.titreMessage=titreMessage;
+        this.idMessage= UUID.nameUUIDFromBytes((contenu +createdDate.toString()+user.toString()).getBytes());
+
 
     }
+
+
 
     public UUID getId() {
         return idMessage;
@@ -55,7 +59,13 @@ public class Messages implements Serializable {
         return createdDate;
     }
 
+    public String getTitreMessage() {
+        return titreMessage;
+    }
 
+    public void setTitreMessage(String titreMessage) {
+        this.titreMessage = titreMessage;
+    }
 
     public void setIdMessage(UUID idMessage) {
         this.idMessage = idMessage;

@@ -1,8 +1,6 @@
 package com.affichageRest.affichageRest.Controller;
 
-import com.affichageRest.affichageRest.DTO.PersonCreateDTO;
-import com.affichageRest.affichageRest.DTO.PersonGetDTO;
-import com.affichageRest.affichageRest.DTO.PersonUpdateDTO;
+import com.affichageRest.affichageRest.DTO.PersonQueryDTO;
 import com.affichageRest.affichageRest.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,13 +19,13 @@ public class PersonController {
 
     @CrossOrigin(origins = "*")
     @GetMapping
-    public ResponseEntity<List<PersonGetDTO>> getAllPersons(){
+    public ResponseEntity<List<PersonQueryDTO>> getAllPersons(){
         return new ResponseEntity<>(personService.getAllPerson(),HttpStatus.OK);
 
     }
 
     @GetMapping(value ="/{id}")
-    public ResponseEntity<PersonGetDTO> getPerson(@PathVariable(value="id") UUID id){
+    public ResponseEntity<PersonQueryDTO> getPerson(@PathVariable(value="id") UUID id){
         return new ResponseEntity<>(personService.getPerson(id),HttpStatus.OK);
 
     }
@@ -35,7 +33,7 @@ public class PersonController {
 
 
     @PostMapping
-    public ResponseEntity<UUID>createPerson(@RequestBody PersonCreateDTO person){
+    public ResponseEntity<UUID>createPerson(@RequestBody PersonQueryDTO person){
 
         return new ResponseEntity<>(personService.createPerson(person), HttpStatus.CREATED);
     }
@@ -43,7 +41,7 @@ public class PersonController {
 
     @PutMapping(value="/{id}")
     public void updatePerson(@PathVariable(value="id") UUID id,
-                                       @RequestBody PersonUpdateDTO personUpdateDTO){
+                                       @RequestBody PersonQueryDTO personUpdateDTO){
         personService.updatePerson(id,personUpdateDTO);
     }
 

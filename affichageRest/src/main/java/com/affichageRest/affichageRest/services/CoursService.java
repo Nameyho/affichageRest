@@ -1,18 +1,16 @@
 package com.affichageRest.affichageRest.services;
 
-import com.affichageRest.affichageRest.DTO.CoursCreateDTO;
-import com.affichageRest.affichageRest.DTO.CoursGetDTO;
-import com.affichageRest.affichageRest.DTO.CoursUpdateDTO;
+import com.affichageRest.affichageRest.DTO.CoursQueryDTO;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface CoursService {
 
-    List<CoursGetDTO> getAllCours();
-    CoursGetDTO getCours(UUID id);
-    UUID createCours(CoursCreateDTO person);
-    void updateCours(UUID id, CoursUpdateDTO person);
+    List<CoursQueryDTO> getAllCours();
+    CoursQueryDTO getCours(UUID id);
+    UUID createCours(CoursQueryDTO person);
+    void updateCours(UUID id, CoursQueryDTO person);
     void delete(UUID id);
 
 }

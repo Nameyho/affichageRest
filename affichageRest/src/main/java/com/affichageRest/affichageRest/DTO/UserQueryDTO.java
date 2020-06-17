@@ -3,7 +3,7 @@ package com.affichageRest.affichageRest.DTO;
 import javax.validation.constraints.NotEmpty;
 import java.util.UUID;
 
-public class UserGetDto {
+public class UserQueryDTO {
 
     private UUID id;
 
@@ -15,10 +15,10 @@ public class UserGetDto {
 
     private UUID idRole;
 
-    public UserGetDto() {
+    public UserQueryDTO() {
     }
 
-    public UserGetDto(UUID id, String username, String password, UUID idRole) {
+    public UserQueryDTO(UUID id, String username, String password, UUID idRole) {
         this.id = id;
         this.username = username;
         this.password = password;

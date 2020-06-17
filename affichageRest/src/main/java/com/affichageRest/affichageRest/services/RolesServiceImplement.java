@@ -2,9 +2,7 @@ package com.affichageRest.affichageRest.services;
 
 
 import com.affichageRest.affichageRest.DAO.RoleRepository;
-import com.affichageRest.affichageRest.DTO.RoleCreateDTO;
-import com.affichageRest.affichageRest.DTO.RoleGetDTO;
-import com.affichageRest.affichageRest.DTO.RoleUpdateDTO;
+import com.affichageRest.affichageRest.DTO.RoleQueryDTO;
 import com.affichageRest.affichageRest.model.Role;
 import org.springframework.stereotype.Service;
 
@@ -19,21 +17,21 @@ public class RolesServiceImplement implements RolesService {
     @Resource
     private RoleRepository roleRepository;
     @Override
-    public List<RoleGetDTO> getAllRoles() {
-        List<RoleGetDTO> plist = new ArrayList<>();
+    public List<RoleQueryDTO> getAllRoles() {
+        List<RoleQueryDTO> plist = new ArrayList<>();
         roleRepository.findAll().forEach(role -> {
-            plist.add(new RoleGetDTO(role.getId(),role.getName(),role.getDescription()));
+            plist.add(new RoleQueryDTO(role.getId(),role.getName(),role.getDescription()));
         });
         return plist;
     }
 
     @Override
-    public RoleGetDTO getRole(UUID id) {
+    public RoleQueryDTO getRole(UUID id) {
         if(roleRepository.findById(id).isPresent()){
             Role temp = roleRepository.findById(id).get();
 
 
-            return new RoleGetDTO(temp.getId(),temp.getName(),temp.getDescription());
+            return new RoleQueryDTO(temp.getId(),temp.getName(),temp.getDescription());
         }
         else{
             return null;
@@ -41,7 +39,7 @@ public class RolesServiceImplement implements RolesService {
     }
 
     @Override
-    public UUID createRole(RoleCreateDTO role) {
+    public UUID createRole(RoleQueryDTO role) {
 
         Role newRoles = new Role();
 
@@ -53,7 +51,7 @@ public class RolesServiceImplement implements RolesService {
     }
 
     @Override
-    public void updateRole(UUID id, RoleUpdateDTO role) {
+    public void updateRole(UUID id, RoleQueryDTO role) {
         if (roleRepository.findById(id).isPresent()) {
             Role roleexistant = roleRepository.findById(id).get();
 

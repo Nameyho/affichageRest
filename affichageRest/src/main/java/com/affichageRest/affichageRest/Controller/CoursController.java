@@ -1,10 +1,7 @@
 package com.affichageRest.affichageRest.Controller;
 
 
-import com.affichageRest.affichageRest.DTO.CoursCreateDTO;
-import com.affichageRest.affichageRest.DTO.CoursGetDTO;
-import com.affichageRest.affichageRest.DTO.CoursUpdateDTO;
-import com.affichageRest.affichageRest.model.Cours;
+import com.affichageRest.affichageRest.DTO.CoursQueryDTO;
 import com.affichageRest.affichageRest.services.CoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,24 +23,24 @@ import java.util.UUID;
 
 
         @GetMapping
-        public ResponseEntity<List<CoursGetDTO>> getAllCours(){
+        public ResponseEntity<List<CoursQueryDTO>> getAllCours(){
             return new ResponseEntity<>(coursService.getAllCours(), HttpStatus.OK);
         }
 
         @GetMapping(value="/{id}")
-        public ResponseEntity<CoursGetDTO> getAllCours(@PathVariable(value="id") UUID id){
+        public ResponseEntity<CoursQueryDTO> getAllCours(@PathVariable(value="id") UUID id){
             return new ResponseEntity<>(coursService.getCours(id), HttpStatus.OK);
         }
 
 
         @PostMapping
-        public ResponseEntity<UUID> createCours( @RequestBody  @Valid CoursCreateDTO role){
+        public ResponseEntity<UUID> createCours( @RequestBody  @Valid CoursQueryDTO role){
             return new ResponseEntity<>(coursService.createCours(role),HttpStatus.CREATED);
         }
 
         @PutMapping(value="/{id}")
         public void updateCours(@PathVariable(value="id") UUID id,
-                               @RequestBody CoursUpdateDTO coursUpdateDTO){
+                               @RequestBody CoursQueryDTO coursUpdateDTO){
             coursService.updateCours(id,coursUpdateDTO);
         }
 

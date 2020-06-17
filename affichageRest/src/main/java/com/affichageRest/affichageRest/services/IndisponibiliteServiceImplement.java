@@ -3,9 +3,7 @@ package com.affichageRest.affichageRest.services;
 
 
 import com.affichageRest.affichageRest.DAO.IndisponibiliteRepository;
-import com.affichageRest.affichageRest.DTO.IndisponibiliteCreateDTO;
-import com.affichageRest.affichageRest.DTO.IndisponibiliteGetDTO;
-import com.affichageRest.affichageRest.DTO.IndisponibiliteUpdateDTO;
+import com.affichageRest.affichageRest.DTO.IndisponibiliteQueryDTO;
 import com.affichageRest.affichageRest.model.Indisponibilite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,21 +20,21 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
 
 
     @Override
-    public List<IndisponibiliteGetDTO> getAllCours() {
-        List<IndisponibiliteGetDTO> plist = new ArrayList<>();
+    public List<IndisponibiliteQueryDTO> getAllCours() {
+        List<IndisponibiliteQueryDTO> plist = new ArrayList<>();
         indisponibiliteRepository.findAll().forEach(indisponibilite -> {
-            plist.add(new IndisponibiliteGetDTO(indisponibilite.getIdinsponibilite(),indisponibilite.getType()));
+            plist.add(new IndisponibiliteQueryDTO(indisponibilite.getIdinsponibilite(),indisponibilite.getType()));
         });
         return plist;
     }
 
     @Override
-    public IndisponibiliteGetDTO getIndisponibilite(UUID id) {
+    public IndisponibiliteQueryDTO getIndisponibilite(UUID id) {
         if(indisponibiliteRepository.findById(id).isPresent()){
             Indisponibilite temp = indisponibiliteRepository.findById(id).get();
 
 
-            return new IndisponibiliteGetDTO(temp.getIdinsponibilite(),temp.getType());
+            return new IndisponibiliteQueryDTO(temp.getIdinsponibilite(),temp.getType());
         }
         else{
             return null;
@@ -45,7 +43,7 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
 
 
     @Override
-    public UUID createIndisponibilite(IndisponibiliteCreateDTO indispo) {
+    public UUID createIndisponibilite(IndisponibiliteQueryDTO indispo) {
 
        Indisponibilite newIndispo = new Indisponibilite();
 
@@ -56,7 +54,7 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
     }
 
     @Override
-    public void updateIndisponibilite(UUID id, IndisponibiliteUpdateDTO indisponibilite) {
+    public void updateIndisponibilite(UUID id, IndisponibiliteQueryDTO indisponibilite) {
         if (indisponibiliteRepository.findById(id).isPresent()) {
             Indisponibilite coursexistant = indisponibiliteRepository.findById(id).get();
 

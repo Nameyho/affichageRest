@@ -1,7 +1,5 @@
 package com.affichageRest.affichageRest.DAO;
 
-import com.affichageRest.affichageRest.DTO.PersonResultatGetDTO;
-import com.affichageRest.affichageRest.model.Person;
 import com.affichageRest.affichageRest.model.PersonResultat;
 import com.affichageRest.affichageRest.model.PersonResultatPK;
 import org.hibernate.annotations.Type;

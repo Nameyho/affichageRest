@@ -3,23 +3,41 @@ package com.affichageRest.affichageRest.DTO;
 import java.util.Date;
 import java.util.UUID;
 
-public class MessageGetDTO {
+public class MessageQueryDTO {
 
     private UUID idMessage;
     public String contenu;
     public Date createdDate;
-
+    private String nomPerson;
     private UUID idPerson;
+    private String titreMessage;
 
 
-    public MessageGetDTO(UUID idMessage, String contenu, Date createdDate, UUID idPerson) {
+    public MessageQueryDTO(UUID idMessage, String contenu, Date createdDate, UUID idperson) {
         this.idMessage = idMessage;
         this.contenu = contenu;
         this.createdDate = createdDate;
-        this.idPerson = idPerson;
+        this.idPerson=idperson;
+
+    }
+    public MessageQueryDTO(UUID idMessage, String contenu, Date createdDate, UUID idperson, String nomPerso,String titreMessage) {
+        this.idMessage = idMessage;
+        this.contenu = contenu;
+        this.createdDate = createdDate;
+        this.idPerson=idperson;
+        this.nomPerson=nomPerso;
+        this.titreMessage =titreMessage;
     }
 
-    public MessageGetDTO() {
+    public String getTitreMessage() {
+        return titreMessage;
+    }
+
+    public void setTitreMessage(String titreMessage) {
+        this.titreMessage = titreMessage;
+    }
+
+    public MessageQueryDTO() {
     }
 
     public UUID getIdMessage() {
@@ -52,5 +70,13 @@ public class MessageGetDTO {
 
     public void setIdPerson(UUID idPerson) {
         this.idPerson = idPerson;
+    }
+
+    public String getNomPerson() {
+        return nomPerson;
+    }
+
+    public void setNomPerson(String nomPerson) {
+        this.nomPerson = nomPerson;
     }
 }

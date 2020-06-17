@@ -4,9 +4,7 @@ package com.affichageRest.affichageRest.services;
 import com.affichageRest.affichageRest.DAO.CoursEnseigneRepository;
 import com.affichageRest.affichageRest.DAO.CoursRepository;
 import com.affichageRest.affichageRest.DAO.PersonRepository;
-import com.affichageRest.affichageRest.DTO.CoursEnseigneCreateDTO;
-import com.affichageRest.affichageRest.DTO.CoursEnseigneGetDTO;
-import com.affichageRest.affichageRest.DTO.CoursEnseigneUpdateDTO;
+import com.affichageRest.affichageRest.DTO.CoursEnseigneQueryDTO;
 import com.affichageRest.affichageRest.model.CoursEnseigne;
 import com.affichageRest.affichageRest.model.CoursEnseigneID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service(value="CoursEnseignesService")
 public class CoursEnseigneServiceImplement implements CoursEnseigneService {
@@ -31,21 +28,46 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
 
 
     @Override
-    public List<CoursEnseigneGetDTO> getAllCoursEnseignes() {
-        List<CoursEnseigneGetDTO> plist = new ArrayList<>();
-        coursEnseigneRepository.findAll().forEach(CoursEnseigne -> {
-            plist.add(new CoursEnseigneGetDTO(CoursEnseigne.getEnseigneID().getIdPerson(),CoursEnseigne.getEnseigneID().getIdCours(),CoursEnseigne.getAnnee()));
-        });
+    public List<CoursEnseigneQueryDTO> getAllCoursEnseignes() {
+        List<CoursEnseigneQueryDTO> plist = new ArrayList<>();
+        coursEnseigneRepository.findAll().forEach(coursEnseigne -> {
+
+            String nomCours = coursRepository.findById(coursEnseigne.getEnseigneID().getIdCours()).get().getNom();
+            String nomPerson = personRepository.findById(coursEnseigne.getEnseigneID().getIdPerson()).get().getNom();
+            plist.add(new
+                    CoursEnseigneQueryDTO(
+                            coursEnseigne.getEnseigneID().getIdPerson(),
+                            coursEnseigne.getEnseigneID().getIdCours(),
+                            coursEnseigne.getAnneeDebut(),
+                            coursEnseigne.getAnneeFin(),
+                            nomCours,
+                            nomPerson   ));
+
+
+
+            });
         return plist;
     }
 
     @Override
-    public CoursEnseigneGetDTO getCoursEnseigne(CoursEnseigneID id) {
+    public CoursEnseigneQueryDTO getCoursEnseigne(CoursEnseigneID id) {
         if(coursEnseigneRepository.findById(id).isPresent()){
-            CoursEnseigne  temp = coursEnseigneRepository.findById(id).get();
+            CoursEnseigne  coursEnseigne = coursEnseigneRepository.findById(id).get();
+            String nomCours = coursRepository.findById(coursEnseigne.getEnseigneID().getIdCours()).get().getNom();
+            String nomPerson = personRepository.findById(coursEnseigne.getEnseigneID().getIdPerson()).get().getNom();
+
+            return new
+                    CoursEnseigneQueryDTO(
+                    coursEnseigne.getEnseigneID().getIdPerson(),
+                    coursEnseigne.getEnseigneID().getIdCours(),
+                    coursEnseigne.getAnneeDebut(),
+                    coursEnseigne.getAnneeFin(),
+                    nomCours,
+                    nomPerson
 
 
-            return new CoursEnseigneGetDTO(temp.getEnseigneID().getIdPerson(),temp.getEnseigneID().getIdCours(),temp.getAnnee());
+                    );
+
         }
         else{
             return null;
@@ -53,7 +75,7 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
     }
 
     @Override
-    public CoursEnseigneCreateDTO createCoursEnseigne(CoursEnseigneCreateDTO coursEnseigne) {
+    public CoursEnseigneQueryDTO createCoursEnseigne(CoursEnseigneQueryDTO coursEnseigne) {
 
 
         CoursEnseigneID coursEnseigneID = new CoursEnseigneID();
@@ -62,25 +84,22 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
         coursEnseigneID.setIdPerson(coursEnseigne.getIdPerson());
 
         CoursEnseigne newCoursEnseignes = new CoursEnseigne();
-        newCoursEnseignes.setAnnee(coursEnseigne.getAnnee());
 
         newCoursEnseignes.setEnseigneID(coursEnseigneID);
+
+        newCoursEnseignes.setAnneeDebut(coursEnseigne.getAnneeDebut());
+        newCoursEnseignes.setAnneeFin(coursEnseigne.getAnneeFin());
 
        coursEnseigneRepository.save(newCoursEnseignes);
         return coursEnseigne;
     }
 
     @Override
-    public void updateCoursEnseigne(CoursEnseigneID id, CoursEnseigneUpdateDTO coursEnseigne) {
-
-
-
+    public void updateCoursEnseigne(CoursEnseigneID id, CoursEnseigneQueryDTO coursEnseigne) {
 
         CoursEnseigne newCoursEnseignes = new CoursEnseigne();
-        newCoursEnseignes.setAnnee(coursEnseigne.getAnnee());
-
-
-
+        newCoursEnseignes.setAnneeDebut(coursEnseigne.getAnneeDebut());
+        newCoursEnseignes.setAnneeFin(coursEnseigne.getAnneeFin());
         newCoursEnseignes.setEnseigneID(id);
 
         coursEnseigneRepository.save(newCoursEnseignes);

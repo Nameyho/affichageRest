@@ -1,8 +1,6 @@
 package com.affichageRest.affichageRest.Controller;
 
-import com.affichageRest.affichageRest.DTO.RoleCreateDTO;
-import com.affichageRest.affichageRest.DTO.RoleGetDTO;
-import com.affichageRest.affichageRest.DTO.RoleUpdateDTO;
+import com.affichageRest.affichageRest.DTO.RoleQueryDTO;
 import com.affichageRest.affichageRest.services.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,25 +19,25 @@ public class RolesController {
 
 
     @GetMapping
-   public ResponseEntity<List<RoleGetDTO>> getAllRoles(){
+   public ResponseEntity<List<RoleQueryDTO>> getAllRoles(){
         return new ResponseEntity<>(rolesService.getAllRoles(), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
-    public ResponseEntity<RoleGetDTO> getAllRoles(@PathVariable(value="id") UUID id){
+    public ResponseEntity<RoleQueryDTO> getAllRoles(@PathVariable(value="id") UUID id){
         return new ResponseEntity<>(rolesService.getRole(id), HttpStatus.OK);
     }
 
 
     @PostMapping
-         public ResponseEntity<UUID> createRole(@RequestBody RoleCreateDTO role){
+         public ResponseEntity<UUID> createRole(@RequestBody RoleQueryDTO role){
 
         return new ResponseEntity<>(rolesService.createRole(role),HttpStatus.CREATED);
     }
 
     @PutMapping(value="/{id}")
     public void updateRole(@PathVariable(value="id") UUID id,
-                             @RequestBody RoleUpdateDTO roleUpdateDTO){
+                             @RequestBody RoleQueryDTO roleUpdateDTO){
         rolesService.updateRole(id,roleUpdateDTO);
     }
 

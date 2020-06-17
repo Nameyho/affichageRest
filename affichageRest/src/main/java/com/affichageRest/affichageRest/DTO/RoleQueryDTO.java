@@ -1,26 +1,21 @@
 package com.affichageRest.affichageRest.DTO;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.UUID;
 
-public class CoursCreateDTO {
+public class RoleQueryDTO {
 
     private UUID idRole;
-
-    @NotNull
     private String name;
+    private String description;
 
 
-
-    public CoursCreateDTO() {
+    public RoleQueryDTO() {
     }
 
-    public CoursCreateDTO(UUID idRole, String name) {
+    public RoleQueryDTO(UUID idRole, String name, String description) {
         this.idRole = idRole;
         this.name = name;
-
+        this.description = description;
     }
 
     public UUID getIdRole() {
@@ -39,4 +34,11 @@ public class CoursCreateDTO {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

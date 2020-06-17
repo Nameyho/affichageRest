@@ -3,16 +3,11 @@ package com.affichageRest.affichageRest.services;
 
 import com.affichageRest.affichageRest.DAO.RoleRepository;
 import com.affichageRest.affichageRest.DAO.UserRepository;
-import com.affichageRest.affichageRest.DTO.UserCreateDTO;
-import com.affichageRest.affichageRest.DTO.UserGetDto;
-import com.affichageRest.affichageRest.DTO.UserUpdateDto;
+import com.affichageRest.affichageRest.DTO.UserQueryDTO;
 import com.affichageRest.affichageRest.model.Role;
 import com.affichageRest.affichageRest.model.User;
-import org.aspectj.weaver.bcel.BcelAccessForInlineMunger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UUID CreateUser(UserCreateDTO user) {
+    public UUID CreateUser(UserQueryDTO user) {
 
         User nouvUser = new User();
 
@@ -44,17 +39,17 @@ public class UserServiceImpl implements UserService {
 
         nouvUser.setPassword(mdpenc);
 
-        Role role = roleRepository.findById(user.getIdUser()).get();
+        Role role = roleRepository.findById(user.getId()).get();
 
         nouvUser.setRoles(role);
         return userRepository.save(nouvUser).getIdUser();
     }
 
     @Override
-    public List<UserGetDto> getAllUser() {
-        List<UserGetDto> plist= new ArrayList<>();
+    public List<UserQueryDTO> getAllUser() {
+        List<UserQueryDTO> plist= new ArrayList<>();
         userRepository.findAll().forEach(user->
-                plist.add(new UserGetDto(
+                plist.add(new UserQueryDTO(
                         user.getIdUser(),
 
                         user.getUsername(),
@@ -69,11 +64,11 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserGetDto getUser(UUID id) {
+    public UserQueryDTO getUser(UUID id) {
         if(userRepository.findById(id).isPresent()){
             User user = userRepository.findById(id).get();
 
-            return new UserGetDto(user.getIdUser(),user.getUsername(),user.getPassword(),user.getRoles().getIdRole());
+            return new UserQueryDTO(user.getIdUser(),user.getUsername(),user.getPassword(),user.getRoles().getIdRole());
 
         }
         else{
@@ -82,7 +77,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(UUID id, UserUpdateDto userUpdateDto) {
+    public void updateUser(UUID id, UserQueryDTO userUpdateDto) {
 
         if(userRepository.findById(id).isPresent()){
 

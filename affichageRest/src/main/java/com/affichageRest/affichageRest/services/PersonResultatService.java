@@ -1,9 +1,7 @@
 package com.affichageRest.affichageRest.services;
 
 
-import com.affichageRest.affichageRest.DTO.PersonResultatCreateDTO;
-import com.affichageRest.affichageRest.DTO.PersonResultatGetDTO;
-import com.affichageRest.affichageRest.DTO.PersonResultatUpdateDTO;
+import com.affichageRest.affichageRest.DTO.PersonResultatQueryDTO;
 import com.affichageRest.affichageRest.model.PersonResultat;
 import com.affichageRest.affichageRest.model.PersonResultatPK;
 
@@ -12,17 +10,17 @@ import java.util.UUID;
 
 public interface PersonResultatService {
 
-    List<PersonResultatGetDTO> getAllResultat();
+    List<PersonResultatQueryDTO> getAllResultat();
 
-    PersonResultat createResultat(PersonResultatCreateDTO personResultatCreateDTO);
+    PersonResultat createResultat(PersonResultatQueryDTO personResultatCreateDTO);
 
-    PersonResultatGetDTO getPersonResultat(PersonResultatPK id);
+    PersonResultatQueryDTO getPersonResultat(PersonResultatPK id);
 
-    void updateResultat(PersonResultatPK id, PersonResultatUpdateDTO CoursEnseigne);
+    void updateResultat(PersonResultatPK id, PersonResultatQueryDTO CoursEnseigne);
 
     void delete(PersonResultatPK id);
 
-    List<PersonResultatGetDTO> getResultatbyPerson(UUID id);
+    List<PersonResultatQueryDTO> getResultatbyPerson(UUID id);
 
 
 }

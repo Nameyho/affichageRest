@@ -1,17 +1,21 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public class IndisponibiliteGetDTO {
+public class IndisponibiliteQueryDTO {
 
     private UUID idindisponibilite;
+    @NotNull
+    @NotEmpty
     private String type;
 
-    public IndisponibiliteGetDTO(UUID idindisponibilite) {
+    public IndisponibiliteQueryDTO(UUID idindisponibilite) {
         this.idindisponibilite = idindisponibilite;
     }
 
-    public IndisponibiliteGetDTO(UUID idindisponibilite, String type) {
+    public IndisponibiliteQueryDTO(UUID idindisponibilite, String type) {
         this.idindisponibilite = idindisponibilite;
         this.type = type;
     }

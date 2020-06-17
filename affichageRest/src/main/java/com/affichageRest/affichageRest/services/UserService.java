@@ -1,8 +1,6 @@
 package com.affichageRest.affichageRest.services;
 
-import com.affichageRest.affichageRest.DTO.UserCreateDTO;
-import com.affichageRest.affichageRest.DTO.UserGetDto;
-import com.affichageRest.affichageRest.DTO.UserUpdateDto;
+import com.affichageRest.affichageRest.DTO.UserQueryDTO;
 import com.affichageRest.affichageRest.model.User;
 
 import java.util.List;
@@ -10,10 +8,10 @@ import java.util.UUID;
 
 public interface UserService {
 
-    List<UserGetDto> getAllUser();
-    UUID CreateUser(UserCreateDTO userCreateDTO);
-    UserGetDto getUser(UUID id);
-    void updateUser(UUID id, UserUpdateDto userUpdateDto);
+    List<UserQueryDTO> getAllUser();
+    UUID CreateUser(UserQueryDTO userCreateDTO);
+    UserQueryDTO getUser(UUID id);
+    void updateUser(UUID id, UserQueryDTO userUpdateDto);
     void delete(UUID id);
 
 

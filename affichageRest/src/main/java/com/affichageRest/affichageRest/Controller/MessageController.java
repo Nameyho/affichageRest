@@ -1,8 +1,6 @@
 package com.affichageRest.affichageRest.Controller;
 
-import com.affichageRest.affichageRest.DTO.MessageCreateDTO;
-import com.affichageRest.affichageRest.DTO.MessageGetDTO;
-import com.affichageRest.affichageRest.DTO.MessageUpdateDTO;
+import com.affichageRest.affichageRest.DTO.MessageQueryDTO;
 import com.affichageRest.affichageRest.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,17 +19,17 @@ public class MessageController {
 
 
     @GetMapping
-   public ResponseEntity<List<MessageGetDTO>> getAllMessages(){
+   public ResponseEntity<List<MessageQueryDTO>> getAllMessages(){
         return new ResponseEntity<>(messageService.getAllMessages(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<MessageGetDTO> getPerson(@PathVariable(value="id") UUID id){
+    public ResponseEntity<MessageQueryDTO> getPerson(@PathVariable(value="id") UUID id){
         return new ResponseEntity<>(messageService.getMessage(id),HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<UUID>createMessage(@RequestBody MessageCreateDTO person){
+    public ResponseEntity<UUID>createMessage(@RequestBody MessageQueryDTO person){
 
         return new ResponseEntity<>(messageService.createMessage(person), HttpStatus.CREATED);
     }
@@ -39,7 +37,7 @@ public class MessageController {
 
     @PutMapping(value="/{id}")
     public void updateMessage(@PathVariable(value="id") UUID id,
-                             @RequestBody MessageUpdateDTO messageUpdateDTO){
+                             @RequestBody MessageQueryDTO messageUpdateDTO){
         messageService.updateMessages(id,messageUpdateDTO);
     }
 

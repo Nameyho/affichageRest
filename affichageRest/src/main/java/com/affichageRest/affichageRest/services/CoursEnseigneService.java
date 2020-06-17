@@ -1,23 +1,20 @@
 package com.affichageRest.affichageRest.services;
 
 
-import com.affichageRest.affichageRest.DTO.CoursEnseigneCreateDTO;
-import com.affichageRest.affichageRest.DTO.CoursEnseigneGetDTO;
-import com.affichageRest.affichageRest.DTO.CoursEnseigneUpdateDTO;
+import com.affichageRest.affichageRest.DTO.CoursEnseigneQueryDTO;
 import com.affichageRest.affichageRest.model.CoursEnseigneID;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface CoursEnseigneService {
 
-    List<CoursEnseigneGetDTO> getAllCoursEnseignes();
+    List<CoursEnseigneQueryDTO> getAllCoursEnseignes();
 
-    CoursEnseigneCreateDTO createCoursEnseigne(CoursEnseigneCreateDTO CoursEnseigneCreateDTO);
+    CoursEnseigneQueryDTO createCoursEnseigne(CoursEnseigneQueryDTO CoursEnseigneQueryDTO);
 
-    CoursEnseigneGetDTO getCoursEnseigne(CoursEnseigneID id);
+    CoursEnseigneQueryDTO getCoursEnseigne(CoursEnseigneID id);
 
-    void updateCoursEnseigne(CoursEnseigneID id, CoursEnseigneUpdateDTO CoursEnseigne);
+    void updateCoursEnseigne(CoursEnseigneID id, CoursEnseigneQueryDTO CoursEnseigne);
 
     void delete(CoursEnseigneID id);
 

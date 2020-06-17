@@ -1,12 +1,14 @@
 package com.affichageRest.affichageRest.DTO;
 
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
+import java.util.UUID;
 
-public class PersonCreateDTO {
+public class PersonQueryDTO {
 
     @NotNull
     @NotEmpty
@@ -23,21 +25,32 @@ public class PersonCreateDTO {
     @Past
     private Date dateAnniversaire;
 
+    @NotNull
+    @NotEmpty
+    private UUID idPerson;
 
 
-
-    public PersonCreateDTO(String prenom, String nom, String email, Date dateAnniversaire, String mdp) {
+    public PersonQueryDTO(UUID idPerson,String prenom, String nom, String email, Date dateAnniversaire) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
 
+        this.idPerson = idPerson;
+
 
     }
 
 
+    public PersonQueryDTO() {
+    }
 
-    public PersonCreateDTO() {
+    public UUID getIdPerson() {
+        return idPerson;
+    }
+
+    public void setIdPerson(UUID idPerson) {
+        this.idPerson = idPerson;
     }
 
     public String getPrenom() {
