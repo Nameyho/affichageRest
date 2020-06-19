@@ -23,9 +23,6 @@ public class User {
     private String password;
 
 
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "id_role")
-    private Role roles;
 
 
     @OneToMany(mappedBy="user")
@@ -38,12 +35,12 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, Role roles) {
-        this.idUser = UUID.nameUUIDFromBytes((username+roles+password).getBytes());
+    public User(String username, String password) {
+        this.idUser = UUID.nameUUIDFromBytes((username+password).getBytes());
         this.username = username;
         this.password = password;
 
-        this.roles = roles;
+
     }
 
     public UUID getIdUser() {
@@ -79,11 +76,5 @@ public class User {
     }
 
 
-    public Role getRoles() {
-        return roles;
-    }
 
-    public void setRoles(Role roles) {
-        this.roles = roles;
-    }
 }

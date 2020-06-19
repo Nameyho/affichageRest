@@ -1,5 +1,7 @@
 package com.affichageRest.affichageRest.DTO;
 
+import com.affichageRest.affichageRest.model.Role;
+
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -29,18 +31,37 @@ public class PersonQueryDTO {
     @NotEmpty
     private UUID idPerson;
 
+    private UUID idRole;
 
-    public PersonQueryDTO(UUID idPerson,String prenom, String nom, String email, Date dateAnniversaire) {
+    private String nomRoles;
+
+    public String getNomRoles() {
+        return nomRoles;
+    }
+
+    public void setNomRoles(String nomRoles) {
+        this.nomRoles = nomRoles;
+    }
+
+    public PersonQueryDTO(UUID idPerson, String prenom, String nom, String email, Date dateAnniversaire, UUID role, String nomrole) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
-
+        this.idRole= role;
         this.idPerson = idPerson;
+        this.nomRoles=nomrole;
 
 
     }
 
+    public UUID getIdRole() {
+        return idRole;
+    }
+
+    public void setIdRole(UUID idRole) {
+        this.idRole = idRole;
+    }
 
     public PersonQueryDTO() {
     }

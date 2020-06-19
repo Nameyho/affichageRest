@@ -61,7 +61,7 @@ public class DataLoader implements ApplicationRunner {
         roleRepository.save(role);
 
         User user = new User("Florence",
-                "$2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK",role);
+                "$2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK");
         userRepository.save(user);
 
 
@@ -86,7 +86,7 @@ public class DataLoader implements ApplicationRunner {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         date = simpleDateFormat.parse("01/10/1993");
 
-        Person person =new Person("Mathieu","Allard","allardmathieu@gmail.com",date);
+        Person person =new Person("Mathieu","Allard","allardmathieu@gmail.com",date,role);
 
         personRepository.save(person);
 

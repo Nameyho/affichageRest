@@ -13,16 +13,14 @@ public class UserQueryDTO {
 
     private String password;
 
-    private UUID idRole;
 
     public UserQueryDTO() {
     }
 
-    public UserQueryDTO(UUID id, String username, String password, UUID idRole) {
+    public UserQueryDTO(UUID id, String username) {
         this.id = id;
         this.username = username;
-        this.password = password;
-        this.idRole = idRole;
+
     }
 
 
@@ -51,11 +49,5 @@ public class UserQueryDTO {
         this.password = password;
     }
 
-    public UUID getIdRole() {
-        return idRole;
-    }
 
-    public void setIdRole(UUID idRole) {
-        this.idRole = idRole;
-    }
 }

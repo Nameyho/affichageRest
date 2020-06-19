@@ -4,6 +4,7 @@ import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DAO.RoleRepository;
 import com.affichageRest.affichageRest.DTO.PersonQueryDTO;
 import com.affichageRest.affichageRest.model.Person;
+import com.affichageRest.affichageRest.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,8 @@ public class PersonServiceImplement implements PersonService {
 
         List<PersonQueryDTO> plist = new ArrayList<>();
         personRepository.findAll().forEach(person -> {
-            plist.add(new PersonQueryDTO(person.getIdPerson(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire()));
+            String nomrole = roleRepository.findById(person.getRoles().getId()).get().getName();
+            plist.add(new PersonQueryDTO(person.getIdPerson(),person.getPrenom(),person.getNom(),person.getEmail(),person.getDateAnniversaire(),person.getRoles().getIdRole(),nomrole));
         });
         return plist;
     }
@@ -39,9 +41,9 @@ public class PersonServiceImplement implements PersonService {
         if(personRepository.findById(id).isPresent()){
             Person persontemp = personRepository.findById(id).get();
 
-
+            String nomrole = roleRepository.findById(persontemp.getRoles().getId()).get().getName();
             return new PersonQueryDTO(persontemp.getIdPerson(),persontemp.getPrenom(),
-                    persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire());
+                    persontemp.getNom(),persontemp.getEmail(),persontemp.getDateAnniversaire(),persontemp.getRoles().getIdRole(),nomrole);
         }
     else{
         return null;
@@ -58,6 +60,7 @@ public class PersonServiceImplement implements PersonService {
         nouvPersonne.setEmail(person.getEmail());
         nouvPersonne.setNom(person.getNom());
         nouvPersonne.setPrenom(person.getPrenom());
+        nouvPersonne.setRoles(roleRepository.findById(person.getIdRole()).get());
 
         nouvPersonne.setIdPerson(UUID.nameUUIDFromBytes((person.getPrenom()+person.getNom()
                 +person.getEmail()+person.getDateAnniversaire()).getBytes()));
@@ -75,7 +78,7 @@ public class PersonServiceImplement implements PersonService {
             personneExistant.setEmail(person.getEmail());
             personneExistant.setNom(person.getNom());
             personneExistant.setPrenom(person.getPrenom());
-
+            personneExistant.setRoles(roleRepository.findById(person.getIdRole()).get());
 
             personRepository.save(personneExistant);
 

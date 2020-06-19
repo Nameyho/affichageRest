@@ -42,30 +42,40 @@ public class Person implements Serializable {
     @NotNull
     @Column private Date  dateAnniversaire;
 
+    @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "id_role")
+    private Role roles;
 
 
 
     public Person() {
     }
 
-    public Person(UUID idPerson, String prenom, String nom, String email, Date dateAnniversaire) {
+    public Person(UUID idPerson, String prenom, String nom, String email, Date dateAnniversaire,Role role) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
         this.idPerson= idPerson;
+        this.roles=roles;
     }
 
-    public Person( String prenom, String nom, String email, Date dateAnniversaire) {
+    public Person( String prenom, String nom, String email, Date dateAnniversaire,Role role) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
+        this.roles=role;
         this.idPerson= UUID.nameUUIDFromBytes((prenom+nom+dateAnniversaire).getBytes());
     }
 
+    public Role getRoles() {
+        return roles;
+    }
 
-
+    public void setRoles(Role roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String toString() {

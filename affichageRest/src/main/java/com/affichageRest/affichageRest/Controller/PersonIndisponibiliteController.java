@@ -57,7 +57,7 @@ public class PersonIndisponibiliteController {
 
     @DeleteMapping(value ="/{idperson}/{idindispo}/{idcours}")
     public void deleteIndispo(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ,
-                              @PathVariable(value = "idinspo") UUID idindispo){
+                              @PathVariable(value = "idindispo") UUID idindispo){
         PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idcours);
         personIndisponibiliteService.delete(id);
 

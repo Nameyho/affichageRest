@@ -57,7 +57,7 @@ public class CoursServiceImplement implements CoursService {
         if (coursRepository.findById(id).isPresent()) {
             Cours coursexistant = coursRepository.findById(id).get();
             coursexistant.setNom(cours.getName());
-            System.out.println("test");
+
 
 
         }

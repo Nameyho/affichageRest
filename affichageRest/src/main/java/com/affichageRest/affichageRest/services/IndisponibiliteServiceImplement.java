@@ -20,7 +20,7 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
 
 
     @Override
-    public List<IndisponibiliteQueryDTO> getAllCours() {
+    public List<IndisponibiliteQueryDTO> getAllIndispo() {
         List<IndisponibiliteQueryDTO> plist = new ArrayList<>();
         indisponibiliteRepository.findAll().forEach(indisponibilite -> {
             plist.add(new IndisponibiliteQueryDTO(indisponibilite.getIdinsponibilite(),indisponibilite.getType()));
@@ -49,6 +49,7 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
 
        newIndispo.setIdinsponibilite(indispo.getIdindisponibilite());
        newIndispo.setType(indispo.getType());
+       newIndispo.setIdinsponibilite(UUID.nameUUIDFromBytes(indispo.getType().getBytes()));
 
         return indisponibiliteRepository.save(newIndispo).getIdinsponibilite();
     }

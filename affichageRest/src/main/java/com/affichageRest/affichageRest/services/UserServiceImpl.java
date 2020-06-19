@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
         User nouvUser = new User();
 
-        nouvUser.setIdUser(UUID.randomUUID());
+        nouvUser.setIdUser(UUID.nameUUIDFromBytes((user.getUsername()+user.getPassword()).getBytes()));
         nouvUser.setUsername(user.getUsername());
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -39,9 +39,9 @@ public class UserServiceImpl implements UserService {
 
         nouvUser.setPassword(mdpenc);
 
-        Role role = roleRepository.findById(user.getId()).get();
+        Role role = roleRepository.findById(nouvUser.getIdUser()).get();
 
-        nouvUser.setRoles(role);
+
         return userRepository.save(nouvUser).getIdUser();
     }
 
@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService {
                 plist.add(new UserQueryDTO(
                         user.getIdUser(),
 
-                        user.getUsername(),
-                        user.getPassword(),
-                        user.getRoles().getIdRole()
+                        user.getUsername()
+
+
 
                 ))
 
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
         if(userRepository.findById(id).isPresent()){
             User user = userRepository.findById(id).get();
 
-            return new UserQueryDTO(user.getIdUser(),user.getUsername(),user.getPassword(),user.getRoles().getIdRole());
+            return new UserQueryDTO(user.getIdUser(),user.getUsername());
 
         }
         else{
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
 
             Role role = roleRepository.findById(userUpdateDto.getId()).get();
 
-            user.setRoles(role);
+
 
             userRepository.save(user);
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/indisponibilites")
+@RequestMapping(value = "/indisp")
 public class IndisponibilitéController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class IndisponibilitéController {
 
     @GetMapping
     public ResponseEntity<List<IndisponibiliteQueryDTO>> getAllPersonIndisponibilite(){
-        return new ResponseEntity<>(indisponibiliteService.getAllCours(), HttpStatus.OK);
+        return new ResponseEntity<>(indisponibiliteService.getAllIndispo(), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")

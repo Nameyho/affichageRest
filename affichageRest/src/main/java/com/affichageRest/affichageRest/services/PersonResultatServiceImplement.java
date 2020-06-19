@@ -31,7 +31,8 @@ public class PersonResultatServiceImplement implements PersonResultatService {
 
         List<PersonResultatQueryDTO> plist = new ArrayList<>();
         personResultatRepository.findAll().forEach(resultat -> {
-            plist.add(new PersonResultatQueryDTO(resultat.getPersonResultatPK().idPerson,resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
+            Cours idcours = coursRepository.findById(resultat.getPersonResultatPK().getIdCours()).get();
+            plist.add(new PersonResultatQueryDTO(resultat.getPersonResultatPK().idPerson,idcours.getNom(),resultat.getPersonResultatPK().idCours,resultat.getAnnee(),resultat.getResultat(),resultat.isReussite()));
         });
         return plist;
     }
@@ -55,8 +56,8 @@ public class PersonResultatServiceImplement implements PersonResultatService {
         if(personResultatRepository.findById(id).isPresent()){
             PersonResultat persontemp = personResultatRepository.findById(id).get();
 
-
-            return new PersonResultatQueryDTO(persontemp.getPersonResultatPK().idPerson,persontemp.getPersonResultatPK().idCours,persontemp.getAnnee(),persontemp.getResultat(),persontemp.isReussite());
+            Cours idcours = coursRepository.findById(persontemp.getPersonResultatPK().getIdCours()).get();
+            return new PersonResultatQueryDTO(persontemp.getPersonResultatPK().idPerson,idcours.getNom(),persontemp.getPersonResultatPK().idCours,persontemp.getAnnee(),persontemp.getResultat(),persontemp.isReussite());
         }
     else{
         return null;

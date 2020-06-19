@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/coursEns")
+@RequestMapping(value = "/coursens")
 
 public class CoursEnsController {
 
@@ -52,7 +52,7 @@ public class CoursEnsController {
         coursEnseigneService.updateCoursEnseigne(id,coursEnseigneUpdateDTO);
     }
 
-    @DeleteMapping(value ="/{idperson}/{idcours")
+    @DeleteMapping(value ="/{idperson}/{idcours}")
     public void deletePerson(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ){
         CoursEnseigneID id = new CoursEnseigneID(idperson,idcours);
         coursEnseigneService.delete(id);

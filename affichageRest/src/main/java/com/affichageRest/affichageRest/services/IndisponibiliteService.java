@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface IndisponibiliteService {
 
-    List<IndisponibiliteQueryDTO> getAllCours();
+    List<IndisponibiliteQueryDTO> getAllIndispo();
     IndisponibiliteQueryDTO getIndisponibilite(UUID id);
     UUID createIndisponibilite(IndisponibiliteQueryDTO person);
     void updateIndisponibilite(UUID id, IndisponibiliteQueryDTO person);
