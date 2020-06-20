@@ -1,6 +1,8 @@
 package com.affichageRest.affichageRest.Controller;
 
+import com.affichageRest.affichageRest.DAO.RoleRepository;
 import com.affichageRest.affichageRest.DTO.PersonQueryDTO;
+import com.affichageRest.affichageRest.model.Role;
 import com.affichageRest.affichageRest.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +19,20 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<PersonQueryDTO>> getAllPersons(){
         return new ResponseEntity<>(personService.getAllPerson(),HttpStatus.OK);
+
+    }
+
+    @GetMapping(value ="/roles/{id}")
+    public ResponseEntity<PersonQueryDTO> getPersonByRoles(@PathVariable(value="id") UUID id){
+        Role role= roleRepository.findById(id).get();
+        return new ResponseEntity(personService.findAllByRoles(role),HttpStatus.OK);
 
     }
 
@@ -29,7 +41,6 @@ public class PersonController {
         return new ResponseEntity<>(personService.getPerson(id),HttpStatus.OK);
 
     }
-
 
 
     @PostMapping

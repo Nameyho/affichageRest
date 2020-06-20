@@ -50,6 +50,16 @@ public class PersonServiceImplement implements PersonService {
     }}
 
     @Override
+    public List<PersonQueryDTO> findAllByRoles(Role role){
+        List<PersonQueryDTO> plist = new ArrayList<>();
+         personRepository.findAllByRoles(role).forEach(person -> {
+            plist.add(new PersonQueryDTO(person.getIdPerson(),person.getPrenom(),person.getNom(),person.getEmail(),
+                    person.getDateAnniversaire(),role.getIdRole(),role.getName()));
+        });
+        return plist;
+    }
+
+    @Override
     public UUID createPerson(PersonQueryDTO person) {
 
         Person nouvPersonne = new Person();

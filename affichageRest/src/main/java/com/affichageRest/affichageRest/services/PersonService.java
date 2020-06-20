@@ -1,6 +1,8 @@
 package com.affichageRest.affichageRest.services;
 
 import com.affichageRest.affichageRest.DTO.PersonQueryDTO;
+import com.affichageRest.affichageRest.model.Person;
+import com.affichageRest.affichageRest.model.Role;
 
 
 import java.util.List;
@@ -13,5 +15,6 @@ public interface PersonService  {
     PersonQueryDTO getPerson(UUID id);
     void updatePerson(UUID id, PersonQueryDTO personUpdateDTO);
     void delete(UUID id);
+    List<PersonQueryDTO> findAllByRoles(Role idRole);
 
 }
