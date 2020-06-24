@@ -56,9 +56,10 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-        Role role = new Role("Administrateur","Accés total");
+        Role role = new Role("Eleves","Accés interdit");
 
         roleRepository.save(role);
+
 
         User user = new User("Florence",
                 "$2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK");
@@ -87,6 +88,14 @@ public class DataLoader implements ApplicationRunner {
         date = simpleDateFormat.parse("01/10/1993");
 
         Person person =new Person("Mathieu","Allard","allardmathieu@gmail.com",date,role);
+
+        personRepository.save(person);
+
+        role = new Role("Professeur","accés restreint");
+
+        roleRepository.save(role);
+
+         person =new Person("Mat","All","allardmathieu@gmail.com",date,role);
 
         personRepository.save(person);
 
