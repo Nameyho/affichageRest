@@ -13,6 +13,24 @@ public class PersonIndisponibiliteQueryDTO {
 
     private Date dateFin;
 
+    private String nomPerson;
+    private String nomIndispo;
+    private String nomCours;
+    private String prenomPerson;
+
+    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id, UUID idCours, Date dateDebut, Date dateFin,
+                                         String nomPerson, String nomIndispo, String nomCours,String prenomPerson) {
+        this.idPerson = idPerson;
+        this.indispo_id = indispo_id;
+        this.idCours = idCours;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.nomPerson = nomPerson;
+        this.nomIndispo = nomIndispo;
+        this.nomCours = nomCours;
+        this.prenomPerson= prenomPerson;
+    }
+
     public PersonIndisponibiliteQueryDTO() {
     }
 
@@ -22,6 +40,38 @@ public class PersonIndisponibiliteQueryDTO {
         this.idCours = idCours;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+    }
+
+    public String getPrenomPerson() {
+        return prenomPerson;
+    }
+
+    public void setPrenomPerson(String prenomPerson) {
+        this.prenomPerson = prenomPerson;
+    }
+
+    public String getNomPerson() {
+        return nomPerson;
+    }
+
+    public void setNomPerson(String nomPerson) {
+        this.nomPerson = nomPerson;
+    }
+
+    public String getNomIndispo() {
+        return nomIndispo;
+    }
+
+    public void setNomIndispo(String nomIndispo) {
+        this.nomIndispo = nomIndispo;
+    }
+
+    public String getNomCours() {
+        return nomCours;
+    }
+
+    public void setNomCours(String nomCours) {
+        this.nomCours = nomCours;
     }
 
     public UUID getIndispo_id() {

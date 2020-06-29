@@ -1,6 +1,7 @@
 package com.affichageRest.affichageRest.services;
 
 
+import com.affichageRest.affichageRest.DAO.CoursRepository;
 import com.affichageRest.affichageRest.DAO.IndisponibiliteRepository;
 import com.affichageRest.affichageRest.DAO.PersonIndisponibiliteRepository;
 import com.affichageRest.affichageRest.DAO.PersonRepository;
@@ -23,17 +24,28 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
     private PersonRepository personRepository;
 
     @Autowired
-    private IndisponibiliteRepository coursRepository;
+    private IndisponibiliteRepository indisponibiliteRepository;
+
+    @Autowired
+    private CoursRepository coursRepository;
 
 
 
     @Override
     public List<PersonIndisponibiliteQueryDTO> getAllPersonIndisponibilite () {
         List<PersonIndisponibiliteQueryDTO> plist = new ArrayList<>();
-        personIndisponibiliteRepository.findAll().forEach(pIndisp -> {
 
-            System.out.println(pIndisp.getPersonIndisponibilitePK().getIndispo_id());
-            plist.add(new PersonIndisponibiliteQueryDTO(pIndisp.getPersonIndisponibilitePK().getIdPerson(),pIndisp.getPersonIndisponibilitePK().getIndispo_id(),pIndisp.getPersonIndisponibilitePK().getIdCours(),pIndisp.getDateDebut(),pIndisp.getDateFin()));
+
+        personIndisponibiliteRepository.findAll().forEach(pIndisp -> {
+            plist.add(new PersonIndisponibiliteQueryDTO(
+                    pIndisp.getPersonIndisponibilitePK().getIdPerson(),
+                    pIndisp.getPersonIndisponibilitePK().getIndispo_id(),
+                    pIndisp.getPersonIndisponibilitePK().getIdCours(),
+                    pIndisp.getDateDebut(),pIndisp.getDateFin(),
+                    personRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdPerson()).get().getNom(),
+            indisponibiliteRepository.findById(pIndisp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
+            coursRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdCours()).get().getNom(),
+            personRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom()));
         });
         return plist;
     }
@@ -42,9 +54,13 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
     public PersonIndisponibiliteQueryDTO getPersonIndisponibilite(PersonIndisponibilitePK id) {
         if(personIndisponibiliteRepository.findById(id).isPresent()){
             PersonIndisponibilite temp = personIndisponibiliteRepository.findById(id).get();
+            return new PersonIndisponibiliteQueryDTO(temp.getPersonIndisponibilitePK().getIdPerson(),
+                    temp.getPersonIndisponibilitePK().getIdCours(),temp.getPersonIndisponibilitePK().getIndispo_id(),
+                    temp.getDateDebut(),temp.getDateFin(),personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getNom(),
+            indisponibiliteRepository.findById(temp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
+            coursRepository.findById(temp.getPersonIndisponibilitePK().getIdCours()).get().getNom(),
+            personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom());
 
-
-            return new PersonIndisponibiliteQueryDTO(temp.getPersonIndisponibilitePK().getIdPerson(),temp.getPersonIndisponibilitePK().getIdCours(),temp.getPersonIndisponibilitePK().getIndispo_id(),temp.getDateDebut(),temp.getDateFin());
         }
         else{
             return null;
