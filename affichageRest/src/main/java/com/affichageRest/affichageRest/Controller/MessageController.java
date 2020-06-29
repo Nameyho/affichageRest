@@ -38,6 +38,7 @@ public class MessageController {
     @PutMapping(value="/{id}")
     public void updateMessage(@PathVariable(value="id") UUID id,
                              @RequestBody MessageQueryDTO messageUpdateDTO){
+        System.out.println(id);
         messageService.updateMessages(id,messageUpdateDTO);
     }
 

@@ -63,10 +63,10 @@ public class MessageServiceImplement implements MessageService {
         nouvMessage.setCreatedDate(message.getCreatedDate());
         nouvMessage.setTitreMessage(message.getTitreMessage());
 
-        User person = userRepository.findByUsername(message.getNomPerson());
+        User person =userRepository.findByUsername(message.getNomPerson());
 
         nouvMessage.setUser(person);
-
+        System.out.println(person.getIdUser());
         return messageRepository.save(nouvMessage).getId();}
 
     @Override
@@ -77,8 +77,8 @@ public class MessageServiceImplement implements MessageService {
 
             messagesExistant.setCreatedDate(message.createdDate);
             messagesExistant.setContenu(message.contenu);
-
-            User person = userRepository.findById(message.getIdPerson()).get();
+            messagesExistant.setTitreMessage(message.getTitreMessage());
+            User person = userRepository.findByUsername(message.getNomPerson());
 
             messagesExistant.setUser(person);
 
@@ -89,6 +89,7 @@ public class MessageServiceImplement implements MessageService {
 
     @Override
     public void delete(UUID id) {
+        System.out.println(id);
         Messages messages = this.messageRepository.findById(id).get();
         this.messageRepository.delete(messages);
     }

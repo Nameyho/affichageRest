@@ -24,7 +24,7 @@ public class Messages implements Serializable {
 
     private String titreMessage;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
