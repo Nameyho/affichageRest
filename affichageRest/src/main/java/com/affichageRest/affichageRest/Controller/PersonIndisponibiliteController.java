@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/indisponibilite")
+@RequestMapping(value = "/absences")
 
 public class PersonIndisponibiliteController {
 
@@ -27,10 +27,10 @@ public class PersonIndisponibiliteController {
 
     }
 
-    @GetMapping(value ="/{idperson}/{idindispo}/{idcours}")
-    public ResponseEntity<PersonIndisponibiliteQueryDTO> getindispo(@PathVariable(value="idperson")  UUID idperson, @PathVariable(value = "idcours")
-            UUID idcours, @PathVariable(value="idindispo")  UUID idindispo){
-       PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idcours);
+    @GetMapping(value ="/{idperson}/{idindispo}/{idspecifique}")
+    public ResponseEntity<PersonIndisponibiliteQueryDTO> getindispo(@PathVariable(value="idperson")  UUID idperson,
+          @PathVariable(value="idindispo")  UUID idindispo, @PathVariable(value = "idspecifique") UUID idspecifique){
+       PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idspecifique);
 
 
 
@@ -47,18 +47,20 @@ public class PersonIndisponibiliteController {
     }
 
 
-    @PutMapping(value ="/{idperson}/{idindispo}/{idcours}")
-    public void updateindispo(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ,
+    @PutMapping(value ="/{idperson}/{idindispo}/{idspecifique}")
+    public void updateindispo(@PathVariable(value="idperson")  UUID idperson,
                              @PathVariable(value = "idinspo") UUID idindispo,
+                              @PathVariable(value = "idspecifique") UUID idspecifique,
                              @RequestBody PersonIndisponibiliteQueryDTO PersonIndisponibiliteQueryDTO){
-        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idcours);
+        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idspecifique);
         personIndisponibiliteService.updatePersonIndisponibilite(id,PersonIndisponibiliteQueryDTO);
     }
 
-    @DeleteMapping(value ="/{idperson}/{idindispo}/{idcours}")
-    public void deleteIndispo(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ,
-                              @PathVariable(value = "idindispo") UUID idindispo){
-        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idcours);
+    @DeleteMapping(value ="/{idperson}/{idindispo}/{idspecifique}")
+    public void deleteIndispo(@PathVariable(value="idperson")  UUID idperson,
+                              @PathVariable(value = "idindispo") UUID idindispo,
+                              @PathVariable(value = "idspecifique") UUID idspecifique){
+        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idspecifique);
         personIndisponibiliteService.delete(id);
 
     }

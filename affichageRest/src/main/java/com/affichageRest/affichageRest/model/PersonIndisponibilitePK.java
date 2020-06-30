@@ -11,15 +11,28 @@ public class PersonIndisponibilitePK implements Serializable {
     @Type(type="pg-uuid")
     private UUID idPerson;
     private UUID indispo_id;
-    private UUID idCours;
-
+    private UUID idSpecifique;
     public PersonIndisponibilitePK() {
     }
 
-    public PersonIndisponibilitePK(UUID idPerson, UUID indispo_id, UUID idCours) {
+    public PersonIndisponibilitePK(UUID idPerson, UUID indispo_id) {
         this.idPerson = idPerson;
         this.indispo_id = indispo_id;
-        this.idCours = idCours;
+        this.idSpecifique = UUID.randomUUID();
+    }
+
+    public PersonIndisponibilitePK(UUID idPerson, UUID indispo_id, UUID idSpecifique) {
+        this.idPerson = idPerson;
+        this.indispo_id = indispo_id;
+        this.idSpecifique = idSpecifique;
+    }
+
+    public UUID getIdSpecifique() {
+        return idSpecifique;
+    }
+
+    public void setIdSpecifique(UUID idSpecifique) {
+        this.idSpecifique = idSpecifique;
     }
 
     public UUID getIndispo_id() {
@@ -38,9 +51,6 @@ public class PersonIndisponibilitePK implements Serializable {
         this.idPerson = idPerson;
     }
 
-    public UUID getIdCours() {
-        return idCours;
-    }
 
     @Override
     public int hashCode() {
@@ -52,7 +62,5 @@ public class PersonIndisponibilitePK implements Serializable {
         return super.equals(obj);
     }
 
-    public void setIdCours(UUID idCours) {
-        this.idCours = idCours;
-    }
+
 }

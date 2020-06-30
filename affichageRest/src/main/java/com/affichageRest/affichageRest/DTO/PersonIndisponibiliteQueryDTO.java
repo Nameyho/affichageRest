@@ -7,39 +7,45 @@ public class PersonIndisponibiliteQueryDTO {
 
     private UUID idPerson;
     private UUID indispo_id;
-    private UUID idCours;
-
+    private UUID idSpecifique;
     private Date dateDebut;
 
     private Date dateFin;
 
     private String nomPerson;
     private String nomIndispo;
-    private String nomCours;
+
     private String prenomPerson;
 
-    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id, UUID idCours, Date dateDebut, Date dateFin,
-                                         String nomPerson, String nomIndispo, String nomCours,String prenomPerson) {
+    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id,UUID idSpecifique, Date dateDebut, Date dateFin,
+                                         String nomPerson, String nomIndispo,String prenomPerson) {
         this.idPerson = idPerson;
         this.indispo_id = indispo_id;
-        this.idCours = idCours;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.nomPerson = nomPerson;
         this.nomIndispo = nomIndispo;
-        this.nomCours = nomCours;
+        this.idSpecifique=idSpecifique;
         this.prenomPerson= prenomPerson;
     }
 
     public PersonIndisponibiliteQueryDTO() {
     }
 
-    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id, UUID idCours, Date dateDebut, Date dateFin) {
+    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id, Date dateDebut, Date dateFin) {
         this.idPerson = idPerson;
         this.indispo_id = indispo_id;
-        this.idCours = idCours;
+
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+    }
+
+    public UUID getIdSpecifique() {
+        return idSpecifique;
+    }
+
+    public void setIdSpecifique(UUID idSpecifique) {
+        this.idSpecifique = idSpecifique;
     }
 
     public String getPrenomPerson() {
@@ -66,13 +72,7 @@ public class PersonIndisponibiliteQueryDTO {
         this.nomIndispo = nomIndispo;
     }
 
-    public String getNomCours() {
-        return nomCours;
-    }
 
-    public void setNomCours(String nomCours) {
-        this.nomCours = nomCours;
-    }
 
     public UUID getIndispo_id() {
         return indispo_id;
@@ -90,13 +90,6 @@ public class PersonIndisponibiliteQueryDTO {
         this.idPerson = idPerson;
     }
 
-    public UUID getIdCours() {
-        return idCours;
-    }
-
-    public void setIdCours(UUID idCours) {
-        this.idCours = idCours;
-    }
 
     public Date getDateDebut() {
         return dateDebut;

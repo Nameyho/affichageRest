@@ -40,11 +40,11 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
             plist.add(new PersonIndisponibiliteQueryDTO(
                     pIndisp.getPersonIndisponibilitePK().getIdPerson(),
                     pIndisp.getPersonIndisponibilitePK().getIndispo_id(),
-                    pIndisp.getPersonIndisponibilitePK().getIdCours(),
+                    pIndisp.getPersonIndisponibilitePK().getIdSpecifique(),
                     pIndisp.getDateDebut(),pIndisp.getDateFin(),
                     personRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdPerson()).get().getNom(),
             indisponibiliteRepository.findById(pIndisp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
-            coursRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdCours()).get().getNom(),
+
             personRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom()));
         });
         return plist;
@@ -55,10 +55,10 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
         if(personIndisponibiliteRepository.findById(id).isPresent()){
             PersonIndisponibilite temp = personIndisponibiliteRepository.findById(id).get();
             return new PersonIndisponibiliteQueryDTO(temp.getPersonIndisponibilitePK().getIdPerson(),
-                    temp.getPersonIndisponibilitePK().getIdCours(),temp.getPersonIndisponibilitePK().getIndispo_id(),
+                    temp.getPersonIndisponibilitePK().getIndispo_id(),
+                    temp.getPersonIndisponibilitePK().getIdSpecifique(),
                     temp.getDateDebut(),temp.getDateFin(),personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getNom(),
             indisponibiliteRepository.findById(temp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
-            coursRepository.findById(temp.getPersonIndisponibilitePK().getIdCours()).get().getNom(),
             personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom());
 
         }
@@ -73,7 +73,7 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
 
         PersonIndisponibilitePK tempID = new PersonIndisponibilitePK();
 
-        tempID.setIdCours(temp.getIdCours());
+
         tempID.setIdPerson(temp.getIdPerson());
         tempID.setIndispo_id(temp.getIndispo_id());
 
