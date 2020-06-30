@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/indisp")
+@RequestMapping(value = "/indisponibilite")
 public class IndisponibilitéController {
 
     @Autowired

@@ -15,6 +15,7 @@ public class PersonIndisponibilite {
     private Date dateDebut;
     private Date dateFin;
 
+
     public PersonIndisponibilite() {
     }
 
