@@ -97,6 +97,14 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
           PersonIndisponibilite personIndisponibilite = personIndisponibiliteRepository.findById(id).get();
           personIndisponibilite.setDateDebut(temp.getDateDebut());
           personIndisponibilite.setDateFin(temp.getDateFin());
+
+          PersonIndisponibilitePK tempID = new PersonIndisponibilitePK();
+
+
+          tempID.setIdPerson(temp.getIdPerson());
+          tempID.setIndispo_id(temp.getIndispo_id());
+
+          personIndisponibiliteRepository.save(personIndisponibilite);
       }
 
         }

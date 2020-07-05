@@ -49,7 +49,7 @@ public class PersonIndisponibiliteController {
 
     @PutMapping(value ="/{idperson}/{idindispo}/{idspecifique}")
     public void updateindispo(@PathVariable(value="idperson")  UUID idperson,
-                             @PathVariable(value = "idinspo") UUID idindispo,
+                             @PathVariable(value = "idindispo") UUID idindispo,
                               @PathVariable(value = "idspecifique") UUID idspecifique,
                              @RequestBody PersonIndisponibiliteQueryDTO PersonIndisponibiliteQueryDTO){
         PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idspecifique);
