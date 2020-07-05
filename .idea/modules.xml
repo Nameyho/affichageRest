@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/affichageRest/affichageRest.iml" filepath="$PROJECT_DIR$/affichageRest/affichageRest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/affichageRest.iml" filepath="$PROJECT_DIR$/affichageRest.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.affichageRest.affichageRest</OriginalElement>
+  <nodes>
+    <node x="39.886363636363626" y="154.03450520833331">com.affichageRest.affichageRest.DAO</node>
+    <node x="103.11688311688312" y="256.0345052083333">com.affichageRest.affichageRest.services</node>
+    <node x="325.0" y="478.94759114583326">com.affichageRest.affichageRest.AffichageRestApplication</node>
+    <node x="40.0" y="12.034505208333314">com.affichageRest.affichageRest.model</node>
+    <node x="46.519480519480496" y="358.0345052083333">com.affichageRest.affichageRest.security</node>
+    <node x="232.19047619047618" y="154.03450520833331">com.affichageRest.affichageRest.DTO</node>
+    <node x="0.0" y="478.94759114583326">com.affichageRest.affichageRest.AffichageRestApplicationTests</node>
+    <node x="226.51948051948048" y="358.0345052083333">com.affichageRest.affichageRest.Controller</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.affichageRest.affichageRest.Controller" target="com.affichageRest.affichageRest.DTO">
+      <point x="44.0" y="-26.0" />
+      <point x="358.51948051948045" y="236.03450520833331" />
+      <point x="332.19047619047615" y="236.03450520833331" />
+      <point x="40.0" y="26.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services" target="com.affichageRest.affichageRest.DAO">
+      <point x="-64.0" y="-26.0" />
+      <point x="119.11688311688312" y="236.03450520833331" />
+      <point x="99.88636363636363" y="236.03450520833331" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.Controller" target="com.affichageRest.affichageRest.services">
+      <point x="-44.0" y="-26.0" />
+      <point x="270.51948051948045" y="333.0345052083333" />
+      <point x="236.45021645021643" y="333.0345052083333" />
+      <point x="53.333333333333314" y="26.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.security" target="com.affichageRest.affichageRest.services">
+      <point x="0.0" y="-26.0" />
+      <point x="126.5194805194805" y="333.0345052083333" />
+      <point x="129.78354978354977" y="333.0345052083333" />
+      <point x="-53.33333333333334" y="26.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.security" target="com.affichageRest.affichageRest.model">
+      <point x="-53.33333333333334" y="-26.0" />
+      <point x="73.18614718614715" y="333.0345052083333" />
+      <point x="29.386363636363626" y="333.0345052083333" />
+      <point x="29.386363636363626" y="124.03450520833331" />
+      <point x="108.0" y="124.03450520833331" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.security" target="com.affichageRest.affichageRest.security">
+      <point x="0.0" y="26.0" />
+      <point x="126.5194805194805" y="430.0345052083333" />
+      <point x="26.51948051948051" y="430.0345052083333" />
+      <point x="26.51948051948051" y="384.0345052083333" />
+      <point x="-80.0" y="-0.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.model" target="com.affichageRest.affichageRest.model">
+      <point x="-38.85714285714285" y="26.0" />
+      <point x="69.14285714285715" y="94.03450520833331" />
+      <point x="10.0" y="94.03450520833331" />
+      <point x="10.0" y="38.034505208333314" />
+      <point x="-68.0" y="-0.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.DAO" target="com.affichageRest.affichageRest.model">
+      <point x="0.0" y="-26.0" />
+      <point x="99.88636363636363" y="134.03450520833331" />
+      <point x="127.42857142857144" y="134.03450520833331" />
+      <point x="19.428571428571445" y="26.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services" target="com.affichageRest.affichageRest.model">
+      <point x="0.0" y="-26.0" />
+      <point x="183.11688311688312" y="236.03450520833331" />
+      <point x="181.38636363636363" y="236.03450520833331" />
+      <point x="181.38636363636363" y="124.03450520833331" />
+      <point x="166.28571428571428" y="124.03450520833331" />
+      <point x="58.28571428571428" y="26.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services" target="com.affichageRest.affichageRest.DTO">
+      <point x="32.0" y="-26.0" />
+      <point x="215.11688311688312" y="226.03450520833331" />
+      <point x="252.19047619047618" y="226.03450520833331" />
+      <point x="-40.0" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1" x="222.5454545454545" y="205.35353535353534" />
+  <SelectedNodes>
+    <node>com.affichageRest.affichageRest.DTO</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

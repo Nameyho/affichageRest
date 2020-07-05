@@ -32,13 +32,6 @@ public class PersonIndisponibiliteQueryDTO {
     public PersonIndisponibiliteQueryDTO() {
     }
 
-    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id, Date dateDebut, Date dateFin) {
-        this.idPerson = idPerson;
-        this.indispo_id = indispo_id;
-
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-    }
 
     public UUID getIdSpecifique() {
         return idSpecifique;

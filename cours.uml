@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.cours</OriginalElement>
+  <nodes>
+    <node x="0.0" y="631.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.person_indisponibilite</node>
+    <node x="85.0" y="0.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.role</node>
+    <node x="442.0" y="631.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.indisponibilite</node>
+    <node x="253.0" y="631.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.cours_enseigne</node>
+    <node x="195.97222222222223" y="168.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.person</node>
+    <node x="217.97222222222223" y="446.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.message</node>
+    <node x="632.9722222222222" y="0.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.person_resultat</node>
+    <node x="445.47222222222223" y="190.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_roles</node>
+    <node x="45.97222222222223" y="478.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_rest_roles</node>
+    <node x="0.0" y="212.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_rest</node>
+    <node x="639.0" y="631.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.cours</node>
+    <node x="431.97222222222223" y="0.0">8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.person" target="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.role">
+      <point x="0.0" y="-114.0" />
+      <point x="291.47222222222223" y="143.0" />
+      <point x="220.83333333333337" y="143.0" />
+      <point x="54.33333333333337" y="59.0" />
+    </edge>
+    <edge source="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_rest_roles" target="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.role">
+      <point x="38.0" y="-38.0" />
+      <point x="159.97222222222223" y="421.0" />
+      <point x="166.5" y="421.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_rest" target="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.role">
+      <point x="0.0" y="-70.0" />
+      <point x="78.0" y="143.0" />
+      <point x="112.16666666666666" y="143.0" />
+      <point x="-54.33333333333334" y="59.0" />
+    </edge>
+    <edge source="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_roles" target="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_rest_roles" target="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.user_rest">
+      <point x="-38.0" y="-38.0" />
+      <point x="83.97222222222223" y="421.0" />
+      <point x="78.0" y="421.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.message" target="8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.person">
+      <point x="0.0" y="-70.0" />
+      <point x="0.0" y="114.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0319848293299623" x="466.938993017273" y="404.7347788803135" />
+  <SelectedNodes>
+    <node>8cdccb91-0708-4f7e-8d14-0485eebeeaaa.TABLE:AffichageRest.public.cours</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

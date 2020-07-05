@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service(value="PersonIndisponibiliteService")
 public class PersonIndisponibiliteServiceImplement implements PersonIndisponibiliteService {
@@ -76,6 +77,7 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
 
         tempID.setIdPerson(temp.getIdPerson());
         tempID.setIndispo_id(temp.getIndispo_id());
+        tempID.setIdSpecifique(UUID.randomUUID());
 
         PersonIndisponibilite newPersonIndisponibilites = new PersonIndisponibilite();
         newPersonIndisponibilites.setDateDebut(temp.getDateDebut());

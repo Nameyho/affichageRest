@@ -15,11 +15,6 @@ public class PersonIndisponibilitePK implements Serializable {
     public PersonIndisponibilitePK() {
     }
 
-    public PersonIndisponibilitePK(UUID idPerson, UUID indispo_id) {
-        this.idPerson = idPerson;
-        this.indispo_id = indispo_id;
-        this.idSpecifique = UUID.randomUUID();
-    }
 
     public PersonIndisponibilitePK(UUID idPerson, UUID indispo_id, UUID idSpecifique) {
         this.idPerson = idPerson;

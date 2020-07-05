@@ -116,7 +116,7 @@ public class DataLoader implements ApplicationRunner {
         personResultatrep.save(personResultat);
 
 
-        PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getIdPerson(),indisponibilite.getIdinsponibilite());
+        PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getIdPerson(),indisponibilite.getIdinsponibilite(),UUID.randomUUID());
 
             Date datedeb = simpleDateFormat.parse("01/10/2018");
 
