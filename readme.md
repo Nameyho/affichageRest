@@ -1,5 +1,45 @@
 # affichageRest
 
+6 juillet 
+
+Modification de PersonResultat
+
+ainsi que le création de AbsenceEcran dans le but de faciliter la créationd d'un écran d'affichage d'absence.
+
+d'autre Ecran sont prévu
+
+5 juin
+
+petite modification pour la PersonIndisponibiliteController
+PersonIndisponibiliteServiceImplement.java
+
+30 juin
+
+modification de la classe personneIndisponibile afin de gérer au mieux le get specifique a une absence
+
+29 juin
+
+modification dans le DTO indisponibilite
+correctif update Message
+
+24 juin
+
+FindallBYrole : creation
+
+18-19 juin
+
+vérification des endpoint
+
++
+
+modification de la classer user et persons
+
+17 Juin
+
+Changement de l'API pour fournir des données plus précises et plus claires
+
+changement des DTO
+
 6 juin
 
 création d'une méthode afin d'obtenir les résultat par person
