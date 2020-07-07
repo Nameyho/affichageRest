@@ -13,23 +13,20 @@ public class PersonResultatQueryDTO {
     @NotNull
     private UUID cours_id;
 
-    private Date annee;
     private int resultat;
     private boolean reussite;
 
-    public PersonResultatQueryDTO(UUID idPerson, UUID idCours, Date annee, int resultat, boolean reussite) {
+    public PersonResultatQueryDTO(UUID idPerson, UUID idCours, int resultat, boolean reussite) {
         this.idPerson = idPerson;
         this.cours_id = idCours;
-        this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
     }
 
-    public PersonResultatQueryDTO(UUID idPerson, String nomCours, UUID cours_id, Date annee, int resultat, boolean reussite) {
+    public PersonResultatQueryDTO(UUID idPerson, String nomCours, UUID cours_id, int resultat, boolean reussite) {
         this.idPerson = idPerson;
         this.nomCours = nomCours;
         this.cours_id = cours_id;
-        this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
     }
@@ -43,7 +40,6 @@ public class PersonResultatQueryDTO {
     }
 
     public PersonResultatQueryDTO() {
-        this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
     }
@@ -65,14 +61,6 @@ public class PersonResultatQueryDTO {
 
     public void setCours_id(UUID cours_id) {
         this.cours_id = cours_id;
-    }
-
-    public Date getAnnee() {
-        return annee;
-    }
-
-    public void setAnnee(Date annee) {
-        this.annee = annee;
     }
 
     public int getResultat() {

@@ -15,7 +15,6 @@ public class PersonResultat implements Serializable {
 
 
     private String nomCours;
-    private Date annee;
 
     @Min(0)
     private int resultat;
@@ -33,10 +32,9 @@ public class PersonResultat implements Serializable {
     public PersonResultat() {
     }
 
-    public PersonResultat(PersonResultatPK personResultatPK, Date annee, int resultat, boolean reussite) {
+    public PersonResultat(PersonResultatPK personResultatPK, int resultat, boolean reussite) {
 
         this.personResultatPK= personResultatPK;
-        this.annee = annee;
         this.resultat = resultat;
         this.reussite = reussite;
     }
@@ -50,13 +48,6 @@ public class PersonResultat implements Serializable {
         this.personResultatPK = personResultatPK;
     }
 
-    public Date getAnnee() {
-        return annee;
-    }
-
-    public void setAnnee(Date annee) {
-        this.annee = annee;
-    }
 
     public int getResultat() {
         return resultat;

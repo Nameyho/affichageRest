@@ -33,13 +33,20 @@ public class DataLoader implements ApplicationRunner {
 
     private  CoursEnseigneRepository coursEnseigneRepository;
 
+    private EcranRepository ecranRepository;
+
+    private EcranAbsenceRepository ecranAbsenceRepository;
+
+
     @Autowired
     public DataLoader(RoleRepository roleRepository, UserRepository userRepository,
                       CoursRepository coursRepository, IndisponibiliteRepository indisponibiliteRepository,
                       MessageRepository messageRepository, PersonRepository personRepository,
                       PersonResultatRepository personResultat,
                       PersonIndisponibiliteRepository personIndisponibiliteRepository,
-                      CoursEnseigneRepository coursEnseigneRepository) {
+                      CoursEnseigneRepository coursEnseigneRepository,
+                      EcranRepository ecranRepository,
+                      EcranAbsenceRepository ecranAbsenceRepository) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.coursRepository = coursRepository;
@@ -49,6 +56,8 @@ public class DataLoader implements ApplicationRunner {
         this.personResultatrep = personResultat;
         this.personIndisponibiliteRepository=personIndisponibiliteRepository;
         this.coursEnseigneRepository=coursEnseigneRepository;
+        this.ecranRepository=ecranRepository;
+        this.ecranAbsenceRepository=ecranAbsenceRepository;
     }
 
     @Override
@@ -70,12 +79,15 @@ public class DataLoader implements ApplicationRunner {
 
 
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date datedebut = simpleDateFormat.parse("01/10/2021");
+
+        Date datefin =simpleDateFormat.parse("01/10/2022");
 
 
+        Cours cours = new Cours("Programmation Orientée Objet",datedebut,datefin);
 
-        Cours cours = new Cours("Programmation Orientée Objet");
-
-        coursRepository.save(cours);
+      coursRepository.save(cours);
 
 
 
@@ -84,7 +96,6 @@ public class DataLoader implements ApplicationRunner {
         indisponibiliteRepository.save(indisponibilite);
 
         Date date = null ;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         date = simpleDateFormat.parse("01/10/1993");
 
         Person person =new Person("Mathieu","Allard","allardmathieu@gmail.com",date,role);
@@ -111,7 +122,7 @@ public class DataLoader implements ApplicationRunner {
 
         date2 = simpleDateFormat.parse("01/10/2020");
 
-        PersonResultat  personResultat = new PersonResultat(personResultatPK,date2,90,true);
+        PersonResultat  personResultat = new PersonResultat(personResultatPK,90,true);
 
         personResultatrep.save(personResultat);
 
@@ -120,10 +131,10 @@ public class DataLoader implements ApplicationRunner {
 
             Date datedeb = simpleDateFormat.parse("01/10/2018");
 
-            Date datefin  = simpleDateFormat.parse("01/12/2020");
+            Date datefi  = simpleDateFormat.parse("01/12/2020");
 
 
-        PersonIndisponibilite personIndisponibilite = new PersonIndisponibilite(personIndisponibilitePK,datedeb,datefin);
+        PersonIndisponibilite personIndisponibilite = new PersonIndisponibilite(personIndisponibilitePK,datedeb,datefi);
         personIndisponibiliteRepository.save(personIndisponibilite);
 
         CoursEnseigneID coursEnseigneID = new CoursEnseigneID(person.getIdPerson(),cours.getId());
@@ -132,6 +143,17 @@ public class DataLoader implements ApplicationRunner {
 
         coursEnseigneRepository.save(coursEnseigne);
 
-            //test commit
+        Ecran ecran = new Ecran("accueil");
+
+         ecranRepository.save(ecran);
+
+
+        EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(ecran.getIdEcran(),personIndisponibilitePK);
+
+
+
+        EcranAbsence ecranAbsence = new EcranAbsence(ecranAbsenceID);
+
+         ecranAbsenceRepository.save(ecranAbsence);
 
 }}

@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.Period;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -12,20 +14,26 @@ import java.util.UUID;
 public class Cours implements Serializable {
 
     @Id
-
     @Column(name = "COURS_ID") private UUID id;
 
     @NotNull
     @NotEmpty
     private String nom;
 
+    @NotNull
+    private Date DateDebut;
+
+    @NotNull
+    private Date dateFin;
+
 //    @OneToMany(mappedBy = "cours")
 //    private Set<CoursEnseigne> courEnseignes;
 
-    public Cours( String nom) {
-        this.id = UUID.nameUUIDFromBytes(nom.getBytes());
+    public Cours(String nom, Date dateDebut, Date datefin) {
+        this.id = UUID.nameUUIDFromBytes((nom + dateDebut+datefin).getBytes());
         this.nom = nom;
-
+        this.DateDebut= dateDebut;
+        this.dateFin = datefin;
     }
 
     public Cours() {
@@ -54,6 +62,22 @@ public class Cours implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Date getDateDebut() {
+        return DateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        DateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
     @Override
