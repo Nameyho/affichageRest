@@ -17,6 +17,8 @@ public interface PersonResultatRepository extends JpaRepository<PersonResultat, 
             "from resultat \n" +
             "where person_id = :uuid ", nativeQuery = true)
     List<PersonResultat> findByPerson(@Param("uuid") UUID person);
+
+    List<PersonResultat> findByPersonResultatPK_IdCoursContaining(UUID idCours);
 }
 
 

@@ -13,19 +13,8 @@ public class PersonResultat implements Serializable {
     @EmbeddedId
     private PersonResultatPK personResultatPK;
 
-
-    private String nomCours;
-
     @Min(0)
     private int resultat;
-
-    public String getNomCours() {
-        return nomCours;
-    }
-
-    public void setNomCours(String nomCours) {
-        this.nomCours = nomCours;
-    }
 
     private boolean reussite;
 
