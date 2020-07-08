@@ -2,7 +2,6 @@ package com.affichageRest.affichageRest.Controller;
 
 
 import com.affichageRest.affichageRest.DTO.EcranAbsenceQueryDTO;
-import com.affichageRest.affichageRest.model.Ecran;
 import com.affichageRest.affichageRest.model.EcranAbsenceID;
 import com.affichageRest.affichageRest.model.PersonIndisponibilitePK;
 import com.affichageRest.affichageRest.services.EcranAbsenceService;
@@ -17,76 +16,76 @@ import java.util.UUID;
 
 
 @CrossOrigin
-    @RestController
-    @RequestMapping(value = "/ecranabsence")
-    public class EcranAbsenceController {
+@RestController
+@RequestMapping(value = "/ecranabsence")
+public class EcranAbsenceController {
 
-        @Autowired
-        private EcranAbsenceService ecranAbsenceService;
-
-
-        @GetMapping
-        public ResponseEntity<List<EcranAbsenceQueryDTO>> getAllCours(){
-            return new ResponseEntity<>(ecranAbsenceService.getAllEcran(), HttpStatus.OK);
-        }
-
-        @GetMapping(value="/{idecran}/{idperson}/{idindispo}/{idspecifique}")
-        public ResponseEntity<EcranAbsenceQueryDTO> getEcranByID(
-                @PathVariable(value="idecran") UUID idecran,
-                @PathVariable(value="idperson") UUID idperson,
-                @PathVariable(value="idindispo")UUID idindispo,
-                @PathVariable(value = "idspecifique") UUID idspecifique
-        ){
-
-            EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(
-                    idecran,
-                    new PersonIndisponibilitePK(
-                            idperson,idindispo,idspecifique
-                    )
-            );
-
-            return new ResponseEntity<>(ecranAbsenceService.getEcranAbsence(ecranAbsenceID),
-                    HttpStatus.OK);
-        }
+    @Autowired
+    private EcranAbsenceService ecranAbsenceService;
 
 
-        @PostMapping
-        public ResponseEntity<UUID> createAbsenceEcran( @RequestBody  @Valid EcranAbsenceQueryDTO ecranAbsenceQueryDTO){
-            return new ResponseEntity(ecranAbsenceService.createEcranAbsence(ecranAbsenceQueryDTO),HttpStatus.CREATED);
-        }
+    @GetMapping
+    public ResponseEntity<List<EcranAbsenceQueryDTO>> getAllCours() {
+        return new ResponseEntity<>(ecranAbsenceService.getAllEcran(), HttpStatus.OK);
+    }
 
-        @PutMapping(value="/{idecran}/{idperson}/{idindispo}/{idspecifique}")
-        public void UpdateAbsenceEcran(
-                @PathVariable(value="idecran") UUID idecran,
-                @PathVariable(value="idperson") UUID idperson,
-                @PathVariable(value="idindispo")UUID idindispo,
-                @PathVariable(value = "idspecifique") UUID idspecifique,
-                @RequestBody EcranAbsenceQueryDTO ecranAbsenceQueryDTO){
+    @GetMapping(value = "/{idecran}/{idperson}/{idindispo}/{idspecifique}")
+    public ResponseEntity<EcranAbsenceQueryDTO> getEcranByID(
+            @PathVariable(value = "idecran") UUID idecran,
+            @PathVariable(value = "idperson") UUID idperson,
+            @PathVariable(value = "idindispo") UUID idindispo,
+            @PathVariable(value = "idspecifique") UUID idspecifique
+    ) {
 
-            EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(
-                    idecran,
-                    new PersonIndisponibilitePK(
-                            idperson,idindispo,idspecifique
-                    )
-            );
+        EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(
+                idecran,
+                new PersonIndisponibilitePK(
+                        idperson, idindispo, idspecifique
+                )
+        );
 
-            ecranAbsenceService.updateEcranAbsence(ecranAbsenceID,ecranAbsenceQueryDTO);
-        }
+        return new ResponseEntity<>(ecranAbsenceService.getEcranAbsence(ecranAbsenceID),
+                HttpStatus.OK);
+    }
 
-        @DeleteMapping(value="/{idecran}/{idperson}/{idindispo}/{idspecifique}")
-        public void deleteAbsenceEcran(
-                @PathVariable(value="idecran") UUID idecran,
-                @PathVariable(value="idperson") UUID idperson,
-                @PathVariable(value="idindispo")UUID idindispo,
-                @PathVariable(value = "idspecifique") UUID idspecifique){
 
-            EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(
-                    idecran,
-                    new PersonIndisponibilitePK(
-                            idperson,idindispo,idspecifique
-                    )
-            );
-            ecranAbsenceService.delete(ecranAbsenceID);
+    @PostMapping
+    public ResponseEntity<UUID> createAbsenceEcran(@RequestBody @Valid EcranAbsenceQueryDTO ecranAbsenceQueryDTO) {
+        return new ResponseEntity(ecranAbsenceService.createEcranAbsence(ecranAbsenceQueryDTO), HttpStatus.CREATED);
+    }
 
-        }
+    @PutMapping(value = "/{idecran}/{idperson}/{idindispo}/{idspecifique}")
+    public void UpdateAbsenceEcran(
+            @PathVariable(value = "idecran") UUID idecran,
+            @PathVariable(value = "idperson") UUID idperson,
+            @PathVariable(value = "idindispo") UUID idindispo,
+            @PathVariable(value = "idspecifique") UUID idspecifique,
+            @RequestBody EcranAbsenceQueryDTO ecranAbsenceQueryDTO) {
+
+        EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(
+                idecran,
+                new PersonIndisponibilitePK(
+                        idperson, idindispo, idspecifique
+                )
+        );
+
+        ecranAbsenceService.updateEcranAbsence(ecranAbsenceID, ecranAbsenceQueryDTO);
+    }
+
+    @DeleteMapping(value = "/{idecran}/{idperson}/{idindispo}/{idspecifique}")
+    public void deleteAbsenceEcran(
+            @PathVariable(value = "idecran") UUID idecran,
+            @PathVariable(value = "idperson") UUID idperson,
+            @PathVariable(value = "idindispo") UUID idindispo,
+            @PathVariable(value = "idspecifique") UUID idspecifique) {
+
+        EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(
+                idecran,
+                new PersonIndisponibilitePK(
+                        idperson, idindispo, idspecifique
+                )
+        );
+        ecranAbsenceService.delete(ecranAbsenceID);
+
+    }
 }

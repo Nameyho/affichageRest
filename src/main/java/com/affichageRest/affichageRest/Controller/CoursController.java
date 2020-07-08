@@ -14,39 +14,39 @@ import java.util.UUID;
 
 
 @CrossOrigin
-    @RestController
-    @RequestMapping(value = "/cours")
-    public class CoursController {
+@RestController
+@RequestMapping(value = "/cours")
+public class CoursController {
 
-        @Autowired
-        private CoursService coursService;
-
-
-        @GetMapping
-        public ResponseEntity<List<CoursQueryDTO>> getAllCours(){
-            return new ResponseEntity<>(coursService.getAllCours(), HttpStatus.OK);
-        }
-
-        @GetMapping(value="/{id}")
-        public ResponseEntity<CoursQueryDTO> getAllCours(@PathVariable(value="id") UUID id){
-            return new ResponseEntity<>(coursService.getCours(id), HttpStatus.OK);
-        }
+    @Autowired
+    private CoursService coursService;
 
 
-        @PostMapping
-        public ResponseEntity<UUID> createCours( @RequestBody  @Valid CoursQueryDTO role){
-            return new ResponseEntity<>(coursService.createCours(role),HttpStatus.CREATED);
-        }
+    @GetMapping
+    public ResponseEntity<List<CoursQueryDTO>> getAllCours() {
+        return new ResponseEntity<>(coursService.getAllCours(), HttpStatus.OK);
+    }
 
-        @PutMapping(value="/{id}")
-        public void updateCours(@PathVariable(value="id") UUID id,
-                               @RequestBody CoursQueryDTO coursUpdateDTO){
-            coursService.updateCours(id,coursUpdateDTO);
-        }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<CoursQueryDTO> getAllCours(@PathVariable(value = "id") UUID id) {
+        return new ResponseEntity<>(coursService.getCours(id), HttpStatus.OK);
+    }
 
-        @DeleteMapping(value = "/{id}")
-        public void deleteCours(@PathVariable(value = "id") UUID id){
-            coursService.delete(id);
 
-        }
+    @PostMapping
+    public ResponseEntity<UUID> createCours(@RequestBody @Valid CoursQueryDTO role) {
+        return new ResponseEntity<>(coursService.createCours(role), HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/{id}")
+    public void updateCours(@PathVariable(value = "id") UUID id,
+                            @RequestBody CoursQueryDTO coursUpdateDTO) {
+        coursService.updateCours(id, coursUpdateDTO);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteCours(@PathVariable(value = "id") UUID id) {
+        coursService.delete(id);
+
+    }
 }

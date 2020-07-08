@@ -5,9 +5,9 @@ import java.util.UUID;
 
 public class MessageQueryDTO {
 
-    private UUID idMessage;
     public String contenu;
     public Date createdDate;
+    private UUID idMessage;
     private String nomPerson;
     private UUID idPerson;
     private String titreMessage;
@@ -17,16 +17,20 @@ public class MessageQueryDTO {
         this.idMessage = idMessage;
         this.contenu = contenu;
         this.createdDate = createdDate;
-        this.idPerson=idperson;
+        this.idPerson = idperson;
 
     }
-    public MessageQueryDTO(UUID idMessage, String contenu, Date createdDate, UUID idperson, String nomPerso,String titreMessage) {
+
+    public MessageQueryDTO(UUID idMessage, String contenu, Date createdDate, UUID idperson, String nomPerso, String titreMessage) {
         this.idMessage = idMessage;
         this.contenu = contenu;
         this.createdDate = createdDate;
-        this.idPerson=idperson;
-        this.nomPerson=nomPerso;
-        this.titreMessage =titreMessage;
+        this.idPerson = idperson;
+        this.nomPerson = nomPerso;
+        this.titreMessage = titreMessage;
+    }
+
+    public MessageQueryDTO() {
     }
 
     public String getTitreMessage() {
@@ -35,9 +39,6 @@ public class MessageQueryDTO {
 
     public void setTitreMessage(String titreMessage) {
         this.titreMessage = titreMessage;
-    }
-
-    public MessageQueryDTO() {
     }
 
     public UUID getIdMessage() {

@@ -9,11 +9,14 @@ import java.util.UUID;
 public interface UserService {
 
     List<UserQueryDTO> getAllUser();
-    UUID CreateUser(UserQueryDTO userCreateDTO);
-    UserQueryDTO getUser(UUID id);
-    void updateUser(UUID id, UserQueryDTO userUpdateDto);
-    void delete(UUID id);
 
+    UUID CreateUser(UserQueryDTO userCreateDTO);
+
+    UserQueryDTO getUser(UUID id);
+
+    void updateUser(UUID id, UserQueryDTO userUpdateDto);
+
+    void delete(UUID id);
 
 
     User findByUsername(String username);

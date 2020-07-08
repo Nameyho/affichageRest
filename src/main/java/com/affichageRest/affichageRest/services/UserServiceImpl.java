@@ -22,20 +22,17 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
 
-
-
-
     @Override
     public UUID CreateUser(UserQueryDTO user) {
 
         User nouvUser = new User();
 
-        nouvUser.setIdUser(UUID.nameUUIDFromBytes((user.getUsername()+user.getPassword()).getBytes()));
+        nouvUser.setIdUser(UUID.nameUUIDFromBytes((user.getUsername() + user.getPassword()).getBytes()));
         nouvUser.setUsername(user.getUsername());
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-        String mdpenc =  bCryptPasswordEncoder.encode(user.getPassword());
+        String mdpenc = bCryptPasswordEncoder.encode(user.getPassword());
 
         nouvUser.setPassword(mdpenc);
 
@@ -47,13 +44,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserQueryDTO> getAllUser() {
-        List<UserQueryDTO> plist= new ArrayList<>();
-        userRepository.findAll().forEach(user->
+        List<UserQueryDTO> plist = new ArrayList<>();
+        userRepository.findAll().forEach(user ->
                 plist.add(new UserQueryDTO(
                         user.getIdUser(),
 
                         user.getUsername()
-
 
 
                 ))
@@ -65,13 +61,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserQueryDTO getUser(UUID id) {
-        if(userRepository.findById(id).isPresent()){
+        if (userRepository.findById(id).isPresent()) {
             User user = userRepository.findById(id).get();
 
-            return new UserQueryDTO(user.getIdUser(),user.getUsername());
+            return new UserQueryDTO(user.getIdUser(), user.getUsername());
 
-        }
-        else{
+        } else {
             return null;
         }
     }
@@ -79,20 +74,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(UUID id, UserQueryDTO userUpdateDto) {
 
-        if(userRepository.findById(id).isPresent()){
+        if (userRepository.findById(id).isPresent()) {
 
-            User user =userRepository.findById(id).get();
+            User user = userRepository.findById(id).get();
 
             user.setUsername(userUpdateDto.getUsername());
 
 
-                BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
 
             user.setPassword(bCryptPasswordEncoder.encode(userUpdateDto.getPassword()));
 
             Role role = roleRepository.findById(userUpdateDto.getId()).get();
-
 
 
             userRepository.save(user);

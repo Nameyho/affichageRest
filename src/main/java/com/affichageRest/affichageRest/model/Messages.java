@@ -1,21 +1,19 @@
 package com.affichageRest.affichageRest.model;
 
 
-
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Message",schema = "public",catalog = "AffichageRest")
+@Table(name = "Message", schema = "public", catalog = "AffichageRest")
 public class Messages implements Serializable {
 
     @Id
-    @Column (name="MESSAGE_ID") private UUID idMessage;
+    @Column(name = "MESSAGE_ID")
+    private UUID idMessage;
 
     @NotNull
     private String Contenu;
@@ -31,16 +29,15 @@ public class Messages implements Serializable {
     public Messages() {
     }
 
-    public Messages(String contenu, Date createdDate,User user,String titreMessage) {
+    public Messages(String contenu, Date createdDate, User user, String titreMessage) {
         Contenu = contenu;
         this.createdDate = createdDate;
-        this.user=user;
-        this.titreMessage=titreMessage;
-        this.idMessage= UUID.nameUUIDFromBytes((contenu +createdDate.toString()+user.toString()).getBytes());
+        this.user = user;
+        this.titreMessage = titreMessage;
+        this.idMessage = UUID.nameUUIDFromBytes((contenu + createdDate.toString() + user.toString()).getBytes());
 
 
     }
-
 
 
     public UUID getId() {
@@ -55,8 +52,16 @@ public class Messages implements Serializable {
         return Contenu;
     }
 
+    public void setContenu(String contenu) {
+        Contenu = contenu;
+    }
+
     public Date getCreatedDate() {
         return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getTitreMessage() {
@@ -67,20 +72,12 @@ public class Messages implements Serializable {
         this.titreMessage = titreMessage;
     }
 
-    public void setIdMessage(UUID idMessage) {
-        this.idMessage = idMessage;
-    }
-
-    public void setContenu(String contenu) {
-        Contenu = contenu;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
     public UUID getIdMessage() {
         return idMessage;
+    }
+
+    public void setIdMessage(UUID idMessage) {
+        this.idMessage = idMessage;
     }
 
     public User getUser() {

@@ -24,7 +24,6 @@ public class UserQueryDTO {
     }
 
 
-
     public UUID getId() {
         return id;
     }

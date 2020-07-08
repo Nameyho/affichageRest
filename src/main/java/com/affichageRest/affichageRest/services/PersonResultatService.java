@@ -22,5 +22,5 @@ public interface PersonResultatService {
 
     List<PersonResultatQueryDTO> getResultatbyPerson(UUID id);
 
-
+    List<PersonResultatQueryDTO> findByPersonResultatPK_IdCoursContaining(UUID id);
 }

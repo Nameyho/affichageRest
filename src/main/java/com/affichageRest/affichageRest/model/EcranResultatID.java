@@ -8,16 +8,14 @@ import java.util.UUID;
 public class EcranResultatID implements Serializable {
 
     private UUID idEcran;
-    private UUID idPerson;
     private UUID idCours;
 
     public EcranResultatID() {
     }
 
-    public EcranResultatID(UUID idEcran, CoursEnseigneID coursEnseigneID){
-    this.idEcran =idEcran;
-    this.idPerson = coursEnseigneID.getIdPerson();
-    this.idCours = coursEnseigneID.getIdCours();
+    public EcranResultatID(UUID idEcran, UUID coursEnseigneID) {
+        this.idEcran = idEcran;
+        this.idCours = coursEnseigneID;
     }
 
     public UUID getIdEcran() {
@@ -28,13 +26,6 @@ public class EcranResultatID implements Serializable {
         this.idEcran = idEcran;
     }
 
-    public UUID getIdPerson() {
-        return idPerson;
-    }
-
-    public void setIdPerson(UUID idPerson) {
-        this.idPerson = idPerson;
-    }
 
     public UUID getIdCours() {
         return idCours;

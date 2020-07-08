@@ -1,21 +1,21 @@
 package com.affichageRest.affichageRest.services;
 
 
-import com.affichageRest.affichageRest.DTO.EcranAbsenceQueryDTO;
-import com.affichageRest.affichageRest.model.EcranAbsenceID;
+import com.affichageRest.affichageRest.DTO.EcranResultatQueryDTO;
+import com.affichageRest.affichageRest.model.EcranResultatID;
 
 import java.util.List;
 
 public interface EcranResultatService {
 
-    List<EcranAbsenceQueryDTO> getAllEcran();
+    List<EcranResultatQueryDTO> getAllEcranresultat();
 
-    EcranAbsenceQueryDTO createEcranAbsence(EcranAbsenceQueryDTO ecranAbsenceQueryDTO);
+    EcranResultatQueryDTO createEcranResultat(EcranResultatQueryDTO ecranResultatQueryDTO);
 
-    EcranAbsenceQueryDTO getEcranAbsence(EcranAbsenceID id);
+    EcranResultatQueryDTO getEcranResultat(EcranResultatID id);
 
-    void updateEcranAbsence(EcranAbsenceID id, EcranAbsenceQueryDTO CoursEnseigne);
+    /* void updateEcranResultat(EcranResultatID id, EcranResultatQueryDTO ecranResultatQueryDTO);*/
 
-    void delete(EcranAbsenceID id);
+    void delete(EcranResultatID id);
 
 }

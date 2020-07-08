@@ -3,7 +3,6 @@ package com.affichageRest.affichageRest.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
 import java.util.UUID;
 
 @Entity
@@ -12,14 +11,14 @@ public class Ecran {
     @Id
     private UUID idEcran;
 
-    @Column(unique =true)
+    @Column(unique = true)
     private String nomEcran;
 
     public Ecran() {
-        this.idEcran= UUID.randomUUID();
+        this.idEcran = UUID.randomUUID();
     }
 
-    public Ecran( String nomecran) {
+    public Ecran(String nomecran) {
         this.idEcran = UUID.nameUUIDFromBytes(nomecran.getBytes());
         this.nomEcran = nomecran;
     }

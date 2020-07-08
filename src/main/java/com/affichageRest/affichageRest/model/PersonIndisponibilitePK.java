@@ -8,10 +8,11 @@ import java.util.UUID;
 
 @Embeddable
 public class PersonIndisponibilitePK implements Serializable {
-    @Type(type="pg-uuid")
+    @Type(type = "pg-uuid")
     private UUID idPerson;
     private UUID indispo_id;
     private UUID idSpecifique;
+
     public PersonIndisponibilitePK() {
     }
 

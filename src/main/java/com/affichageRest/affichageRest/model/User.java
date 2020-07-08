@@ -7,15 +7,15 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "User",schema = "public",catalog = "AffichageRest")
+@Table(name = "User", schema = "public", catalog = "AffichageRest")
 public class User {
     @Id
-    @Column(name="USER_ID")
+    @Column(name = "USER_ID")
     private UUID idUser;
 
     @NotNull
     @NotEmpty
-    @Column(unique =true)
+    @Column(unique = true)
     private String username;
 
     @NotNull
@@ -23,9 +23,7 @@ public class User {
     private String password;
 
 
-
-
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy = "user")
     private Set<Messages> messages;
 
     public User(UUID id) {
@@ -36,7 +34,7 @@ public class User {
     }
 
     public User(String username, String password) {
-        this.idUser = UUID.nameUUIDFromBytes((username+password).getBytes());
+        this.idUser = UUID.nameUUIDFromBytes((username + password).getBytes());
         this.username = username;
         this.password = password;
 
@@ -74,7 +72,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 
 }

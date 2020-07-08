@@ -11,29 +11,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Service(value="RolesService")
+@Service(value = "RolesService")
 public class RolesServiceImplement implements RolesService {
 
     @Resource
     private RoleRepository roleRepository;
+
     @Override
     public List<RoleQueryDTO> getAllRoles() {
         List<RoleQueryDTO> plist = new ArrayList<>();
         roleRepository.findAll().forEach(role -> {
-            plist.add(new RoleQueryDTO(role.getId(),role.getName(),role.getDescription()));
+            plist.add(new RoleQueryDTO(role.getId(), role.getName(), role.getDescription()));
         });
         return plist;
     }
 
     @Override
     public RoleQueryDTO getRole(UUID id) {
-        if(roleRepository.findById(id).isPresent()){
+        if (roleRepository.findById(id).isPresent()) {
             Role temp = roleRepository.findById(id).get();
 
 
-            return new RoleQueryDTO(temp.getId(),temp.getName(),temp.getDescription());
-        }
-        else{
+            return new RoleQueryDTO(temp.getId(), temp.getName(), temp.getDescription());
+        } else {
             return null;
         }
     }

@@ -17,16 +17,16 @@ public class PersonIndisponibiliteQueryDTO {
 
     private String prenomPerson;
 
-    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id,UUID idSpecifique, Date dateDebut, Date dateFin,
-                                         String nomPerson, String nomIndispo,String prenomPerson) {
+    public PersonIndisponibiliteQueryDTO(UUID idPerson, UUID indispo_id, UUID idSpecifique, Date dateDebut, Date dateFin,
+                                         String nomPerson, String nomIndispo, String prenomPerson) {
         this.idPerson = idPerson;
         this.indispo_id = indispo_id;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.nomPerson = nomPerson;
         this.nomIndispo = nomIndispo;
-        this.idSpecifique=idSpecifique;
-        this.prenomPerson= prenomPerson;
+        this.idSpecifique = idSpecifique;
+        this.prenomPerson = prenomPerson;
     }
 
     public PersonIndisponibiliteQueryDTO() {
@@ -64,7 +64,6 @@ public class PersonIndisponibiliteQueryDTO {
     public void setNomIndispo(String nomIndispo) {
         this.nomIndispo = nomIndispo;
     }
-
 
 
     public UUID getIndispo_id() {

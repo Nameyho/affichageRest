@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/persons")
@@ -24,40 +25,41 @@ public class PersonController {
 
     @CrossOrigin(origins = "*")
     @GetMapping
-    public ResponseEntity<List<PersonQueryDTO>> getAllPersons(){
-        return new ResponseEntity<>(personService.getAllPerson(),HttpStatus.OK);
+    public ResponseEntity<List<PersonQueryDTO>> getAllPersons() {
+        return new ResponseEntity<>(personService.getAllPerson(), HttpStatus.OK);
 
     }
 
-    @GetMapping(value ="/roles/{id}")
-    public ResponseEntity<PersonQueryDTO> getPersonByRoles(@PathVariable(value="id") UUID id){
-        Role role= roleRepository.findById(id).get();
-        return new ResponseEntity(personService.findAllByRoles(role),HttpStatus.OK);
+    @GetMapping(value = "/roles/{id}")
+    public ResponseEntity<PersonQueryDTO> getPersonByRoles(@PathVariable(value = "id") UUID id) {
+        Role role = roleRepository.findById(id).get();
+        return new ResponseEntity(personService.findAllByRoles(role), HttpStatus.OK);
 
     }
 
-    @GetMapping(value ="/{id}")
-    public ResponseEntity<PersonQueryDTO> getPerson(@PathVariable(value="id") UUID id){
-        return new ResponseEntity<>(personService.getPerson(id),HttpStatus.OK);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<PersonQueryDTO> getPerson(@PathVariable(value = "id") UUID id) {
+        return new ResponseEntity<>(personService.getPerson(id), HttpStatus.OK);
 
     }
 
 
     @PostMapping
-    public ResponseEntity<UUID>createPerson(@RequestBody PersonQueryDTO person){
+    public ResponseEntity<UUID> createPerson(@RequestBody PersonQueryDTO person) {
 
         return new ResponseEntity<>(personService.createPerson(person), HttpStatus.CREATED);
     }
 
 
-    @PutMapping(value="/{id}")
-    public void updatePerson(@PathVariable(value="id") UUID id,
-                                       @RequestBody PersonQueryDTO personUpdateDTO){
-        personService.updatePerson(id,personUpdateDTO);
+    @PutMapping(value = "/{id}")
+    public void updatePerson(@PathVariable(value = "id") UUID id,
+                             @RequestBody PersonQueryDTO personUpdateDTO) {
+        personService.updatePerson(id, personUpdateDTO);
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deletePerson(@PathVariable(value = "id") UUID id){
-       personService.delete(id);
+    public void deletePerson(@PathVariable(value = "id") UUID id) {
+        personService.delete(id);
 
-}}
+    }
+}

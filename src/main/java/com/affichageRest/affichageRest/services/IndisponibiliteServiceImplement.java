@@ -1,7 +1,6 @@
 package com.affichageRest.affichageRest.services;
 
 
-
 import com.affichageRest.affichageRest.DAO.IndisponibiliteRepository;
 import com.affichageRest.affichageRest.DTO.IndisponibiliteQueryDTO;
 import com.affichageRest.affichageRest.model.Indisponibilite;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Service(value="IndisponibiliteService")
+@Service(value = "IndisponibiliteService")
 public class IndisponibiliteServiceImplement implements IndisponibiliteService {
 
     @Autowired
@@ -23,20 +22,19 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
     public List<IndisponibiliteQueryDTO> getAllIndispo() {
         List<IndisponibiliteQueryDTO> plist = new ArrayList<>();
         indisponibiliteRepository.findAll().forEach(indisponibilite -> {
-            plist.add(new IndisponibiliteQueryDTO(indisponibilite.getIdinsponibilite(),indisponibilite.getType()));
+            plist.add(new IndisponibiliteQueryDTO(indisponibilite.getIdinsponibilite(), indisponibilite.getType()));
         });
         return plist;
     }
 
     @Override
     public IndisponibiliteQueryDTO getIndisponibilite(UUID id) {
-        if(indisponibiliteRepository.findById(id).isPresent()){
+        if (indisponibiliteRepository.findById(id).isPresent()) {
             Indisponibilite temp = indisponibiliteRepository.findById(id).get();
 
 
-            return new IndisponibiliteQueryDTO(temp.getIdinsponibilite(),temp.getType());
-        }
-        else{
+            return new IndisponibiliteQueryDTO(temp.getIdinsponibilite(), temp.getType());
+        } else {
             return null;
         }
     }
@@ -45,11 +43,11 @@ public class IndisponibiliteServiceImplement implements IndisponibiliteService {
     @Override
     public UUID createIndisponibilite(IndisponibiliteQueryDTO indispo) {
 
-       Indisponibilite newIndispo = new Indisponibilite();
+        Indisponibilite newIndispo = new Indisponibilite();
 
-       newIndispo.setIdinsponibilite(indispo.getIdindisponibilite());
-       newIndispo.setType(indispo.getType());
-       newIndispo.setIdinsponibilite(UUID.nameUUIDFromBytes(indispo.getType().getBytes()));
+        newIndispo.setIdinsponibilite(indispo.getIdindisponibilite());
+        newIndispo.setType(indispo.getType());
+        newIndispo.setIdinsponibilite(UUID.nameUUIDFromBytes(indispo.getType().getBytes()));
 
         return indisponibiliteRepository.save(newIndispo).getIdinsponibilite();
     }

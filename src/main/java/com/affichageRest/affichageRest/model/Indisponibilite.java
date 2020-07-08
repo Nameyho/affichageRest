@@ -1,6 +1,8 @@
 package com.affichageRest.affichageRest.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
@@ -12,7 +14,8 @@ public class Indisponibilite implements Serializable {
 
     @Id
 
-    @Column(name = "INDISPO_ID") private UUID idinsponibilite;
+    @Column(name = "INDISPO_ID")
+    private UUID idinsponibilite;
 
     @NotNull
     private String type;
@@ -30,20 +33,20 @@ public class Indisponibilite implements Serializable {
         this.type = type;
     }
 
+    public Indisponibilite() {
+    }
+
+    public Indisponibilite(@NotNull String type) {
+        this.idinsponibilite = UUID.nameUUIDFromBytes(type.getBytes());
+        this.type = type;
+    }
+
     public UUID getIdinsponibilite() {
         return idinsponibilite;
     }
 
     public void setIdinsponibilite(UUID idinsponibilite) {
         this.idinsponibilite = idinsponibilite;
-    }
-
-    public Indisponibilite() {
-    }
-
-    public Indisponibilite( @NotNull String type) {
-        this.idinsponibilite = UUID.nameUUIDFromBytes(type.getBytes());
-        this.type = type;
     }
     /*    public UUID getId() {
         return idinsponibilite;

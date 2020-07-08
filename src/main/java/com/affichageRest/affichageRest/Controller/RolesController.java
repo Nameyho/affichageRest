@@ -9,40 +9,41 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/roles")
 public class RolesController {
 
     @Autowired
-    private  RolesService rolesService;
+    private RolesService rolesService;
 
 
     @GetMapping
-   public ResponseEntity<List<RoleQueryDTO>> getAllRoles(){
+    public ResponseEntity<List<RoleQueryDTO>> getAllRoles() {
         return new ResponseEntity<>(rolesService.getAllRoles(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/{id}")
-    public ResponseEntity<RoleQueryDTO> getAllRoles(@PathVariable(value="id") UUID id){
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<RoleQueryDTO> getAllRoles(@PathVariable(value = "id") UUID id) {
         return new ResponseEntity<>(rolesService.getRole(id), HttpStatus.OK);
     }
 
 
     @PostMapping
-         public ResponseEntity<UUID> createRole(@RequestBody RoleQueryDTO role){
+    public ResponseEntity<UUID> createRole(@RequestBody RoleQueryDTO role) {
 
-        return new ResponseEntity<>(rolesService.createRole(role),HttpStatus.CREATED);
+        return new ResponseEntity<>(rolesService.createRole(role), HttpStatus.CREATED);
     }
 
-    @PutMapping(value="/{id}")
-    public void updateRole(@PathVariable(value="id") UUID id,
-                             @RequestBody RoleQueryDTO roleUpdateDTO){
-        rolesService.updateRole(id,roleUpdateDTO);
+    @PutMapping(value = "/{id}")
+    public void updateRole(@PathVariable(value = "id") UUID id,
+                           @RequestBody RoleQueryDTO roleUpdateDTO) {
+        rolesService.updateRole(id, roleUpdateDTO);
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteRole(@PathVariable(value = "id") UUID id){
+    public void deleteRole(@PathVariable(value = "id") UUID id) {
         rolesService.delete(id);
 
     }

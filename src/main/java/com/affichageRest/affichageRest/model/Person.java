@@ -1,72 +1,72 @@
 package com.affichageRest.affichageRest.model;
 
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
 
 @Entity
-@Table(name = "Person",schema = "public",catalog = "AffichageRest")
+@Table(name = "Person", schema = "public", catalog = "AffichageRest")
 
 
 public class Person implements Serializable {
 
     @Id
 
-    @Column (name="PERSON_ID",unique = true) private UUID idPerson;
+    @Column(name = "PERSON_ID", unique = true)
+    private UUID idPerson;
 
     @NotNull
     @NotEmpty
-    @Column private String prenom;
+    @Column
+    private String prenom;
 
     @NotNull
     @NotEmpty
-    @Column private String nom;
+    @Column
+    private String nom;
 
     @Email
     @NotNull
-    @Column private String email;
+    @Column
+    private String email;
 
     @Past
     @NotNull
-    @Column private Date  dateAnniversaire;
+    @Column
+    private Date dateAnniversaire;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_role")
     private Role roles;
-
 
 
     public Person() {
     }
 
-    public Person(UUID idPerson, String prenom, String nom, String email, Date dateAnniversaire,Role role) {
+    public Person(UUID idPerson, String prenom, String nom, String email, Date dateAnniversaire, Role role) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
-        this.idPerson= idPerson;
-        this.roles=roles;
+        this.idPerson = idPerson;
+        this.roles = roles;
     }
 
-    public Person( String prenom, String nom, String email, Date dateAnniversaire,Role role) {
+    public Person(String prenom, String nom, String email, Date dateAnniversaire, Role role) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.dateAnniversaire = dateAnniversaire;
-        this.roles=role;
-        this.idPerson= UUID.nameUUIDFromBytes((prenom+nom+dateAnniversaire).getBytes());
+        this.roles = role;
+        this.idPerson = UUID.nameUUIDFromBytes((prenom + nom + dateAnniversaire).getBytes());
     }
 
     public Role getRoles() {
@@ -85,7 +85,7 @@ public class Person implements Serializable {
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
                 ", dateAnniversaire=" + dateAnniversaire +
-                 '}';
+                '}';
     }
 
 

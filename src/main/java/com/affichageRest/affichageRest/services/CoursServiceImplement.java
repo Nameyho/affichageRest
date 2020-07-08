@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Service(value="coursService")
+@Service(value = "coursService")
 public class CoursServiceImplement implements CoursService {
 
     @Resource
@@ -22,20 +22,19 @@ public class CoursServiceImplement implements CoursService {
     public List<CoursQueryDTO> getAllCours() {
         List<CoursQueryDTO> plist = new ArrayList<>();
         coursRepository.findAll().forEach(cours -> {
-            plist.add(new CoursQueryDTO(cours.getId(),cours.getNom()));
+            plist.add(new CoursQueryDTO(cours.getId(), cours.getNom()));
         });
         return plist;
     }
 
     @Override
     public CoursQueryDTO getCours(UUID id) {
-        if(coursRepository.findById(id).isPresent()){
-            Cours  temp = coursRepository.findById(id).get();
+        if (coursRepository.findById(id).isPresent()) {
+            Cours temp = coursRepository.findById(id).get();
 
 
-            return new CoursQueryDTO(temp.getId(),temp.getNom());
-        }
-        else{
+            return new CoursQueryDTO(temp.getId(), temp.getNom());
+        } else {
             return null;
         }
     }
@@ -57,7 +56,6 @@ public class CoursServiceImplement implements CoursService {
         if (coursRepository.findById(id).isPresent()) {
             Cours coursexistant = coursRepository.findById(id).get();
             coursexistant.setNom(cours.getName());
-
 
 
         }

@@ -17,8 +17,8 @@ public class EcranAbsenceID implements Serializable {
     public EcranAbsenceID(UUID idEcran, PersonIndisponibilitePK idAbsence) {
         this.idEcran = idEcran;
         this.idPerson = idAbsence.getIdPerson();
-        this.idIndisponibilite=idAbsence.getIndispo_id();
-        this.idSpecifique=idAbsence.getIdSpecifique();
+        this.idIndisponibilite = idAbsence.getIndispo_id();
+        this.idSpecifique = idAbsence.getIdSpecifique();
     }
 
     public UUID getIdEcran() {

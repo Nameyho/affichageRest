@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Service(value="PersonIndisponibiliteService")
+@Service(value = "PersonIndisponibiliteService")
 public class PersonIndisponibiliteServiceImplement implements PersonIndisponibiliteService {
 
     @Autowired
-    private PersonIndisponibiliteRepository personIndisponibiliteRepository ;
+    private PersonIndisponibiliteRepository personIndisponibiliteRepository;
 
     @Autowired
     private PersonRepository personRepository;
@@ -31,9 +31,8 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
     private CoursRepository coursRepository;
 
 
-
     @Override
-    public List<PersonIndisponibiliteQueryDTO> getAllPersonIndisponibilite () {
+    public List<PersonIndisponibiliteQueryDTO> getAllPersonIndisponibilite() {
         List<PersonIndisponibiliteQueryDTO> plist = new ArrayList<>();
 
 
@@ -42,28 +41,27 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
                     pIndisp.getPersonIndisponibilitePK().getIdPerson(),
                     pIndisp.getPersonIndisponibilitePK().getIndispo_id(),
                     pIndisp.getPersonIndisponibilitePK().getIdSpecifique(),
-                    pIndisp.getDateDebut(),pIndisp.getDateFin(),
+                    pIndisp.getDateDebut(), pIndisp.getDateFin(),
                     personRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdPerson()).get().getNom(),
-            indisponibiliteRepository.findById(pIndisp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
+                    indisponibiliteRepository.findById(pIndisp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
 
-            personRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom()));
+                    personRepository.findById(pIndisp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom()));
         });
         return plist;
     }
 
     @Override
     public PersonIndisponibiliteQueryDTO getPersonIndisponibilite(PersonIndisponibilitePK id) {
-        if(personIndisponibiliteRepository.findById(id).isPresent()){
+        if (personIndisponibiliteRepository.findById(id).isPresent()) {
             PersonIndisponibilite temp = personIndisponibiliteRepository.findById(id).get();
             return new PersonIndisponibiliteQueryDTO(temp.getPersonIndisponibilitePK().getIdPerson(),
                     temp.getPersonIndisponibilitePK().getIndispo_id(),
                     temp.getPersonIndisponibilitePK().getIdSpecifique(),
-                    temp.getDateDebut(),temp.getDateFin(),personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getNom(),
-            indisponibiliteRepository.findById(temp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
-            personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom());
+                    temp.getDateDebut(), temp.getDateFin(), personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getNom(),
+                    indisponibiliteRepository.findById(temp.getPersonIndisponibilitePK().getIndispo_id()).get().getType(),
+                    personRepository.findById(temp.getPersonIndisponibilitePK().getIdPerson()).get().getPrenom());
 
-        }
-        else{
+        } else {
             return null;
         }
     }
@@ -86,37 +84,35 @@ public class PersonIndisponibiliteServiceImplement implements PersonIndisponibil
 
         newPersonIndisponibilites.setPersonIndisponibilitePK(tempID);
 
-      return personIndisponibiliteRepository.save(newPersonIndisponibilites);
+        return personIndisponibiliteRepository.save(newPersonIndisponibilites);
     }
 
     @Override
     public void updatePersonIndisponibilite(PersonIndisponibilitePK id, PersonIndisponibiliteQueryDTO temp) {
 
 
-      if(personIndisponibiliteRepository.findById(id).isPresent()){
-          PersonIndisponibilite personIndisponibilite = personIndisponibiliteRepository.findById(id).get();
-          personIndisponibilite.setDateDebut(temp.getDateDebut());
-          personIndisponibilite.setDateFin(temp.getDateFin());
+        if (personIndisponibiliteRepository.findById(id).isPresent()) {
+            PersonIndisponibilite personIndisponibilite = personIndisponibiliteRepository.findById(id).get();
+            personIndisponibilite.setDateDebut(temp.getDateDebut());
+            personIndisponibilite.setDateFin(temp.getDateFin());
 
-          PersonIndisponibilitePK tempID = new PersonIndisponibilitePK();
+            PersonIndisponibilitePK tempID = new PersonIndisponibilitePK();
 
 
-          tempID.setIdPerson(temp.getIdPerson());
-          tempID.setIndispo_id(temp.getIndispo_id());
+            tempID.setIdPerson(temp.getIdPerson());
+            tempID.setIndispo_id(temp.getIndispo_id());
 
-          personIndisponibiliteRepository.save(personIndisponibilite);
-      }
-
+            personIndisponibiliteRepository.save(personIndisponibilite);
         }
+
+    }
 
     @Override
     public void delete(PersonIndisponibilitePK id) {
 
 
-
         PersonIndisponibilite personne = this.personIndisponibiliteRepository.findById(id).get();
         this.personIndisponibiliteRepository.delete(personne);
-
 
 
     }

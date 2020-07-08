@@ -1,9 +1,7 @@
 package com.affichageRest.affichageRest.model;
 
-import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import java.util.UUID;
 
 @Entity
 public class EcranAbsence {

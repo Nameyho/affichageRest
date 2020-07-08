@@ -1,20 +1,23 @@
 package com.affichageRest.affichageRest.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.Period;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Cours",schema = "public",catalog = "AffichageRest")
+@Table(name = "Cours", schema = "public", catalog = "AffichageRest")
 public class Cours implements Serializable {
 
     @Id
-    @Column(name = "COURS_ID") private UUID id;
+    @Column(name = "COURS_ID")
+    private UUID id;
 
     @NotNull
     @NotEmpty
@@ -30,9 +33,9 @@ public class Cours implements Serializable {
 //    private Set<CoursEnseigne> courEnseignes;
 
     public Cours(String nom, Date dateDebut, Date datefin) {
-        this.id = UUID.nameUUIDFromBytes((nom + dateDebut+datefin).getBytes());
+        this.id = UUID.nameUUIDFromBytes((nom + dateDebut + datefin).getBytes());
         this.nom = nom;
-        this.DateDebut= dateDebut;
+        this.DateDebut = dateDebut;
         this.dateFin = datefin;
     }
 
@@ -44,7 +47,7 @@ public class Cours implements Serializable {
         return "Cours{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", courEnseignes="  +
+                ", courEnseignes=" +
                 '}';
     }
 
@@ -52,12 +55,12 @@ public class Cours implements Serializable {
         return id;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public void setNom(String nom) {
@@ -87,7 +90,7 @@ public class Cours implements Serializable {
         Cours cours = (Cours) o;
         return Objects.equals(id, cours.id) &&
                 Objects.equals(nom, cours.nom)
-              ;
+                ;
     }
 
     @Override

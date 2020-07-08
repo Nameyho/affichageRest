@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Service(value="MessagesService")
+@Service(value = "MessagesService")
 public class MessageServiceImplement implements MessageService {
 
     @Autowired
@@ -36,21 +36,21 @@ public class MessageServiceImplement implements MessageService {
                     message.getTitreMessage()
 
 
-                   ));
+            ));
         });
         return plist;
     }
 
     @Override
     public MessageQueryDTO getMessage(UUID id) {
-        if(messageRepository.findById(id).isPresent()){
-       Messages message = messageRepository.findById(id).get();
+        if (messageRepository.findById(id).isPresent()) {
+            Messages message = messageRepository.findById(id).get();
             String nomUser = userRepository.findById(message.getUser().getIdUser()).get().getUsername();
-       return  new MessageQueryDTO(message.getId(),message.getContenu(),message.getCreatedDate(),  message.getUser().getIdUser(),nomUser,message.getTitreMessage());
+            return new MessageQueryDTO(message.getId(), message.getContenu(), message.getCreatedDate(), message.getUser().getIdUser(), nomUser, message.getTitreMessage());
+        } else {
+            return null;
+        }
     }
-    else{
-        return null;
-    }}
 
     @Override
     public UUID createMessage(MessageQueryDTO message) {
@@ -63,15 +63,16 @@ public class MessageServiceImplement implements MessageService {
         nouvMessage.setCreatedDate(message.getCreatedDate());
         nouvMessage.setTitreMessage(message.getTitreMessage());
 
-        User person =userRepository.findByUsername(message.getNomPerson());
+        User person = userRepository.findByUsername(message.getNomPerson());
 
         nouvMessage.setUser(person);
         System.out.println(person.getIdUser());
-        return messageRepository.save(nouvMessage).getId();}
+        return messageRepository.save(nouvMessage).getId();
+    }
 
     @Override
     public void updateMessages(UUID id, MessageQueryDTO message) {
-        if(messageRepository.findById(id).isPresent()) {
+        if (messageRepository.findById(id).isPresent()) {
 
             Messages messagesExistant = messageRepository.findById(id).get();
 

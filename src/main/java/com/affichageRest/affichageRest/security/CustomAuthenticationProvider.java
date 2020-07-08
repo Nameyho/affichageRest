@@ -9,7 +9,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     private UserServiceImpl userService;
-
 
 
     @Override
@@ -39,34 +37,29 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         System.out.println(test);
 
-        User user= userService.findByUsername(name);
+        User user = userService.findByUsername(name);
 
 
-
-
-
-        if(user==null){
+        if (user == null) {
             throw new BadCredentialsException("1000");
         }
 
 
+        if (!(bCryptPasswordEncoder.matches(password, user.getPassword()))) {
 
-       if (!(bCryptPasswordEncoder.matches(password,user.getPassword()))) {
-
-           System.out.println("mauvais mdp");
+            System.out.println("mauvais mdp");
 
             throw new BadCredentialsException("1000");
         }
-            return new UsernamePasswordAuthenticationToken(name, password,new ArrayList<>());
+        return new UsernamePasswordAuthenticationToken(name, password, new ArrayList<>());
 
     }
 
 
-
     @Override
     public boolean supports(Class<?> authentication) {
-         return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
-}
+        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
+    }
 
     public void setUserService(UserServiceImpl userService) {
         this.userService = userService;

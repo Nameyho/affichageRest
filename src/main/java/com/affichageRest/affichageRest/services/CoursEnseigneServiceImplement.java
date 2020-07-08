@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service(value="CoursEnseignesService")
+@Service(value = "CoursEnseignesService")
 public class CoursEnseigneServiceImplement implements CoursEnseigneService {
 
     @Autowired
@@ -26,7 +26,6 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
     private CoursRepository coursRepository;
 
 
-
     @Override
     public List<CoursEnseigneQueryDTO> getAllCoursEnseignes() {
         List<CoursEnseigneQueryDTO> plist = new ArrayList<>();
@@ -36,23 +35,22 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
             String nomPerson = personRepository.findById(coursEnseigne.getEnseigneID().getIdPerson()).get().getNom();
             plist.add(new
                     CoursEnseigneQueryDTO(
-                            coursEnseigne.getEnseigneID().getIdPerson(),
-                            coursEnseigne.getEnseigneID().getIdCours(),
-                            coursEnseigne.getAnneeDebut(),
-                            coursEnseigne.getAnneeFin(),
-                            nomCours,
-                            nomPerson   ));
+                    coursEnseigne.getEnseigneID().getIdPerson(),
+                    coursEnseigne.getEnseigneID().getIdCours(),
+                    coursEnseigne.getAnneeDebut(),
+                    coursEnseigne.getAnneeFin(),
+                    nomCours,
+                    nomPerson));
 
 
-
-            });
+        });
         return plist;
     }
 
     @Override
     public CoursEnseigneQueryDTO getCoursEnseigne(CoursEnseigneID id) {
-        if(coursEnseigneRepository.findById(id).isPresent()){
-            CoursEnseigne  coursEnseigne = coursEnseigneRepository.findById(id).get();
+        if (coursEnseigneRepository.findById(id).isPresent()) {
+            CoursEnseigne coursEnseigne = coursEnseigneRepository.findById(id).get();
             String nomCours = coursRepository.findById(coursEnseigne.getEnseigneID().getIdCours()).get().getNom();
             String nomPerson = personRepository.findById(coursEnseigne.getEnseigneID().getIdPerson()).get().getNom();
 
@@ -66,10 +64,9 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
                     nomPerson
 
 
-                    );
+            );
 
-        }
-        else{
+        } else {
             return null;
         }
     }
@@ -90,7 +87,7 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
         newCoursEnseignes.setAnneeDebut(coursEnseigne.getAnneeDebut());
         newCoursEnseignes.setAnneeFin(coursEnseigne.getAnneeFin());
 
-       coursEnseigneRepository.save(newCoursEnseignes);
+        coursEnseigneRepository.save(newCoursEnseignes);
         return coursEnseigne;
     }
 
@@ -104,13 +101,13 @@ public class CoursEnseigneServiceImplement implements CoursEnseigneService {
 
         coursEnseigneRepository.save(newCoursEnseignes);
 
-        }
+    }
 
 
     @Override
     public void delete(CoursEnseigneID coursEnseigneID) {
 
-     CoursEnseigne coursEnseigne = coursEnseigneRepository.findById(coursEnseigneID).get();
+        CoursEnseigne coursEnseigne = coursEnseigneRepository.findById(coursEnseigneID).get();
 
 
         this.coursEnseigneRepository.delete(coursEnseigne);

@@ -1,17 +1,21 @@
 package com.affichageRest.affichageRest.services;
 
 
-import com.affichageRest.affichageRest.DAO.*;
-import com.affichageRest.affichageRest.DTO.CoursEnseigneQueryDTO;
+import com.affichageRest.affichageRest.DAO.EcranAbsenceRepository;
+import com.affichageRest.affichageRest.DAO.EcranRepository;
+import com.affichageRest.affichageRest.DAO.IndisponibiliteRepository;
+import com.affichageRest.affichageRest.DAO.PersonRepository;
 import com.affichageRest.affichageRest.DTO.EcranAbsenceQueryDTO;
-import com.affichageRest.affichageRest.model.*;
+import com.affichageRest.affichageRest.model.EcranAbsence;
+import com.affichageRest.affichageRest.model.EcranAbsenceID;
+import com.affichageRest.affichageRest.model.PersonIndisponibilitePK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service(value="EcranAbsenceService")
+@Service(value = "EcranAbsenceService")
 public class EcranAbsenceServiceImplement implements EcranAbsenceService {
 
 
@@ -70,9 +74,9 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
 
     @Override
     public EcranAbsenceQueryDTO getEcranAbsence(EcranAbsenceID id) {
-        if(ecranAbsenceRepository.findById(id).isPresent()){
+        if (ecranAbsenceRepository.findById(id).isPresent()) {
 
-           EcranAbsence ecranAbsence =  ecranAbsenceRepository.findById(id).get();
+            EcranAbsence ecranAbsence = ecranAbsenceRepository.findById(id).get();
 
             return new EcranAbsenceQueryDTO(
                     ecranAbsence.getEcranAbsenceID().getIdEcran(),
@@ -82,7 +86,7 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
                     ecranAbsence.getEcranAbsenceID().getIdPerson(),
                     personRepository.findById(ecranAbsence.getEcranAbsenceID().getIdPerson()).get().getNom(),
                     ecranAbsence.getEcranAbsenceID().getIdSpecifique());
-        }else{
+        } else {
             return null;
         }
 
@@ -107,7 +111,6 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
         EcranAbsence ecranAbsence = new EcranAbsence(ecranAbsenceID);
 
         ecranAbsenceRepository.save(ecranAbsence);
-
 
 
     }

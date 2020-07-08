@@ -23,38 +23,37 @@ public class CoursEnsController {
     private CoursEnseigneService coursEnseigneService;
 
     @GetMapping
-    public ResponseEntity<List<CoursEnseigneQueryDTO>> getAllCoursEnseigne(){
+    public ResponseEntity<List<CoursEnseigneQueryDTO>> getAllCoursEnseigne() {
         return new ResponseEntity<>(coursEnseigneService.getAllCoursEnseignes(), HttpStatus.OK);
 
     }
 
-    @GetMapping(value ="/{idperson}/{idcours}")
-    public ResponseEntity<PersonResultatQueryDTO> getCoursEnseigne(@PathVariable(value="idperson")  UUID idperson, @PathVariable(value = "idcours") UUID idcours){
-        CoursEnseigneID id = new CoursEnseigneID(idperson,idcours);
+    @GetMapping(value = "/{idperson}/{idcours}")
+    public ResponseEntity<PersonResultatQueryDTO> getCoursEnseigne(@PathVariable(value = "idperson") UUID idperson, @PathVariable(value = "idcours") UUID idcours) {
+        CoursEnseigneID id = new CoursEnseigneID(idperson, idcours);
 
-        return new ResponseEntity(coursEnseigneService.getCoursEnseigne(id),HttpStatus.OK);
+        return new ResponseEntity(coursEnseigneService.getCoursEnseigne(id), HttpStatus.OK);
 
     }
 
 
-
     @PostMapping
-    public ResponseEntity<UUID>createCoursens(@RequestBody CoursEnseigneQueryDTO res){
+    public ResponseEntity<UUID> createCoursens(@RequestBody CoursEnseigneQueryDTO res) {
 
         return new ResponseEntity(coursEnseigneService.createCoursEnseigne(res), HttpStatus.CREATED);
     }
 
 
-    @PutMapping(value ="/{idperson}/{idcours}")
-    public void updatePerson(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ,
-                             @RequestBody CoursEnseigneQueryDTO coursEnseigneUpdateDTO){
-        CoursEnseigneID id = new CoursEnseigneID(idperson,idcours);
-        coursEnseigneService.updateCoursEnseigne(id,coursEnseigneUpdateDTO);
+    @PutMapping(value = "/{idperson}/{idcours}")
+    public void updatePerson(@PathVariable(value = "idperson") UUID idperson, @PathVariable(value = "idcours") UUID idcours,
+                             @RequestBody CoursEnseigneQueryDTO coursEnseigneUpdateDTO) {
+        CoursEnseigneID id = new CoursEnseigneID(idperson, idcours);
+        coursEnseigneService.updateCoursEnseigne(id, coursEnseigneUpdateDTO);
     }
 
-    @DeleteMapping(value ="/{idperson}/{idcours}")
-    public void deletePerson(@PathVariable(value="idperson")  UUID idperson,@PathVariable(value = "idcours") UUID idcours ){
-        CoursEnseigneID id = new CoursEnseigneID(idperson,idcours);
+    @DeleteMapping(value = "/{idperson}/{idcours}")
+    public void deletePerson(@PathVariable(value = "idperson") UUID idperson, @PathVariable(value = "idcours") UUID idcours) {
+        CoursEnseigneID id = new CoursEnseigneID(idperson, idcours);
         coursEnseigneService.delete(id);
 
     }

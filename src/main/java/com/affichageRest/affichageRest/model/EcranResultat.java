@@ -13,6 +13,9 @@ public class EcranResultat {
         this.ecranResultatID = ecranResultatID;
     }
 
+    public EcranResultat() {
+    }
+
     public EcranResultatID getEcranResultatID() {
         return ecranResultatID;
     }

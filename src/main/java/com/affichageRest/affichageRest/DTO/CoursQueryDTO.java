@@ -1,8 +1,6 @@
 package com.affichageRest.affichageRest.DTO;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.UUID;
 
 public class CoursQueryDTO {
@@ -11,7 +9,6 @@ public class CoursQueryDTO {
 
     @NotNull
     private String name;
-
 
 
     public CoursQueryDTO() {

@@ -22,45 +22,43 @@ public class PersonIndisponibiliteController {
     private PersonIndisponibiliteService personIndisponibiliteService;
 
     @GetMapping
-    public ResponseEntity<List<PersonIndisponibiliteQueryDTO>> getAllindispo(){
+    public ResponseEntity<List<PersonIndisponibiliteQueryDTO>> getAllindispo() {
         return new ResponseEntity<>(personIndisponibiliteService.getAllPersonIndisponibilite(), HttpStatus.OK);
 
     }
 
-    @GetMapping(value ="/{idperson}/{idindispo}/{idspecifique}")
-    public ResponseEntity<PersonIndisponibiliteQueryDTO> getindispo(@PathVariable(value="idperson")  UUID idperson,
-          @PathVariable(value="idindispo")  UUID idindispo, @PathVariable(value = "idspecifique") UUID idspecifique){
-       PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idspecifique);
+    @GetMapping(value = "/{idperson}/{idindispo}/{idspecifique}")
+    public ResponseEntity<PersonIndisponibiliteQueryDTO> getindispo(@PathVariable(value = "idperson") UUID idperson,
+                                                                    @PathVariable(value = "idindispo") UUID idindispo, @PathVariable(value = "idspecifique") UUID idspecifique) {
+        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson, idindispo, idspecifique);
 
 
-
-        return new ResponseEntity<>(personIndisponibiliteService.getPersonIndisponibilite(id),HttpStatus.OK);
+        return new ResponseEntity<>(personIndisponibiliteService.getPersonIndisponibilite(id), HttpStatus.OK);
 
     }
 
 
-
     @PostMapping
-    public ResponseEntity<UUID>createIndispo(@RequestBody PersonIndisponibiliteQueryDTO res){
+    public ResponseEntity<UUID> createIndispo(@RequestBody PersonIndisponibiliteQueryDTO res) {
 
         return new ResponseEntity(personIndisponibiliteService.createPersonIndisponibilite(res), HttpStatus.CREATED);
     }
 
 
-    @PutMapping(value ="/{idperson}/{idindispo}/{idspecifique}")
-    public void updateindispo(@PathVariable(value="idperson")  UUID idperson,
-                             @PathVariable(value = "idindispo") UUID idindispo,
+    @PutMapping(value = "/{idperson}/{idindispo}/{idspecifique}")
+    public void updateindispo(@PathVariable(value = "idperson") UUID idperson,
+                              @PathVariable(value = "idindispo") UUID idindispo,
                               @PathVariable(value = "idspecifique") UUID idspecifique,
-                             @RequestBody PersonIndisponibiliteQueryDTO PersonIndisponibiliteQueryDTO){
-        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idspecifique);
-        personIndisponibiliteService.updatePersonIndisponibilite(id,PersonIndisponibiliteQueryDTO);
+                              @RequestBody PersonIndisponibiliteQueryDTO PersonIndisponibiliteQueryDTO) {
+        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson, idindispo, idspecifique);
+        personIndisponibiliteService.updatePersonIndisponibilite(id, PersonIndisponibiliteQueryDTO);
     }
 
-    @DeleteMapping(value ="/{idperson}/{idindispo}/{idspecifique}")
-    public void deleteIndispo(@PathVariable(value="idperson")  UUID idperson,
+    @DeleteMapping(value = "/{idperson}/{idindispo}/{idspecifique}")
+    public void deleteIndispo(@PathVariable(value = "idperson") UUID idperson,
                               @PathVariable(value = "idindispo") UUID idindispo,
-                              @PathVariable(value = "idspecifique") UUID idspecifique){
-        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson,idindispo,idspecifique);
+                              @PathVariable(value = "idspecifique") UUID idspecifique) {
+        PersonIndisponibilitePK id = new PersonIndisponibilitePK(idperson, idindispo, idspecifique);
         personIndisponibiliteService.delete(id);
 
     }

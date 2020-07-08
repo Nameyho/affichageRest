@@ -15,27 +15,29 @@ import java.util.UUID;
 public class DataLoader implements ApplicationRunner {
 
 
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private CoursRepository coursRepository;
+    private final CoursRepository coursRepository;
 
-    private IndisponibiliteRepository indisponibiliteRepository;
+    private final IndisponibiliteRepository indisponibiliteRepository;
 
-    private MessageRepository messageRepository ;
+    private final MessageRepository messageRepository;
 
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
 
-    private PersonResultatRepository personResultatrep;
+    private final PersonResultatRepository personResultatrep;
 
-    private PersonIndisponibiliteRepository personIndisponibiliteRepository;
+    private final PersonIndisponibiliteRepository personIndisponibiliteRepository;
 
-    private  CoursEnseigneRepository coursEnseigneRepository;
+    private final CoursEnseigneRepository coursEnseigneRepository;
 
-    private EcranRepository ecranRepository;
+    private final EcranRepository ecranRepository;
 
-    private EcranAbsenceRepository ecranAbsenceRepository;
+    private final EcranAbsenceRepository ecranAbsenceRepository;
+
+    private final EcranResultatRepository ecranResultatRepository;
 
 
     @Autowired
@@ -46,7 +48,8 @@ public class DataLoader implements ApplicationRunner {
                       PersonIndisponibiliteRepository personIndisponibiliteRepository,
                       CoursEnseigneRepository coursEnseigneRepository,
                       EcranRepository ecranRepository,
-                      EcranAbsenceRepository ecranAbsenceRepository) {
+                      EcranAbsenceRepository ecranAbsenceRepository,
+                      EcranResultatRepository ecranResultatRepository) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.coursRepository = coursRepository;
@@ -54,18 +57,18 @@ public class DataLoader implements ApplicationRunner {
         this.messageRepository = messageRepository;
         this.personRepository = personRepository;
         this.personResultatrep = personResultat;
-        this.personIndisponibiliteRepository=personIndisponibiliteRepository;
-        this.coursEnseigneRepository=coursEnseigneRepository;
-        this.ecranRepository=ecranRepository;
-        this.ecranAbsenceRepository=ecranAbsenceRepository;
+        this.personIndisponibiliteRepository = personIndisponibiliteRepository;
+        this.coursEnseigneRepository = coursEnseigneRepository;
+        this.ecranRepository = ecranRepository;
+        this.ecranAbsenceRepository = ecranAbsenceRepository;
+        this.ecranResultatRepository = ecranResultatRepository;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
 
-
-        Role role = new Role("Eleves","Accés interdit");
+        Role role = new Role("Eleves", "Accés interdit");
 
         roleRepository.save(role);
 
@@ -78,82 +81,86 @@ public class DataLoader implements ApplicationRunner {
         /** $2a$10$QuxwP8qhB7iX0nWf8KKHLu38zte43nN6cNO2IP4ZBYAkO4slr.iyK  = test **/
 
 
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date datedebut = simpleDateFormat.parse("01/10/2021");
 
-        Date datefin =simpleDateFormat.parse("01/10/2022");
+        Date datefin = simpleDateFormat.parse("01/10/2022");
 
 
-        Cours cours = new Cours("Programmation Orientée Objet",datedebut,datefin);
+        Cours cours = new Cours("Programmation Orientée Objet", datedebut, datefin);
 
-      coursRepository.save(cours);
-
+        coursRepository.save(cours);
 
 
         Indisponibilite indisponibilite = new Indisponibilite("Maladie");
 
         indisponibiliteRepository.save(indisponibilite);
 
-        Date date = null ;
+        Date date = null;
         date = simpleDateFormat.parse("01/10/1993");
 
-        Person person =new Person("Mathieu","Allard","allardmathieu@gmail.com",date,role);
+        Person person = new Person("Mathieu", "Allard", "allardmathieu@gmail.com", date, role);
 
         personRepository.save(person);
 
-        role = new Role("Professeur","accés restreint");
+        role = new Role("Professeur", "accés restreint");
 
         roleRepository.save(role);
 
-         person =new Person("Mat","All","allardmathieu@gmail.com",date,role);
+        person = new Person("Mat", "All", "allardmathieu@gmail.com", date, role);
 
         personRepository.save(person);
 
         date = simpleDateFormat.parse("01/10/2020");
 
-        messageRepository.save(new Messages("Ceci est un message de test",date,user,"Message de Test"));
+        messageRepository.save(new Messages("Ceci est un message de test", date, user, "Message de Test"));
 
 
         System.out.println(person.getIdPerson());
-        PersonResultatPK personResultatPK = new PersonResultatPK(person.getIdPerson(),cours.getId());
+        PersonResultatPK personResultatPK = new PersonResultatPK(person.getIdPerson(), cours.getId());
 
-        Date date2 = null ;
+        Date date2 = null;
 
         date2 = simpleDateFormat.parse("01/10/2020");
 
-        PersonResultat  personResultat = new PersonResultat(personResultatPK,90,true);
+        PersonResultat personResultat = new PersonResultat(personResultatPK, 90, true);
 
         personResultatrep.save(personResultat);
 
 
-        PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getIdPerson(),indisponibilite.getIdinsponibilite(),UUID.randomUUID());
+        PersonIndisponibilitePK personIndisponibilitePK = new PersonIndisponibilitePK(person.getIdPerson(), indisponibilite.getIdinsponibilite(), UUID.randomUUID());
 
-            Date datedeb = simpleDateFormat.parse("01/10/2018");
+        Date datedeb = simpleDateFormat.parse("01/10/2018");
 
-            Date datefi  = simpleDateFormat.parse("01/12/2020");
+        Date datefi = simpleDateFormat.parse("01/12/2020");
 
 
-        PersonIndisponibilite personIndisponibilite = new PersonIndisponibilite(personIndisponibilitePK,datedeb,datefi);
+        PersonIndisponibilite personIndisponibilite = new PersonIndisponibilite(personIndisponibilitePK, datedeb, datefi);
         personIndisponibiliteRepository.save(personIndisponibilite);
 
-        CoursEnseigneID coursEnseigneID = new CoursEnseigneID(person.getIdPerson(),cours.getId());
+        CoursEnseigneID coursEnseigneID = new CoursEnseigneID(person.getIdPerson(), cours.getId());
 
-        CoursEnseigne coursEnseigne = new CoursEnseigne(coursEnseigneID,datedeb,datefin);
+        CoursEnseigne coursEnseigne = new CoursEnseigne(coursEnseigneID, datedeb, datefin);
 
         coursEnseigneRepository.save(coursEnseigne);
 
         Ecran ecran = new Ecran("accueil");
 
-         ecranRepository.save(ecran);
+        ecranRepository.save(ecran);
 
 
-        EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(ecran.getIdEcran(),personIndisponibilitePK);
-
+        EcranAbsenceID ecranAbsenceID = new EcranAbsenceID(ecran.getIdEcran(), personIndisponibilitePK);
 
 
         EcranAbsence ecranAbsence = new EcranAbsence(ecranAbsenceID);
 
-         ecranAbsenceRepository.save(ecranAbsence);
+        ecranAbsenceRepository.save(ecranAbsence);
 
-}}
+        EcranResultatID ecranResultatID = new EcranResultatID(ecran.getIdEcran(), cours.getId());
+
+        EcranResultat ecranResultat = new EcranResultat(ecranResultatID);
+
+        ecranResultatRepository.save(ecranResultat);
+
+    }
+}

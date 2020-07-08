@@ -2,16 +2,12 @@ package com.affichageRest.affichageRest.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 public class CoursEnseigne implements Serializable {
-
-
 
 
     @EmbeddedId
@@ -23,6 +19,7 @@ public class CoursEnseigne implements Serializable {
 
     @NotNull
     private Date anneeFin;
+
     public CoursEnseigne() {
     }
 
@@ -48,7 +45,6 @@ public class CoursEnseigne implements Serializable {
     public void setAnneeFin(Date anneeFin) {
         this.anneeFin = anneeFin;
     }
-
 
 
     public CoursEnseigneID getEnseigneID() {

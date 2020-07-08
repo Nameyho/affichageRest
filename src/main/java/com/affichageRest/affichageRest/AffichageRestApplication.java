@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class AffichageRestApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AffichageRestApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(AffichageRestApplication.class, args);
 
 
-	}
+    }
 
 }

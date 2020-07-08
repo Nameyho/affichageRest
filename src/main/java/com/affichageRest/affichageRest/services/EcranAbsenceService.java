@@ -1,9 +1,7 @@
 package com.affichageRest.affichageRest.services;
 
 
-import com.affichageRest.affichageRest.DTO.CoursEnseigneQueryDTO;
 import com.affichageRest.affichageRest.DTO.EcranAbsenceQueryDTO;
-import com.affichageRest.affichageRest.model.CoursEnseigneID;
 import com.affichageRest.affichageRest.model.EcranAbsenceID;
 
 import java.util.List;
