@@ -47,7 +47,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         if (!(bCryptPasswordEncoder.matches(password, user.getPassword()))) {
 
-            System.out.println("mauvais mdp");
 
             throw new BadCredentialsException("1000");
         }
