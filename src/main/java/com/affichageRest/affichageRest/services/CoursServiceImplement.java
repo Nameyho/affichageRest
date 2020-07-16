@@ -22,7 +22,7 @@ public class CoursServiceImplement implements CoursService {
     public List<CoursQueryDTO> getAllCours() {
         List<CoursQueryDTO> plist = new ArrayList<>();
         coursRepository.findAll().forEach(cours -> {
-            plist.add(new CoursQueryDTO(cours.getId(), cours.getNom()));
+            plist.add(new CoursQueryDTO(cours.getId(), cours.getNom(),cours.getDateDebut(),cours.getDateFin()));
         });
         return plist;
     }
@@ -33,7 +33,7 @@ public class CoursServiceImplement implements CoursService {
             Cours temp = coursRepository.findById(id).get();
 
 
-            return new CoursQueryDTO(temp.getId(), temp.getNom());
+            return new CoursQueryDTO(temp.getId(), temp.getNom(),temp.getDateDebut(),temp.getDateFin());
         } else {
             return null;
         }

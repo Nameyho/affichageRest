@@ -1,6 +1,7 @@
 package com.affichageRest.affichageRest.DTO;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.UUID;
 
 public class CoursQueryDTO {
@@ -10,6 +11,9 @@ public class CoursQueryDTO {
     @NotNull
     private String name;
 
+    private Date datedebut;
+    private Date datefin;
+
 
     public CoursQueryDTO() {
     }
@@ -18,6 +22,13 @@ public class CoursQueryDTO {
         this.idCours = idRole;
         this.name = name;
 
+    }
+
+    public CoursQueryDTO(UUID idCours, @NotNull String name, Date datedebut, Date datefin) {
+        this.idCours = idCours;
+        this.name = name;
+        this.datedebut = datedebut;
+        this.datefin = datefin;
     }
 
     public UUID getIdCours() {
@@ -36,4 +47,19 @@ public class CoursQueryDTO {
         this.name = name;
     }
 
+    public Date getDatedebut() {
+        return datedebut;
+    }
+
+    public void setDatedebut(Date datedebut) {
+        this.datedebut = datedebut;
+    }
+
+    public Date getDatefin() {
+        return datefin;
+    }
+
+    public void setDatefin(Date datefin) {
+        this.datefin = datefin;
+    }
 }

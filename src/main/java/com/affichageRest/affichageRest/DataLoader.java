@@ -39,6 +39,8 @@ public class DataLoader implements ApplicationRunner {
 
     private final EcranResultatRepository ecranResultatRepository;
 
+    private final EcranMessageRepository ecranMessageRepository;
+
 
     @Autowired
     public DataLoader(RoleRepository roleRepository, UserRepository userRepository,
@@ -49,7 +51,8 @@ public class DataLoader implements ApplicationRunner {
                       CoursEnseigneRepository coursEnseigneRepository,
                       EcranRepository ecranRepository,
                       EcranAbsenceRepository ecranAbsenceRepository,
-                      EcranResultatRepository ecranResultatRepository) {
+                      EcranResultatRepository ecranResultatRepository,
+                      EcranMessageRepository ecranMessageRepository) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.coursRepository = coursRepository;
@@ -62,6 +65,7 @@ public class DataLoader implements ApplicationRunner {
         this.ecranRepository = ecranRepository;
         this.ecranAbsenceRepository = ecranAbsenceRepository;
         this.ecranResultatRepository = ecranResultatRepository;
+        this.ecranMessageRepository = ecranMessageRepository;
     }
 
     @Override
@@ -113,7 +117,9 @@ public class DataLoader implements ApplicationRunner {
 
         date = simpleDateFormat.parse("01/10/2020");
 
-        messageRepository.save(new Messages("Ceci est un message de test", date, user, "Message de Test"));
+        Messages message = new Messages("Ceci est un message de test", date, user, "Message de Test");
+
+        messageRepository.save(message);
 
 
         System.out.println(person.getIdPerson());
@@ -162,5 +168,10 @@ public class DataLoader implements ApplicationRunner {
 
         ecranResultatRepository.save(ecranResultat);
 
+        EcranMessageID ecranMessageID = new EcranMessageID(ecran.getIdEcran(),message.getIdMessage());
+
+        EcranMessage ecranMessage = new EcranMessage(ecranMessageID);
+
+        ecranMessageRepository.save(ecranMessage);
     }
 }
