@@ -46,7 +46,8 @@ public class CoursServiceImplement implements CoursService {
 
         newcours.setId(UUID.nameUUIDFromBytes(cours.getName().getBytes()));
         newcours.setNom(cours.getName());
-
+        newcours.setDateDebut(cours.getDatedebut());
+        newcours.setDateFin(cours.getDatefin());
 
         return coursRepository.save(newcours).getId();
     }
@@ -56,8 +57,8 @@ public class CoursServiceImplement implements CoursService {
         if (coursRepository.findById(id).isPresent()) {
             Cours coursexistant = coursRepository.findById(id).get();
             coursexistant.setNom(cours.getName());
-
-
+            coursexistant.setDateDebut(cours.getDatedebut());
+            coursexistant.setDateFin(cours.getDatefin());
         }
 
     }
