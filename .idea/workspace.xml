@@ -20,6 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad22051a-c61b-4706-be0d-717968f0d94a" name="Default Changelist" comment="7 juin mise a jour resultatController">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/Controller/EcranController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/DTO/EcranQueryDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranServiceImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,8 +81,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.affichageRest.affichageRest" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.affichageRest.affichageRest.security" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mathi\Desktop\affichageRest\src\main\java\com\affichageRest\affichageRest\DTO" />
+      <recent name="C:\Users\mathi\Desktop\affichageRest\src\main\java\com\affichageRest\affichageRest" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.affichageRest.affichageRest.Controller" />
@@ -87,9 +92,8 @@
       <recent name="com.affichageRest.affichageRest.DAO" />
       <recent name="com.affichageRest.affichageRest.model" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mathi\Desktop\affichageRest\src\main\java\com\affichageRest\affichageRest\DTO" />
-      <recent name="C:\Users\mathi\Desktop\affichageRest\src\main\java\com\affichageRest\affichageRest" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.affichageRest.affichageRest.security" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -233,7 +237,9 @@
       <workItem from="1594862613363" duration="1435000" />
       <workItem from="1594866001184" duration="22000" />
       <workItem from="1594998452876" duration="22000" />
-      <workItem from="1595005983576" duration="612000" />
+      <workItem from="1595005983576" duration="916000" />
+      <workItem from="1595091328326" duration="364000" />
+      <workItem from="1595111225514" duration="1296000" />
     </task>
     <task id="LOCAL-00001" summary="27 avril petite mise à jour au niveau du modele de la base de donnes">
       <created>1588036538254</created>
@@ -424,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594865792061</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Rajout des affectation des dates début et fin de cours &#10;&#10;17 juillet">
+      <created>1595007806895</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1595007806895</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +460,6 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="27 avril petite mise à jour au niveau du modele de la base de donnes" />
     <MESSAGE value="27 avril petit mise a jour au niveau de l'authenfication&#10;&#10;permet d'enregistrer un utilisateur avec un mdp haché dans la bDD" />
     <MESSAGE value="30 avril&#10;&#10;Mise à jour des vérifications d'entrée dans le formulaire&#10;&#10;+&#10;&#10;Data Loader pour données de test" />
     <MESSAGE value="21 mai &#10;&#10;petite mise a jour par rapport a la sécurité et la connection avec le front end" />
@@ -472,7 +484,8 @@
     <MESSAGE value="8 juin&#10;&#10;Création EcranResultat.java&#10;&#10;ainsi que service,DTO,Controller,DAO&#10;&#10;question sur l'utilité de pouvoir mettre a jour ceci vu que les seuls info sont les composant de la clef primaire composé et que donc la modifié amenera a faire une nouvelle entrée" />
     <MESSAGE value="9 juin &#10;&#10;Création de EcranMessage&#10;&#10;dto,service,dao,controller,etc..." />
     <MESSAGE value="15 juin &#10;&#10;correction d'un petit oublie sur le CoursQueryDTO" />
-    <option name="LAST_COMMIT_MESSAGE" value="15 juin &#10;&#10;correction d'un petit oublie sur le CoursQueryDTO" />
+    <MESSAGE value="Rajout des affectation des dates début et fin de cours &#10;&#10;17 juillet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rajout des affectation des dates début et fin de cours &#10;&#10;17 juillet" />
   </component>
   <component name="WindowStateProjectService">
     <state x="859" y="411" width="767" height="218" key="#Assign_Data_Sources" timestamp="1591472639861">
@@ -496,11 +509,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="625" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594070809581" />
-    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1594842523195">
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1595111356231">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1155" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1590519666181" />
-    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594842523195" />
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595111356231" />
     <state x="747" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1594150852319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -534,46 +547,46 @@
     </state>
     <state x="-1180" y="246" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1588018338206" />
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593969849340" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1595007993800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993800" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1595007993799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993799" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1595007993798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993798" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1595007993799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
-    <state width="1877" height="295" key="GridCell.Tab.1.bottom" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993799" />
+    <state width="1877" height="295" key="GridCell.Tab.1.bottom" timestamp="1595007993801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
-    <state width="1877" height="295" key="GridCell.Tab.1.center" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993801" />
+    <state width="1877" height="295" key="GridCell.Tab.1.center" timestamp="1595007993800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
-    <state width="1877" height="295" key="GridCell.Tab.1.left" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993800" />
+    <state width="1877" height="295" key="GridCell.Tab.1.left" timestamp="1595007993800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
-    <state width="1877" height="295" key="GridCell.Tab.1.right" timestamp="1594865827946">
+    <state width="1877" height="295" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993800" />
+    <state width="1877" height="295" key="GridCell.Tab.1.right" timestamp="1595007993800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659785650" />
-    <state width="1877" height="295" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865827946" />
+    <state width="1877" height="295" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007993800" />
     <state width="1877" height="376" key="GridCell.Tab.2.bottom" timestamp="1590534675806">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -607,11 +620,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594489178843" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1594865793679">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595007808791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659774730" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594865793679" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595007808791" />
     <state x="858" y="380" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1588255568217">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
