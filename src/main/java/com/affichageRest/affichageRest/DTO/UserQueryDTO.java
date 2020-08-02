@@ -17,12 +17,17 @@ public class UserQueryDTO {
     public UserQueryDTO() {
     }
 
-    public UserQueryDTO(UUID id, String username) {
+    public UserQueryDTO(UUID id, String username,String password) {
         this.id = id;
         this.username = username;
+        this.password = password;
 
     }
 
+    public UserQueryDTO(UUID id, @NotEmpty(message = "Le nom ne dois pas être vide") String username) {
+        this.id = id;
+        this.username = username;
+    }
 
     public UUID getId() {
         return id;

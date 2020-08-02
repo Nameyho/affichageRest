@@ -12,6 +12,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 
+
+
 @Entity
 @Table(name = "Person", schema = "public", catalog = "AffichageRest")
 
@@ -19,7 +21,6 @@ import java.util.UUID;
 public class Person implements Serializable {
 
     @Id
-
     @Column(name = "PERSON_ID", unique = true)
     private UUID idPerson;
 

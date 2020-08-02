@@ -31,7 +31,8 @@ public class PersonServiceImplement implements PersonService {
         List<PersonQueryDTO> plist = new ArrayList<>();
         personRepository.findAll().forEach(person -> {
             String nomrole = roleRepository.findById(person.getRoles().getId()).get().getName();
-            plist.add(new PersonQueryDTO(person.getIdPerson(), person.getPrenom(), person.getNom(), person.getEmail(), person.getDateAnniversaire(), person.getRoles().getIdRole(), nomrole));
+            plist.add(new PersonQueryDTO(person.getIdPerson(), person.getPrenom(), person.getNom(), person.getEmail(),
+                    person.getDateAnniversaire(), person.getRoles().getIdRole(), nomrole));
         });
         return plist;
     }

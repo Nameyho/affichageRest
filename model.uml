@@ -4,92 +4,21 @@
   <OriginalElement>com.affichageRest.affichageRest.model</OriginalElement>
   <nodes>
     <node x="869.75" y="11.0">com.affichageRest.affichageRest.model.CoursEnseigneID</node>
-    <node x="490.2499999999999" y="0.0">com.affichageRest.affichageRest.model.PersonIndisponibilitePK</node>
     <node x="89.375" y="1252.0">com.affichageRest.affichageRest.model.User</node>
     <node x="1301.5" y="0.0">com.affichageRest.affichageRest.model.Cours</node>
     <node x="451.25" y="212.0">com.affichageRest.affichageRest.model.PersonIndisponibilite</node>
-    <node x="204.0" y="975.0">com.affichageRest.affichageRest.model.Messages</node>
-    <node x="0.0" y="964.0">com.affichageRest.affichageRest.model.Role</node>
     <node x="827.25" y="223.0">com.affichageRest.affichageRest.model.CoursEnseigne</node>
     <node x="560.5" y="588.0">com.affichageRest.affichageRest.model.Indisponibilite</node>
-    <node x="1044.5" y="599.0">com.affichageRest.affichageRest.model.PersonResultatPK</node>
     <node x="769.7613636363636" y="986.0">com.affichageRest.affichageRest.model.PersonResultat</node>
+    <node x="490.2499999999999" y="0.0">com.affichageRest.affichageRest.model.PersonIndisponibilitePK</node>
+    <node x="204.0" y="975.0">com.affichageRest.affichageRest.model.Messages</node>
+    <node x="0.0" y="964.0">com.affichageRest.affichageRest.model.Role</node>
+    <node x="1044.5" y="599.0">com.affichageRest.affichageRest.model.PersonResultatPK</node>
     <node x="234.5" y="424.0">com.affichageRest.affichageRest.model.Person</node>
   </nodes>
   <notes />
-  <edges>
-    <edge source="com.affichageRest.affichageRest.model.Indisponibilite" target="com.affichageRest.affichageRest.model.CoursEnseigne">
-      <point x="116.0" y="-81.0" />
-      <point x="908.5" y="399.0" />
-      <point x="955.75" y="399.0" />
-      <point x="0.0" y="70.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.User" target="com.affichageRest.affichageRest.model.Messages">
-      <point x="13.3125" y="-114.0" />
-      <point x="209.1875" y="1232.0" />
-      <point x="230.75" y="1232.0" />
-      <point x="-80.25" y="103.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.Messages" target="com.affichageRest.affichageRest.model.Person">
-      <point x="0.0" y="-103.0" />
-      <point x="-76.5" y="245.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.PersonResultat" target="com.affichageRest.affichageRest.model.Person">
-      <point x="-132.75" y="-92.0" />
-      <point x="814.0113636363636" y="944.0" />
-      <point x="464.0" y="944.0" />
-      <point x="76.5" y="245.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.User" target="com.affichageRest.affichageRest.model.Role">
-      <point x="-66.5625" y="-114.0" />
-      <point x="129.3125" y="1222.0" />
-      <point x="69.0" y="1222.0" />
-      <point x="-23.0" y="114.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.PersonResultat" target="com.affichageRest.affichageRest.model.PersonResultatPK">
-      <point x="44.25" y="-92.0" />
-      <point x="991.0113636363636" y="934.0" />
-      <point x="1097.5" y="934.0" />
-      <point x="-53.0" y="70.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.PersonIndisponibilite" target="com.affichageRest.affichageRest.model.PersonIndisponibilitePK">
-      <point x="88.99999999999989" y="-81.0" />
-      <point x="718.2499999999999" y="187.0" />
-      <point x="698.7499999999998" y="187.0" />
-      <point x="69.49999999999989" y="81.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.Messages" target="com.affichageRest.affichageRest.model.User">
-      <point x="80.25" y="103.0" />
-      <point x="391.25" y="1232.0" />
-      <point x="289.0625" y="1232.0" />
-      <point x="93.1875" y="-114.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.Role" target="com.affichageRest.affichageRest.model.User">
-      <point x="23.0" y="114.0" />
-      <point x="115.0" y="1212.0" />
-      <point x="155.9375" y="1212.0" />
-      <point x="-39.9375" y="-114.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.PersonResultat" target="com.affichageRest.affichageRest.model.Indisponibilite">
-      <point x="-44.25" y="-92.0" />
-      <point x="902.5113636363636" y="934.0" />
-      <point x="792.5" y="934.0" />
-      <point x="0.0" y="81.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.Indisponibilite" target="com.affichageRest.affichageRest.model.PersonIndisponibilite">
-      <point x="-116.0" y="-81.0" />
-      <point x="676.5" y="399.0" />
-      <point x="629.25" y="399.0" />
-      <point x="0.0" y="81.0" />
-    </edge>
-    <edge source="com.affichageRest.affichageRest.model.CoursEnseigne" target="com.affichageRest.affichageRest.model.CoursEnseigneID">
-      <point x="64.25" y="-70.0" />
-      <point x="1020.0" y="187.0" />
-      <point x="998.75" y="187.0" />
-      <point x="43.0" y="70.0" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="0.4074455899198167" x="682.9121787974129" y="847.658659019404" />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.5994587280108254" x="742.0" y="729.0" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>

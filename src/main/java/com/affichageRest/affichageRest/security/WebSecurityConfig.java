@@ -22,11 +22,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomAuthenticationProvider customAuthenticationProvider;
 
 
-    private UserDetailsService userDetailsService;
-
-    private UserServiceImpl userService;
-
-
     @Override
     public void configure(AuthenticationManagerBuilder builder)
             throws Exception {

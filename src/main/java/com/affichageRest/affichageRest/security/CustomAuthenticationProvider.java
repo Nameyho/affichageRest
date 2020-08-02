@@ -32,11 +32,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-        String test = bCryptPasswordEncoder.encode("test");
-
-
-        System.out.println(test);
-
         User user = userService.findByUsername(name);
 
 

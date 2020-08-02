@@ -26,19 +26,11 @@ public class UserServiceImpl implements UserService {
     public UUID CreateUser(UserQueryDTO user) {
 
         User nouvUser = new User();
-
         nouvUser.setIdUser(UUID.nameUUIDFromBytes((user.getUsername() + user.getPassword()).getBytes()));
         nouvUser.setUsername(user.getUsername());
-
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-
         String mdpenc = bCryptPasswordEncoder.encode(user.getPassword());
-
-        nouvUser.setPassword(mdpenc);
-
-        Role role = roleRepository.findById(nouvUser.getIdUser()).get();
-
-
+         nouvUser.setPassword(mdpenc);
         return userRepository.save(nouvUser).getIdUser();
     }
 
@@ -48,10 +40,7 @@ public class UserServiceImpl implements UserService {
         userRepository.findAll().forEach(user ->
                 plist.add(new UserQueryDTO(
                         user.getIdUser(),
-
                         user.getUsername()
-
-
                 ))
 
         );
@@ -86,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
             user.setPassword(bCryptPasswordEncoder.encode(userUpdateDto.getPassword()));
 
-            Role role = roleRepository.findById(userUpdateDto.getId()).get();
+
 
 
             userRepository.save(user);
