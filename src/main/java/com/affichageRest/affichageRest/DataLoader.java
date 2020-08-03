@@ -105,6 +105,12 @@ public class DataLoader implements ApplicationRunner {
 
         Person person = new Person("Mathieu", "Allard", "allardmathieu@gmail.com", date, role);
 
+        int numero;
+        do {
+            numero = (int)(Math.random()*100000000);
+        }while (!(personRepository.findByNumerounique(numero).isEmpty()));
+        System.out.println("--------------------------"+numero);
+        person.setNumerounique(numero);
         personRepository.save(person);
 
         role = new Role("Professeur", "accés restreint");
@@ -112,6 +118,12 @@ public class DataLoader implements ApplicationRunner {
         roleRepository.save(role);
 
         person = new Person("Mat", "All", "allardmathieu@gmail.com", date, role);
+
+        do {
+            numero = (int)(Math.random()*100000000);
+        }while (!(personRepository.findByNumerounique(numero).isEmpty()));
+        System.out.println("--------------------------"+numero);
+        person.setNumerounique(numero);
 
         personRepository.save(person);
 

@@ -32,6 +32,29 @@ public class PersonQueryDTO {
 
     private String nomRoles;
 
+    private int numerounique;
+
+    public int getNumerounique() {
+        return numerounique;
+    }
+
+    public void setNumerounique(int numerounique) {
+        this.numerounique = numerounique;
+    }
+
+    public PersonQueryDTO(@NotNull @NotEmpty String prenom, @NotNull @NotEmpty String nom, @Email @NotNull String email,
+                          @Past Date dateAnniversaire, @NotNull @NotEmpty UUID idPerson, UUID idRole, String nomRoles,
+                          int numerounique) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
+        this.dateAnniversaire = dateAnniversaire;
+        this.idPerson = idPerson;
+        this.idRole = idRole;
+        this.nomRoles = nomRoles;
+        this.numerounique = numerounique;
+    }
+
     public PersonQueryDTO(UUID idPerson, String prenom, String nom, String email, Date dateAnniversaire, UUID role, String nomrole) {
         this.prenom = prenom;
         this.nom = nom;

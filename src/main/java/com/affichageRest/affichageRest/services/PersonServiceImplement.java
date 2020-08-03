@@ -31,8 +31,15 @@ public class PersonServiceImplement implements PersonService {
         List<PersonQueryDTO> plist = new ArrayList<>();
         personRepository.findAll().forEach(person -> {
             String nomrole = roleRepository.findById(person.getRoles().getId()).get().getName();
-            plist.add(new PersonQueryDTO(person.getIdPerson(), person.getPrenom(), person.getNom(), person.getEmail(),
-                    person.getDateAnniversaire(), person.getRoles().getIdRole(), nomrole));
+            plist.add(new PersonQueryDTO(
+
+                    person.getPrenom(),
+                    person.getNom(),
+                    person.getEmail(),
+                    person.getDateAnniversaire(),
+                    person.getIdPerson(),
+                    person.getRoles().getIdRole(),
+                    nomrole,person.getNumerounique()));
         });
         return plist;
     }
@@ -44,13 +51,16 @@ public class PersonServiceImplement implements PersonService {
             Person persontemp = personRepository.findById(id).get();
 
             return new PersonQueryDTO(
-                    persontemp.getIdPerson(),
+
                     persontemp.getPrenom(),
                     persontemp.getNom(),
                     persontemp.getEmail(),
                     persontemp.getDateAnniversaire(),
+                    persontemp.getIdPerson(),
+
                     persontemp.getRoles().getIdRole(),
-                    roleRepository.findById(persontemp.getRoles().getId()).get().getName()
+                    roleRepository.findById(persontemp.getRoles().getId()).get().getName(),
+                    persontemp.getNumerounique()
             );
         } else {
             return null;
@@ -61,8 +71,8 @@ public class PersonServiceImplement implements PersonService {
     public List<PersonQueryDTO> findAllByRoles(Role role) {
         List<PersonQueryDTO> plist = new ArrayList<>();
         personRepository.findAllByRoles(role).forEach(person -> {
-            plist.add(new PersonQueryDTO(person.getIdPerson(), person.getPrenom(), person.getNom(), person.getEmail(),
-                    person.getDateAnniversaire(), role.getIdRole(), role.getName()));
+            plist.add(new PersonQueryDTO( person.getPrenom(), person.getNom(), person.getEmail(),
+                    person.getDateAnniversaire(),person.getIdPerson(), role.getIdRole(), role.getName(),person.getNumerounique()));
         });
         return plist;
     }
@@ -82,7 +92,12 @@ public class PersonServiceImplement implements PersonService {
 
         nouvPersonne.setIdPerson(UUID.nameUUIDFromBytes((person.getPrenom() + person.getNom()
                 + person.getEmail() + person.getDateAnniversaire()).getBytes()));
+        int numero;
+        do {
+            numero = (int)(Math.random()*100000000);
+        }while (!(personRepository.findByNumerounique(numero).isEmpty()));
 
+        nouvPersonne.setNumerounique(numero);
         return personRepository.save(nouvPersonne).getIdPerson();
     }
 

@@ -49,6 +49,8 @@ public class Person implements Serializable {
     private Role roles;
 
 
+    private int numerounique;
+
     public Person() {
     }
 
@@ -68,6 +70,24 @@ public class Person implements Serializable {
         this.dateAnniversaire = dateAnniversaire;
         this.roles = role;
         this.idPerson = UUID.nameUUIDFromBytes((prenom + nom + dateAnniversaire).getBytes());
+    }
+
+    public int getNumerounique() {
+        return numerounique;
+    }
+
+    public void setNumerounique(int numerounique) {
+        this.numerounique = numerounique;
+    }
+
+    public Person(UUID idPerson, @NotNull @NotEmpty String prenom, @NotNull @NotEmpty String nom, @Email @NotNull String email, @Past @NotNull Date dateAnniversaire, Role roles, int numerounique) {
+        this.idPerson = idPerson;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
+        this.dateAnniversaire = dateAnniversaire;
+        this.roles = roles;
+        this.numerounique = numerounique;
     }
 
     public Role getRoles() {

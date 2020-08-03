@@ -10,5 +10,6 @@ import java.util.UUID;
 public interface PersonRepository extends CrudRepository<Person, UUID> {
 
     List<Person> findAllByRoles(Role idRole);
+    List<Person> findByNumerounique(int nume);
 
 }
