@@ -107,9 +107,9 @@ public class DataLoader implements ApplicationRunner {
 
         int numero;
         do {
-            numero = (int)(Math.random()*100000000);
+            numero = (int)((Math.random()*10000000)+1000000000);
         }while (!(personRepository.findByNumerounique(numero).isEmpty()));
-        System.out.println("--------------------------"+numero);
+
         person.setNumerounique(numero);
         personRepository.save(person);
 
@@ -120,9 +120,9 @@ public class DataLoader implements ApplicationRunner {
         person = new Person("Mat", "All", "allardmathieu@gmail.com", date, role);
 
         do {
-            numero = (int)(Math.random()*100000000);
+            numero = (int)((Math.random()*10000000)+1000000000);
         }while (!(personRepository.findByNumerounique(numero).isEmpty()));
-        System.out.println("--------------------------"+numero);
+
         person.setNumerounique(numero);
 
         personRepository.save(person);

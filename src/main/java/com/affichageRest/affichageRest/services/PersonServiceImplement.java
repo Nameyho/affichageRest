@@ -94,7 +94,7 @@ public class PersonServiceImplement implements PersonService {
                 + person.getEmail() + person.getDateAnniversaire()).getBytes()));
         int numero;
         do {
-            numero = (int)(Math.random()*100000000);
+            numero = (int)((Math.random()*10000000)+1000000000);
         }while (!(personRepository.findByNumerounique(numero).isEmpty()));
 
         nouvPersonne.setNumerounique(numero);
