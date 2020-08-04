@@ -40,7 +40,10 @@ public class PersonResultatServiceImplement implements PersonResultatService {
                             resultat.getPersonResultatPK().idCours,
                             coursRepository.findById(resultat.getPersonResultatPK().getIdCours()).get().getNom(),
                             resultat.getResultat(),
-                            resultat.isReussite()));
+                            resultat.isReussite(),
+                            personRepository.findById(resultat.getPersonResultatPK().idPerson).get().getNumerounique()
+
+                            ));
         });
         return plist;
     }
@@ -59,7 +62,8 @@ public class PersonResultatServiceImplement implements PersonResultatService {
                     resultat.getPersonResultatPK().idCours,
                     coursRepository.findById(resultat.getPersonResultatPK().getIdCours()).get().getNom(),
                     resultat.getResultat(),
-                    resultat.isReussite()));
+                    resultat.isReussite(),
+                    personRepository.findById(resultat.getPersonResultatPK().idPerson).get().getNumerounique()));
         });
         return plist;
     }
@@ -77,7 +81,8 @@ public class PersonResultatServiceImplement implements PersonResultatService {
                     resultat.getPersonResultatPK().idCours,
                     coursRepository.findById(resultat.getPersonResultatPK().getIdCours()).get().getNom(),
                     resultat.getResultat(),
-                    resultat.isReussite()));
+                    resultat.isReussite(),
+                    personRepository.findById(resultat.getPersonResultatPK().idPerson).get().getNumerounique()));
         });
         return plist;
     }
@@ -97,7 +102,9 @@ public class PersonResultatServiceImplement implements PersonResultatService {
                     resultat.getPersonResultatPK().idCours,
                     coursRepository.findById(resultat.getPersonResultatPK().getIdCours()).get().getNom(),
                     resultat.getResultat(),
-                    resultat.isReussite());
+                    resultat.isReussite(),
+                    personRepository.findById(resultat.getPersonResultatPK().idPerson).get().getNumerounique()
+                    );
         } else {
             return null;
         }

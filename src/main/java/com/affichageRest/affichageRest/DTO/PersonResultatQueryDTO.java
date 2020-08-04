@@ -17,6 +17,8 @@ public class PersonResultatQueryDTO {
     private int resultat;
     private boolean reussite;
 
+    private int numerounique;
+
     public PersonResultatQueryDTO(UUID idPerson, UUID idCours, int resultat, boolean reussite) {
         this.idPerson = idPerson;
         this.cours_id = idCours;
@@ -45,6 +47,18 @@ public class PersonResultatQueryDTO {
         this.nomCours = nomCours;
         this.resultat = resultat;
         this.reussite = reussite;
+    }
+
+    public PersonResultatQueryDTO(UUID idPerson, String nomPerson, String prenomPerson, @NotNull UUID cours_id,
+                                  String nomCours, int resultat, boolean reussite, int numerounique) {
+        this.idPerson = idPerson;
+        this.nomPerson = nomPerson;
+        this.prenomPerson = prenomPerson;
+        this.cours_id = cours_id;
+        this.nomCours = nomCours;
+        this.resultat = resultat;
+        this.reussite = reussite;
+        this.numerounique = numerounique;
     }
 
     public PersonResultatQueryDTO() {
@@ -109,6 +123,14 @@ public class PersonResultatQueryDTO {
 
     public void setPrenomPerson(String prenomPerson) {
         this.prenomPerson = prenomPerson;
+    }
+
+    public int getNumerounique() {
+        return numerounique;
+    }
+
+    public void setNumerounique(int numerounique) {
+        this.numerounique = numerounique;
     }
 }
 
