@@ -21,10 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ad22051a-c61b-4706-be0d-717968f0d94a" name="Default Changelist" comment="7 juin mise a jour resultatController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/Controller/EcranresultatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/Controller/EcranresultatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/DAO/EcranResultatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/DAO/EcranResultatRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranResultatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranResultatService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranResultatServiceImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranResultatServiceImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/Controller/EcranAbsenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/Controller/EcranAbsenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/Controller/EcranMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/Controller/EcranMessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/DAO/EcranAbsenceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/DAO/EcranAbsenceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/DAO/EcranMessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/DAO/EcranMessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranAbsenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranAbsenceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranAbsenceServiceImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranAbsenceServiceImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranMessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranMessageServiceImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/affichageRest/affichageRest/services/EcranMessageServiceImplement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +264,8 @@
       <workItem from="1596567551473" duration="1480000" />
       <workItem from="1596891141647" duration="842000" />
       <workItem from="1597019752087" duration="74000" />
-      <workItem from="1597020828660" duration="1723000" />
+      <workItem from="1597020828660" duration="1902000" />
+      <workItem from="1597095077631" duration="2410000" />
     </task>
     <task id="LOCAL-00001" summary="27 avril petite mise à jour au niveau du modele de la base de donnes">
       <created>1588036538254</created>
@@ -493,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596569020935</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="10 aout&#10;&#10;ajout de la fonction findAllByEcranResultatID_IdEcran">
+      <created>1597022653338</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1597022653338</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,7 +528,6 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="27 mai&#10;&#10;création du controller PersonResultat aprés avoir oublié de le faire&#10;&#10;+&#10;&#10;création du controller PersonIndisponibiliteController" />
     <MESSAGE value="28 mai&#10;&#10;création du controller CoursEnsController aprés avoir oublié de le faire" />
     <MESSAGE value="4 Juin&#10;&#10;création d'une méthode afin d'obtenir les résultat par person &#10;&#10;PersonResultatController.getResultatPersonne" />
     <MESSAGE value="4 Juin&#10;&#10;création d'une méthode afin d'obtenir les résultat par person &#10;&#10;PersonResultatController.getResultatPersonne&#10;&#10;mise à jours des modeles afin d'obtenir un identifiant unique basé sur les bytes" />
@@ -541,7 +552,8 @@
     <MESSAGE value="3 aout&#10;&#10;Ajout du numéro unique à 7 chiffres" />
     <MESSAGE value="4 aout&#10;&#10;ajout pour l'uniformisation du code unique des personnes" />
     <MESSAGE value="4 aout&#10;&#10;ajout du numero unique dans le json des resultats" />
-    <option name="LAST_COMMIT_MESSAGE" value="4 aout&#10;&#10;ajout du numero unique dans le json des resultats" />
+    <MESSAGE value="10 aout&#10;&#10;ajout de la fonction findAllByEcranResultatID_IdEcran" />
+    <option name="LAST_COMMIT_MESSAGE" value="10 aout&#10;&#10;ajout de la fonction findAllByEcranResultatID_IdEcran" />
   </component>
   <component name="WindowStateProjectService">
     <state x="859" y="411" width="767" height="218" key="#Assign_Data_Sources" timestamp="1591472639861">
@@ -552,6 +564,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="265" key="#Console/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590858929384" />
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1597095366623">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597095366623" />
     <state x="508" y="254" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594489255075">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -589,53 +605,53 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593969849340" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1597096155393">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155393" />
     <state width="1280" height="292" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909523" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1597096155393">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155393" />
     <state width="1280" height="292" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909522" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1597096155393">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155393" />
     <state width="1280" height="292" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909522" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1597096155393">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155393" />
     <state width="1280" height="292" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909522" />
-    <state width="1877" height="295" key="GridCell.Tab.1.bottom" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.1.bottom" timestamp="1597096155394">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155394" />
     <state width="1280" height="292" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909523" />
-    <state width="1877" height="295" key="GridCell.Tab.1.center" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.1.center" timestamp="1597096155394">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155394" />
     <state width="1280" height="292" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909523" />
-    <state width="1877" height="295" key="GridCell.Tab.1.left" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.1.left" timestamp="1597096155394">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155394" />
     <state width="1280" height="292" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909523" />
-    <state width="1877" height="295" key="GridCell.Tab.1.right" timestamp="1597019825913">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.1.right" timestamp="1597096155394">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="295" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597019825913" />
-    <state width="1877" height="295" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042591" />
+    <state width="1877" height="295" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597096155394" />
     <state width="1280" height="292" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596544909523" />
     <state width="1877" height="376" key="GridCell.Tab.2.bottom" timestamp="1596569042529">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -666,11 +682,11 @@
     </state>
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1595929904303" />
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595617654434" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1596569026900">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1597022655247">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659774730" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569026900" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597022655247" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1596544886147" />
     <state x="834" y="407" width="295" height="226" key="com.intellij.database.actions.ToolActions$ScriptingActionBase$MyDatabaseScriptDialog" timestamp="1592002076625">
       <screen x="0" y="0" width="1920" height="1040" />

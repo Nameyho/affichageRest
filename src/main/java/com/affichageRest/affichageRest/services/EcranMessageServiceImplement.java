@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service(value = "EcranMessageService")
 public class EcranMessageServiceImplement implements EcranMessageService {
@@ -58,7 +59,19 @@ public class EcranMessageServiceImplement implements EcranMessageService {
 
         return ecranMessageQueryDTO;
     }
+        @Override
+        public List<EcranMessageQueryDTO> getAllByEcranMessageID_IdEcran(UUID id){
+        List<EcranMessageQueryDTO> plist = new ArrayList<>();
+        ecranMessageRepository.getAllByEcranMessageID_IdEcran(id).forEach(ecranMessage -> {
+            plist.add(new EcranMessageQueryDTO(
+                    ecranMessage.getEcranMessageID().getIdEcran(),
+                    ecranRepository.findById(ecranMessage.getEcranMessageID().getIdEcran()).get().getNomEcran(),
+                    ecranMessage.getEcranMessageID().getIdMessage(),
+                    messageRepository.findById(ecranMessage.getEcranMessageID().getIdMessage()).get().getTitreMessage()));
+        });
+        return plist;
 
+    }
     @Override
     public EcranMessageQueryDTO getEcranMessage(EcranMessageID id) {
         if (ecranMessageRepository.findById(id).isPresent()) {

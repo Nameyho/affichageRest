@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service(value = "EcranAbsenceService")
 public class EcranAbsenceServiceImplement implements EcranAbsenceService {
@@ -35,6 +36,23 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
     public List<EcranAbsenceQueryDTO> getAllEcran() {
         List<EcranAbsenceQueryDTO> plist = new ArrayList<>();
         ecranAbsenceRepository.findAll().forEach(ecranAbsence -> {
+
+            plist.add(new EcranAbsenceQueryDTO(
+                    ecranAbsence.getEcranAbsenceID().getIdEcran(),
+                    ecranRepository.findById(ecranAbsence.getEcranAbsenceID().getIdEcran()).get().getNomEcran(),
+                    ecranAbsence.getEcranAbsenceID().getIdIndisponibilite(),
+                    indisponibiliteRepository.findById(ecranAbsence.getEcranAbsenceID().getIdIndisponibilite()).get().getType(),
+                    ecranAbsence.getEcranAbsenceID().getIdPerson(),
+                    personRepository.findById(ecranAbsence.getEcranAbsenceID().getIdPerson()).get().getNom(),
+                    ecranAbsence.getEcranAbsenceID().getIdSpecifique()));
+
+        });
+        return plist;
+    }
+    @Override
+    public List<EcranAbsenceQueryDTO> findAllByEcranAbsenceID_IdEcran(UUID uuid){
+        List<EcranAbsenceQueryDTO> plist = new ArrayList<>();
+        ecranAbsenceRepository.findAllByEcranAbsenceID_IdEcran(uuid).forEach(ecranAbsence -> {
 
             plist.add(new EcranAbsenceQueryDTO(
                     ecranAbsence.getEcranAbsenceID().getIdEcran(),

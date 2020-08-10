@@ -2,6 +2,7 @@ package com.affichageRest.affichageRest.Controller;
 
 
 import com.affichageRest.affichageRest.DTO.EcranAbsenceQueryDTO;
+import com.affichageRest.affichageRest.DTO.EcranMessageQueryDTO;
 import com.affichageRest.affichageRest.model.EcranAbsenceID;
 import com.affichageRest.affichageRest.model.PersonIndisponibilitePK;
 import com.affichageRest.affichageRest.services.EcranAbsenceService;
@@ -48,6 +49,10 @@ public class EcranAbsenceController {
                 HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{idecran}")
+    public ResponseEntity<List<EcranAbsenceQueryDTO>> getAllMessagesbyecran(@PathVariable(value = "idecran") UUID idecran) {
+        return new ResponseEntity<>(ecranAbsenceService.findAllByEcranAbsenceID_IdEcran(idecran), HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<UUID> createAbsenceEcran(@RequestBody @Valid EcranAbsenceQueryDTO ecranAbsenceQueryDTO) {

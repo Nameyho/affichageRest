@@ -47,6 +47,11 @@ public class EcranMessageController {
     }
 
 
+    @GetMapping(value = "/{idecran}")
+    public ResponseEntity<List<EcranMessageQueryDTO>> getAllMessagesbyecran(@PathVariable(value = "idecran") UUID idecran) {
+        return new ResponseEntity<>(ecranMessageService.getAllByEcranMessageID_IdEcran(idecran), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<UUID> createresultatEcran(@RequestBody EcranMessageQueryDTO ecranMessageQueryDTO) {
         return new ResponseEntity(ecranMessageService.createEcranMessage(ecranMessageQueryDTO), HttpStatus.CREATED);
