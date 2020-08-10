@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service(value = "EcranResultatService")
 public class EcranResultatServiceImplement implements EcranResultatService {
@@ -70,6 +71,18 @@ public class EcranResultatServiceImplement implements EcranResultatService {
         }
     }
 
+    public List<EcranResultatQueryDTO> findbyidecran(UUID id){
+        List<EcranResultatQueryDTO> plist = new ArrayList<>();
+        ecranResultatRepository.findAllByEcranResultatID_IdEcran(id).forEach(ecranResultat -> {
+            plist.add(new EcranResultatQueryDTO(
+                    ecranResultat.getEcranResultatID().getIdEcran(),
+                    ecranRepository.findById(ecranResultat.getEcranResultatID().getIdEcran()).get().getNomEcran(),
+                    ecranResultat.getEcranResultatID().getIdCours(),
+                    coursRepository.findById(ecranResultat.getEcranResultatID().getIdCours()).get().getNom()));
+        });
+        return plist;
+
+    }
  /*   @Override
     public void updateEcranResultat(EcranResultatID id, EcranResultatQueryDTO ecranResultatQueryDTO) {
         EcranResultatID ecranResultatID = new EcranResultatID(

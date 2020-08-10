@@ -5,6 +5,7 @@ import com.affichageRest.affichageRest.DTO.EcranResultatQueryDTO;
 import com.affichageRest.affichageRest.model.EcranResultatID;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface EcranResultatService {
 
@@ -17,5 +18,7 @@ public interface EcranResultatService {
     /* void updateEcranResultat(EcranResultatID id, EcranResultatQueryDTO ecranResultatQueryDTO);*/
 
     void delete(EcranResultatID id);
+
+     List<EcranResultatQueryDTO> findbyidecran(UUID id);
 
 }

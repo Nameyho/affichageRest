@@ -27,6 +27,11 @@ public class EcranresultatController {
         return new ResponseEntity<>(ecranResultatService.getAllEcranresultat(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{idecran}")
+    public ResponseEntity<List<EcranResultatQueryDTO>> getAllCoursbyecran(@PathVariable(value = "idecran") UUID idecran) {
+        return new ResponseEntity<>(ecranResultatService.findbyidecran(idecran), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/{idecran}/{idcours}")
     public ResponseEntity<EcranResultatQueryDTO> getEcranByID(
             @PathVariable(value = "idecran") UUID idecran,
