@@ -16,6 +16,8 @@ public class Messages implements Serializable {
     private UUID idMessage;
 
     @NotNull
+    @Lob
+    @Column(length  = 100000000)
     private String Contenu;
 
     private Date createdDate;
