@@ -43,6 +43,11 @@ public class PersonController {
 
     }
 
+    @GetMapping(value = "/n/{id}")
+    public ResponseEntity<PersonQueryDTO> getPersonNumeroUnique(@PathVariable int id) {
+        return new ResponseEntity(personService.findByNumerounique(id), HttpStatus.OK);
+
+    }
 
     @PostMapping
     public ResponseEntity<UUID> createPerson(@RequestBody PersonQueryDTO person) {
@@ -56,6 +61,8 @@ public class PersonController {
                              @RequestBody PersonQueryDTO personUpdateDTO) {
         personService.updatePerson(id, personUpdateDTO);
     }
+
+
 
     @DeleteMapping(value = "/{id}")
     public void deletePerson(@PathVariable(value = "id") UUID id) {
