@@ -1,5 +1,6 @@
 package com.affichageRest.affichageRest.DTO;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class EcranAbsenceQueryDTO {
@@ -12,6 +13,9 @@ public class EcranAbsenceQueryDTO {
 
     private UUID idPerson;
     private String nomPerson;
+    private String PrenomPerson;
+    private Date dateDebut;
+    private Date dateFin;
 
     private UUID idSpecifique;
 
@@ -28,6 +32,28 @@ public class EcranAbsenceQueryDTO {
         this.nomIndiponibilite = nomIndiponibilite;
         this.idPerson = idPerson;
         this.nomPerson = nomPerson;
+        this.idSpecifique = idSpecifique;
+    }
+
+    public EcranAbsenceQueryDTO(UUID idEcran,
+                                String nomEcran,
+                                UUID idIndisponibilite,
+                                String nomIndiponibilite,
+                                UUID idPerson,
+                                String nomPerson,
+                                String prenomPerson,
+                                Date dateDebut,
+                                Date dateFin,
+                                UUID idSpecifique) {
+        this.idEcran = idEcran;
+        this.nomEcran = nomEcran;
+        this.idIndisponibilite = idIndisponibilite;
+        this.nomIndiponibilite = nomIndiponibilite;
+        this.idPerson = idPerson;
+        this.nomPerson = nomPerson;
+        PrenomPerson = prenomPerson;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
         this.idSpecifique = idSpecifique;
     }
 
@@ -95,5 +121,29 @@ public class EcranAbsenceQueryDTO {
 
     public void setIdSpecifique(UUID idSpecifique) {
         this.idSpecifique = idSpecifique;
+    }
+
+    public String getPrenomPerson() {
+        return PrenomPerson;
+    }
+
+    public void setPrenomPerson(String prenomPerson) {
+        PrenomPerson = prenomPerson;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 }

@@ -1,10 +1,7 @@
 package com.affichageRest.affichageRest.services;
 
 
-import com.affichageRest.affichageRest.DAO.EcranAbsenceRepository;
-import com.affichageRest.affichageRest.DAO.EcranRepository;
-import com.affichageRest.affichageRest.DAO.IndisponibiliteRepository;
-import com.affichageRest.affichageRest.DAO.PersonRepository;
+import com.affichageRest.affichageRest.DAO.*;
 import com.affichageRest.affichageRest.DTO.EcranAbsenceQueryDTO;
 import com.affichageRest.affichageRest.model.EcranAbsence;
 import com.affichageRest.affichageRest.model.EcranAbsenceID;
@@ -32,11 +29,15 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
     @Autowired
     private EcranRepository ecranRepository;
 
+    @Autowired
+    private PersonIndisponibiliteRepository personIndisponibiliteRepository;
+
     @Override
     public List<EcranAbsenceQueryDTO> getAllEcran() {
         List<EcranAbsenceQueryDTO> plist = new ArrayList<>();
         ecranAbsenceRepository.findAll().forEach(ecranAbsence -> {
-
+            PersonIndisponibilitePK id = new PersonIndisponibilitePK( ecranAbsence.getEcranAbsenceID().getIdPerson(),
+                    ecranAbsence.getEcranAbsenceID().getIdIndisponibilite(), ecranAbsence.getEcranAbsenceID().getIdSpecifique());
             plist.add(new EcranAbsenceQueryDTO(
                     ecranAbsence.getEcranAbsenceID().getIdEcran(),
                     ecranRepository.findById(ecranAbsence.getEcranAbsenceID().getIdEcran()).get().getNomEcran(),
@@ -44,6 +45,12 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
                     indisponibiliteRepository.findById(ecranAbsence.getEcranAbsenceID().getIdIndisponibilite()).get().getType(),
                     ecranAbsence.getEcranAbsenceID().getIdPerson(),
                     personRepository.findById(ecranAbsence.getEcranAbsenceID().getIdPerson()).get().getNom(),
+                    personRepository.findById(ecranAbsence.getEcranAbsenceID().getIdPerson()).get().getPrenom(),
+
+                    personIndisponibiliteRepository.findById(id).get().getDateDebut(),
+                    personIndisponibiliteRepository.findById(id).get().getDateFin(),
+
+
                     ecranAbsence.getEcranAbsenceID().getIdSpecifique()));
 
         });
@@ -53,7 +60,8 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
     public List<EcranAbsenceQueryDTO> findAllByEcranAbsenceID_IdEcran(UUID uuid){
         List<EcranAbsenceQueryDTO> plist = new ArrayList<>();
         ecranAbsenceRepository.findAllByEcranAbsenceID_IdEcran(uuid).forEach(ecranAbsence -> {
-
+            PersonIndisponibilitePK id = new PersonIndisponibilitePK( ecranAbsence.getEcranAbsenceID().getIdPerson(),
+                    ecranAbsence.getEcranAbsenceID().getIdIndisponibilite(), ecranAbsence.getEcranAbsenceID().getIdSpecifique());
             plist.add(new EcranAbsenceQueryDTO(
                     ecranAbsence.getEcranAbsenceID().getIdEcran(),
                     ecranRepository.findById(ecranAbsence.getEcranAbsenceID().getIdEcran()).get().getNomEcran(),
@@ -61,6 +69,10 @@ public class EcranAbsenceServiceImplement implements EcranAbsenceService {
                     indisponibiliteRepository.findById(ecranAbsence.getEcranAbsenceID().getIdIndisponibilite()).get().getType(),
                     ecranAbsence.getEcranAbsenceID().getIdPerson(),
                     personRepository.findById(ecranAbsence.getEcranAbsenceID().getIdPerson()).get().getNom(),
+                    personRepository.findById(ecranAbsence.getEcranAbsenceID().getIdPerson()).get().getPrenom(),
+
+                    personIndisponibiliteRepository.findById(id).get().getDateDebut(),
+                    personIndisponibiliteRepository.findById(id).get().getDateFin(),
                     ecranAbsence.getEcranAbsenceID().getIdSpecifique()));
 
         });
