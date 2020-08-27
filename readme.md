@@ -3,58 +3,73 @@
 
 16 aout …
 
-Ajout d'un ajustement sur les absences
+ajout d'info dans le JSON EcranAbsenceQueryDTO
 
 15 aout …
 
-ajout de fonction de recherche
+Ajout d'un controller de personne par numero unique
 
 14 aout …
 
-correctif sur la modication message
-
-14 aout …
-
-fin panel gestion
-
-13 aout …
-
-début du panel de gestion des écrans
-
-12  aout
-
-ajout delete ecran
-
-11 aout
-
-fin de l'ajout des panneaux customisé
-
-10 aout
-
-ajout de la customisation des tableaux
+augmentation de la taille des messages
 
 
-8 aout …
+11 aout …
 
-ajout option d'ajout sur un écran sur liste message et absence
+suite des ajout des requetes par écran specifique
 
-4 aout
+10 aout …
 
-Ajout du début de l'affichage dynamique spécifique
+ajout de la fonction findAllByEcranResultatID_IdEcran
 
-22 juillet
+4 aout …
 
-fin de l'affichage dynamique général
+ajout du numero unique dans le json des resultats
+
+4 aout …
+
+ajout pour l'uniformisation du code unique des personnes
+
+3 aout …
+
+Ajout du numéro unique à 7 chiffres
+
+2 aout …
+
+suppression de variables inutiles
+
+19 juillet …
+
+creation du controller ecran
+
+17 juillet
+
+Rajout des affectation des dates début et fin de cours …
 
 
-21 juillet
+15 juillet …
 
-début de la création de l'affichage dynamique
+correction d'un petit oublie sur le CoursQueryDTO
 
+9 juillet …
 
-19 juillet 
+Création de EcranMessage
 
-Ajout de la fonction Ajouter ecranresultat.ts
+dto,service,dao,controller,etc...
+
+8 juillet …
+
+Création EcranResultat.java
+
+ainsi que service,DTO,Controller,DAO
+
+question sur l'utilité de pouvoir mettre a jour ceci vu que les seuls info sont les composant de la clef 
+primaire composé et que donc la modifié amenera a faire une nouvelle entrée
+
+7 juillet …
+
+début de ecran résultat
+
 
 6 juillet 
 

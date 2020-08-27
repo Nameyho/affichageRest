@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ad22051a-c61b-4706-be0d-717968f0d94a" name="Default Changelist" comment="7 juin mise a jour resultatController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/affichageRest.uml" beforeDir="false" afterPath="$PROJECT_DIR$/affichageRest.uml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.uml" beforeDir="false" afterPath="$PROJECT_DIR$/model.uml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -273,7 +271,8 @@
       <workItem from="1598199271674" duration="9000" />
       <workItem from="1598370673987" duration="7063000" />
       <workItem from="1598441705480" duration="3982000" />
-      <workItem from="1598493590490" duration="318000" />
+      <workItem from="1598493590490" duration="408000" />
+      <workItem from="1598494099056" duration="308000" />
     </task>
     <task id="LOCAL-00001" summary="27 avril petite mise à jour au niveau du modele de la base de donnes">
       <created>1588036538254</created>
@@ -555,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597592805979</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="27 aout&#10;&#10;mise en ligne de la version 1.0.0">
+      <created>1598493975234</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1598493975234</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +584,6 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="18-19 juin &#10;&#10;vérification des endpoint &#10;&#10;+ &#10;&#10;modification de la classer user et persons" />
     <MESSAGE value="20 juin création de la fonction&#10;&#10;findAllByRoles" />
     <MESSAGE value="24 juin" />
     <MESSAGE value="29 juin&#10;&#10;petit correctif dans updateMessage" />
@@ -603,7 +608,8 @@
     <MESSAGE value="15 aout&#10;&#10;Ajout d'un controller de personne par numero unique" />
     <MESSAGE value="15 aout" />
     <MESSAGE value="16 aout &#10;&#10;ajout d'info dans le JSON EcranAbsenceQueryDTO" />
-    <option name="LAST_COMMIT_MESSAGE" value="16 aout &#10;&#10;ajout d'info dans le JSON EcranAbsenceQueryDTO" />
+    <MESSAGE value="27 aout&#10;&#10;mise en ligne de la version 1.0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="27 aout&#10;&#10;mise en ligne de la version 1.0.0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="859" y="411" width="767" height="218" key="#Assign_Data_Sources" timestamp="1591472639861">
@@ -734,10 +740,10 @@
     </state>
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598493604338" />
     <state x="461" y="154" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598375119745" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1597592808029">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2" timestamp="1598493979885">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1592659774730" />
+    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598493979885" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597592808029" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1596544886147" />
     <state x="-1134" y="134" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598443555965">
