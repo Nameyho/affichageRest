@@ -1,5 +1,61 @@
 # affichageRest
-10 juin-- docker
+
+
+16 aout …
+
+Ajout d'un ajustement sur les absences
+
+15 aout …
+
+ajout de fonction de recherche
+
+14 aout …
+
+correctif sur la modication message
+
+14 aout …
+
+fin panel gestion
+
+13 aout …
+
+début du panel de gestion des écrans
+
+12  aout
+
+ajout delete ecran
+
+11 aout
+
+fin de l'ajout des panneaux customisé
+
+10 aout
+
+ajout de la customisation des tableaux
+
+
+8 aout …
+
+ajout option d'ajout sur un écran sur liste message et absence
+
+4 aout
+
+Ajout du début de l'affichage dynamique spécifique
+
+22 juillet
+
+fin de l'affichage dynamique général
+
+
+21 juillet
+
+début de la création de l'affichage dynamique
+
+
+19 juillet 
+
+Ajout de la fonction Ajouter ecranresultat.ts
+
 6 juillet 
 
 Modification de PersonResultat
@@ -130,3 +186,4 @@ Mise à jour des vérifications d'entrée dans le formulaire
 +
 
 Data Loader pour données de test
+

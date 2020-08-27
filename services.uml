@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.affichageRest.affichageRest.services</OriginalElement>
+  <nodes>
+    <node x="1002.0" y="0.0">com.affichageRest.affichageRest.services.PersonService</node>
+    <node x="573.0" y="593.0">com.affichageRest.affichageRest.services.UserService</node>
+    <node x="1528.0" y="1120.0">com.affichageRest.affichageRest.services.RolesService</node>
+    <node x="872.0" y="805.0">com.affichageRest.affichageRest.services.CoursEnseigneServiceImplement</node>
+    <node x="1353.0" y="805.0">com.affichageRest.affichageRest.services.EcranMessageServiceImplement</node>
+    <node x="1002.0" y="256.0">com.affichageRest.affichageRest.services.PersonServiceImplement</node>
+    <node x="0.0" y="1120.0">com.affichageRest.affichageRest.services.EcranResultatService</node>
+    <node x="530.0" y="234.0">com.affichageRest.affichageRest.services.EcranAbsenceServiceImplement</node>
+    <node x="0.0" y="0.0">com.affichageRest.affichageRest.services.PersonResultatService</node>
+    <node x="0.0" y="593.0">com.affichageRest.affichageRest.services.PersonIndisponibiliteService</node>
+    <node x="460.0" y="1120.0">com.affichageRest.affichageRest.services.MessageService</node>
+    <node x="0.0" y="1332.0">com.affichageRest.affichageRest.services.EcranResultatServiceImplement</node>
+    <node x="0.0" y="1625.0">com.affichageRest.affichageRest.services.EcranService</node>
+    <node x="0.0" y="256.0">com.affichageRest.affichageRest.services.PersonResultatServiceImplement</node>
+    <node x="530.0" y="0.0">com.affichageRest.affichageRest.services.EcranAbsenceService</node>
+    <node x="810.0" y="1332.0">com.affichageRest.affichageRest.services.IndisponibiliteServiceImplement</node>
+    <node x="460.0" y="1332.0">com.affichageRest.affichageRest.services.MessageServiceImplement</node>
+    <node x="1353.0" y="593.0">com.affichageRest.affichageRest.services.EcranMessageService</node>
+    <node x="573.0" y="827.0">com.affichageRest.affichageRest.services.UserServiceImpl</node>
+    <node x="0.0" y="805.0">com.affichageRest.affichageRest.services.PersonIndisponibiliteServiceImplement</node>
+    <node x="1213.0" y="1120.0">com.affichageRest.affichageRest.services.CoursService</node>
+    <node x="0.0" y="1815.0">com.affichageRest.affichageRest.services.EcranServiceImplement</node>
+    <node x="1213.0" y="1332.0">com.affichageRest.affichageRest.services.CoursServiceImplement</node>
+    <node x="810.0" y="1120.0">com.affichageRest.affichageRest.services.IndisponibiliteService</node>
+    <node x="1528.0" y="1332.0">com.affichageRest.affichageRest.services.RolesServiceImplement</node>
+    <node x="872.0" y="593.0">com.affichageRest.affichageRest.services.CoursEnseigneService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.affichageRest.affichageRest.services.PersonServiceImplement" target="com.affichageRest.affichageRest.services.PersonService">
+      <point x="0.0" y="-146.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.PersonResultatServiceImplement" target="com.affichageRest.affichageRest.services.PersonResultatService">
+      <point x="0.0" y="-146.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.IndisponibiliteServiceImplement" target="com.affichageRest.affichageRest.services.IndisponibiliteService">
+      <point x="0.0" y="-102.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.EcranMessageServiceImplement" target="com.affichageRest.affichageRest.services.EcranMessageService">
+      <point x="0.0" y="-124.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.UserServiceImpl" target="com.affichageRest.affichageRest.services.UserService">
+      <point x="0.0" y="-124.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.CoursEnseigneServiceImplement" target="com.affichageRest.affichageRest.services.CoursEnseigneService">
+      <point x="0.0" y="-124.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.MessageServiceImplement" target="com.affichageRest.affichageRest.services.MessageService">
+      <point x="0.0" y="-113.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.RolesServiceImplement" target="com.affichageRest.affichageRest.services.RolesService">
+      <point x="0.0" y="-102.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.EcranResultatServiceImplement" target="com.affichageRest.affichageRest.services.EcranResultatService">
+      <point x="0.0" y="-124.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.PersonIndisponibiliteServiceImplement" target="com.affichageRest.affichageRest.services.PersonIndisponibiliteService">
+      <point x="0.0" y="-135.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.EcranAbsenceServiceImplement" target="com.affichageRest.affichageRest.services.EcranAbsenceService">
+      <point x="0.0" y="-157.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.EcranServiceImplement" target="com.affichageRest.affichageRest.services.EcranService">
+      <point x="0.0" y="-91.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="com.affichageRest.affichageRest.services.CoursServiceImplement" target="com.affichageRest.affichageRest.services.CoursService">
+      <point x="0.0" y="-102.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4392662369856222" x="891.0" y="998.5" />
+  <SelectedNodes>
+    <node>com.affichageRest.affichageRest.services.PersonService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

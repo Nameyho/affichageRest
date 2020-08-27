@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.affichageRest.affichageRest.Controller</OriginalElement>
+  <nodes>
+    <node x="492.0" y="586.0">com.affichageRest.affichageRest.Controller.CoursEnsController</node>
+    <node x="981.0" y="586.0">com.affichageRest.affichageRest.Controller.IndisponibilitéController</node>
+    <node x="407.0" y="835.0">com.affichageRest.affichageRest.Controller.CoursController</node>
+    <node x="0.0" y="586.0">com.affichageRest.affichageRest.Controller.EcranresultatController</node>
+    <node x="0.0" y="835.0">com.affichageRest.affichageRest.Controller.MessageController</node>
+    <node x="361.0" y="315.0">com.affichageRest.affichageRest.Controller.PersonIndisponibiliteController</node>
+    <node x="910.0" y="0.0">com.affichageRest.affichageRest.Controller.EcranAbsenceController</node>
+    <node x="0.0" y="1084.0">com.affichageRest.affichageRest.Controller.EcranController</node>
+    <node x="784.0" y="835.0">com.affichageRest.affichageRest.Controller.RolesController</node>
+    <node x="0.0" y="315.0">com.affichageRest.affichageRest.Controller.UserController</node>
+    <node x="877.0" y="315.0">com.affichageRest.affichageRest.Controller.EcranMessageController</node>
+    <node x="0.0" y="0.0">com.affichageRest.affichageRest.Controller.PersonController</node>
+    <node x="441.0" y="0.0">com.affichageRest.affichageRest.Controller.PersonResultatController</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.6889580093312597" x="700.0" y="633.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
