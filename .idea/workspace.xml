@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad22051a-c61b-4706-be0d-717968f0d94a" name="Default Changelist" comment="7 juin mise a jour resultatController" />
+    <list default="true" id="ad22051a-c61b-4706-be0d-717968f0d94a" name="Default Changelist" comment="7 juin mise a jour resultatController">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,6 +275,8 @@
       <workItem from="1598640963555" duration="647000" />
       <workItem from="1598737482304" duration="747000" />
       <workItem from="1598738803311" duration="87000" />
+      <workItem from="1599162961759" duration="90000" />
+      <workItem from="1599163864713" duration="85000" />
     </task>
     <task id="LOCAL-00001" summary="27 avril petite mise à jour au niveau du modele de la base de donnes">
       <created>1588036538254</created>
@@ -575,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598738850712</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="3 septembre">
+      <created>1599163041420</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1599163041420</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,7 +609,6 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="29 juin&#10;&#10;petit correctif dans updateMessage" />
     <MESSAGE value="29 juin&#10;&#10;modification dans le DTO indisponibilite" />
     <MESSAGE value="30 juin&#10;&#10;modification de la classe personneIndisponibile afin de gérer au mieux le get specifique a une absence" />
     <MESSAGE value="test commit" />
@@ -623,7 +633,8 @@
     <MESSAGE value="27 aout&#10;&#10;mise en ligne de la version 1.0.0" />
     <MESSAGE value="mise a jour du readme" />
     <MESSAGE value="create drop -&gt; update dans heroku" />
-    <option name="LAST_COMMIT_MESSAGE" value="create drop -&gt; update dans heroku" />
+    <MESSAGE value="3 septembre" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 septembre" />
   </component>
   <component name="WindowStateProjectService">
     <state x="859" y="411" width="767" height="218" key="#Assign_Data_Sources" timestamp="1591472639861">
@@ -650,7 +661,6 @@
     <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1597592627562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1155" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1590519666181" />
     <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597592627562" />
     <state x="747" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1594150852319">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -745,20 +755,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="376" key="GridCell.Tab.2.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596569042529" />
-    <state x="686" y="222" key="RollbackChangesDialog" timestamp="1590103377204">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="686" y="222" key="RollbackChangesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590103377204" />
     <state x="-1459" y="164" key="SettingsEditor" timestamp="1598493604338">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1459" y="164" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598493604338" />
     <state x="461" y="154" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598375119745" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1598738873930">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1599163043225">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598494547076" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598738873930" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1599163043225" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1596544886147" />
     <state x="-1134" y="134" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598443555965">
       <screen x="-1920" y="0" width="1920" height="1040" />
