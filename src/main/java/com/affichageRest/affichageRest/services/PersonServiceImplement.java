@@ -86,6 +86,16 @@ public class PersonServiceImplement implements PersonService {
         return plist;
     }
 
+    @Override
+    public List<PersonQueryDTO> findbyNom(String nom) {
+        List<PersonQueryDTO> plist = new ArrayList<>();
+        personRepository.findByNom(nom).forEach(person -> {
+            plist.add(new PersonQueryDTO( person.getPrenom(), person.getNom(), person.getEmail(),
+                    person.getDateAnniversaire(),person.getIdPerson(), person.getRoles().getIdRole(), person.getRoles().getName(),person.getNumerounique()));
+        });
+        return plist;
+    }
+
 
     @Override
     public UUID createPerson(PersonQueryDTO person) {

@@ -41,6 +41,8 @@ public class PersonResultatController {
         return new ResponseEntity(personresultat.getResultatbyPerson(idperson), HttpStatus.OK);
     }
 
+
+
     @GetMapping(value = "/cours/{idCours}")
     public ResponseEntity<PersonResultatQueryDTO> getResultatcours(@PathVariable(value = "idCours") UUID idCours) {
 

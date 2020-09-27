@@ -49,6 +49,11 @@ public class PersonController {
 
     }
 
+    @GetMapping(value = "/l/{nom}")
+    public ResponseEntity<PersonQueryDTO> getPersonByNom(@PathVariable String nom) {
+        return new ResponseEntity(personService.findbyNom(nom), HttpStatus.OK);
+
+    }
     @PostMapping
     public ResponseEntity<UUID> createPerson(@RequestBody PersonQueryDTO person) {
 

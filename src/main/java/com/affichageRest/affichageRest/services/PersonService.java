@@ -23,4 +23,6 @@ public interface PersonService {
 
     List<PersonQueryDTO> findByNumerounique(int nume);
 
+    List<PersonQueryDTO> findbyNom(String nom);
+
 }

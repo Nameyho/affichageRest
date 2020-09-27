@@ -11,5 +11,6 @@ public interface PersonRepository extends CrudRepository<Person, UUID> {
 
     List<Person> findAllByRoles(Role idRole);
     List<Person> findByNumerounique(int nume);
+    List<Person> findByNom(String nom);
 
 }
