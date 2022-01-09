@@ -88,8 +88,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(UUID id) {
 
+
         User user = this.userRepository.findById(id).get();
-        this.userRepository.delete(user);
+        if(!(user.getUsername().equalsIgnoreCase("Florence"))) {
+            this.userRepository.delete(user);
+        }else{
+            System.out.println("Can't be deleted");
+        }
+
 
     }
 
